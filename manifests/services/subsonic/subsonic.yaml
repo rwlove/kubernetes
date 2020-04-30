@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: subsonic
+  name: subsonic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subsonic
+  template:
+    metadata:
+      labels:
+        app: subsonic
+    spec:
+      initContainers:
+      - name: wait-for-mysql-service
+        image: busybox:1.28
+        command: ['sh', '-c', "until nslookup mysql; do echo waiting for mysql; sleep 2; done"]
+      - name: database-setup
+        image: mysql:5.6
+        imagePullPolicy: IfNotPresent
+        command: [sh,-c,mysql -h mysql -ppassword -e "CREATE DATABASE IF NOT EXISTS subsonic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON subsonic.* TO 'root'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"]
+      containers:
+      - image: rwlove/subsonic:6.1.6
+        imagePullPolicy: IfNotPresent
+        name: subsonic
+        env:
+        - name: SUBSONIC_DB
+          value: "jdbc:mysql://mysql:3306/subsonic?user=root&password=password&characterEncoding=UTF-8"
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        volumeMounts:
+        - name: music-volume
+          mountPath: /music
+          readOnly: true
+        - name: data-volume
+          mountPath: /data
+        - name: playlist-volume
+          mountPath: /playlists
+        - name: podcast-volume
+          mountPath: /podcasts          
+      volumes:
+      - name: music-volume
+        hostPath:
+          path: /mnt/mass_storage/storage/MP3s
+          type: Directory
+      - name: data-volume
+        hostPath:
+          path: /mnt/mass_storage/docker_storage/subsonick8s/data
+          type: Directory
+      - name: playlist-volume
+        hostPath:
+          path: /mnt/mass_storage/docker_storage/subsonick8s/playlists
+          type: Directory
+      - name: podcast-volume
+        hostPath:
+          path: /mnt/mass_storage/docker_storage/subsonick8s/podcasts
+          type: Directory

@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pihole
+  name: pihole
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pihole
+  template:
+    metadata:
+      labels:
+        app: pihole
+    spec:
+      containers:
+      - image: pihole/pihole:latest
+        imagePullPolicy: Always
+        name: pihole
+        ports:
+        - containerPort: 80
+        env:
+          - name: WEBPASSWORD
+            value: "admin"
+          - name: INTERFACE
+            value: "pihole-int"
+          - name: IPv6
+            value: "false"
+          - name: DNS1
+            value: "192.168.1.1"
+          - name: DNS2
+            value: "no"
+          - name: TZ
+            value: "America/Los_Angeles"  

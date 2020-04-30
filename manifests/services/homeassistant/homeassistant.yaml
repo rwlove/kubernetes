@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: homeassistant
+  name: homeassistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: homeassistant
+  template:
+    metadata:
+      labels:
+        app: homeassistant
+    spec:
+      containers:
+      - image: homeassistant/home-assistant:stable
+        imagePullPolicy: IfNotPresent
+        name: homeassistant
+        env:
+        - name: TZ
+          value: "America/Los_Angele"
+        ports:
+        - containerPort: 8123
+        volumeMounts:
+        - name: config-volume
+          mountPath: /config
+        - name: config-wyzesense
+          mountPath: /dev/wyzesense
+        - name: config-zwave
+          mountPath: /dev/ttyACM0
+      volumes:
+      - name: config-volume
+        hostPath:
+          path: /home/rwlove/docker_build/homeassistant/config
+          type: Directory
+      - name: config-wyzesense
+        hostPath:
+          path: /dev/wyzesense
+          type: CharDevice
+      - name: config-zwave
+        hostPath:
+          path: /dev/ttyACM0
+          type: CharDevice
