@@ -1,17 +1,17 @@
 #!/bin/bash
 
-if [ -d /home/rwlove/.kube ] ; then
-    echo "#### Delete /home/rwlove/.kube since it exists ####"
-    rm -rf /home/rwlove/.kube
+if [ -d ${HOME}/.kube ] ; then
+    echo "#### Delete ${HOME}/.kube since it exists ####"
+    rm -rf ${HOME}/.kube
 fi
 
 echo "#### Initialize the K8S Cluster ####"
-sudo kubeadm init --config /home/rwlove/kubernetes/init.config
+sudo kubeadm init --config ${HOME}/kubernetes/init.config
 
 echo "#### Copy K8S config ####"
-sudo mkdir /home/rwlove/.kube
-sudo cp -f /etc/kubernetes/admin.conf /home/rwlove/.kube/config
-sudo chown -R rwlove.rwlove /home/rwlove/.kube
+sudo mkdir ${HOME}/.kube
+sudo cp -f /etc/kubernetes/admin.conf ${HOME}/.kube/config
+sudo chown -R rwlove.rwlove ${HOME}/.kube
 
 echo "#### Update --node-ip=192.168.1.1 in /var/lib/kubelet/kubeadm-flags.env ####"
 sudo sed -i 's/\"$/ --node-ip=192.168.1.1\"/g' /var/lib/kubelet/kubeadm-flags.env
