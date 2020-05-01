@@ -9,7 +9,7 @@ echo "#### Get local IP Address (eno1) ####"
 ip_addr=$(ip addr show dev eno1 | grep inet | grep -v inet6 | awk '{ print $2 }' | cut -d '/' -f 1)
 
 echo "#### Update local IP Address in init.config ####"
-sudo sed -i 's/MASTER_IP/${ip_addr}/g' init.config
+sudo sed -i "s/MASTER_IP/${ip_addr}/g" ${HOME}/kubernetes/init.config
 
 echo "#### Initialize the K8S Cluster ####"
 sudo kubeadm init --config ${HOME}/kubernetes/init.config
@@ -20,7 +20,7 @@ sudo cp -f /etc/kubernetes/admin.conf ${HOME}/.kube/config
 sudo chown -R ${USER}.${USER} ${HOME}/.kube
 
 echo "#### Update --node-ip=${ip_addr} in /var/lib/kubelet/kubeadm-flags.env ####"
-sudo sed -i 's/\"$/ --node-ip=${ip_addr}\"/g' /var/lib/kubelet/kubeadm-flags.env
+sudo sed -i "s/\"$/ --node-ip=${ip_addr}\"/g" /var/lib/kubelet/kubeadm-flags.env
 
 echo "#### Restart the kubelet ####"
 sudo systemctl restart kubelet.service
