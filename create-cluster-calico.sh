@@ -11,7 +11,7 @@ sudo kubeadm init --config ${HOME}/kubernetes/init.config
 echo "#### Copy K8S config ####"
 sudo mkdir ${HOME}/.kube
 sudo cp -f /etc/kubernetes/admin.conf ${HOME}/.kube/config
-sudo chown -R rwlove.rwlove ${HOME}/.kube
+sudo chown -R ${USER}.${USER} ${HOME}/.kube
 
 echo "#### Update --node-ip=192.168.1.1 in /var/lib/kubelet/kubeadm-flags.env ####"
 sudo sed -i 's/\"$/ --node-ip=192.168.1.1\"/g' /var/lib/kubelet/kubeadm-flags.env
