@@ -3,9 +3,6 @@
 KUBE_CREATE='kubectl create'
 NAMESPACE='-n home-services'
 
-echo "#### Initialize Calico ####"
-kubectl apply -f calico.yaml
-
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.json
 
 ${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml

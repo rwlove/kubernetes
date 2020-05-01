@@ -36,6 +36,3 @@ ${KUBE_DELETE} -f manifests/volumes/music-volume.yaml
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.json
 
 ${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml
-
-echo "#### Delete Calico Configuration ####"
-kubectl delete -f calico.yaml
