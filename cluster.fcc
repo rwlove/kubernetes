@@ -1,0 +1,8 @@
+variant: fcos
+version: 1.0.0
+passwd:
+  users:
+  - name: core
+    ssh_authorized_keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCyRQ8rd9WHclgvTRVOD7WKOiGPtv13YJ8c8PHZeut/vfz/QC/IY66qh9+IBpVW4sHrEz0/5oVx+ldmAuzsLyey4pFrL8L96660ZkJqo3knH5JlJXnEpCgGoTyHBL4xrYpLuKIEGnPnDeT19s1rVUx2pvI5/DHgFpuoK3W3oFiYJLfgSoipA+eGbmlZpxiY2FKltIHBHIDkx7EewJ7JNhNEBhhVSW4511oegiuR1H7+bNzKFrOLXKjAttAw0xi2moMEfYxaK4jGux2bKD5HdeBRuWQxfh2omiBU0W85W8YGX32I9ECHMIPdAABHGCCM9jvyAYJVRftzIBzY6Yov8k9H rwlove@brain.thesteamedcrab.com
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCq/oc0OGkRNeH/6TZAFNK/y7+qrkaL1hr6+vGB4izyKz4BkSWkBrg+KmdN/mjdL+olagukXM4xp8J5M+l0DlCvSaPtQW4dn4hOtsan5A9EbeDvToq7zXNpvEuPsjxnx+07UZ1kVOPjwCedo5ivHtQpq7kTKmx2FLJbIpsRFkhw/ST7fmQO7d1z3FkvpEuVdAOllrRBHpfon2nxV4t/QS8r6udxFxR0pXxemkpLXU7RsJoP9/va/2GecH8Tp6KxCouOWZgBN4Xgmh3CHxiVCwBWhW8vOOXt6zmuKcHs7jvlG58KGH5uDGcMh98o/Hc8h4zX9OpNtV2a8A/dWD9zLRn rwlove@nomad
