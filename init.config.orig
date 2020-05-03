@@ -44,3 +44,5 @@ FeatureGates:
   AllAlpha: false
   RunAsGroup: true
 RuntimeRequestTimeout: 5m
+SystemReservedCgroup: /system.slice
+KubeReservedCgroup: /system.slice/kubelet.slice
