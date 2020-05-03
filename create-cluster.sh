@@ -12,7 +12,7 @@ echo "#### Update local IP Address in init.config ####"
 sudo sed -i "s/MASTER_IP/${ip_addr}/g" ${HOME}/kubernetes/init.config
 
 echo "#### Initialize the K8S Cluster ####"
-sudo kubeadm init --config ${HOME}/kubernetes/init.config
+sudo kubeadm init --ignore-preflight-errors=Service-Docker,IsDockerSystemdCheck,SystemVerification --config ${HOME}/kubernetes/init.config
 
 echo "#### Copy K8S config ####"
 sudo mkdir ${HOME}/.kube
