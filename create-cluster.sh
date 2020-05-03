@@ -9,7 +9,7 @@ echo "#### Get local IP Address (eno1) ####"
 ip_addr=$(ip addr show dev eno1 | grep inet | grep -v inet6 | awk '{ print $2 }' | cut -d '/' -f 1)
 
 echo "#### Update local IP Address in init.config ####"
-sudo sed "s/MASTER_IP/${ip_addr}/g" < ${HOME}/kubernetes/init.config.orig > ${HOME}/kubernetes/init.config.orig
+sudo sed "s/MASTER_IP/${ip_addr}/g" < ${HOME}/kubernetes/init.config.orig > ${HOME}/kubernetes/init.config
 
 echo "#### Initialize the K8S Cluster ####"
 sudo kubeadm init --ignore-preflight-errors=Service-Docker,IsDockerSystemdCheck,SystemVerification --config ${HOME}/kubernetes/init.config
