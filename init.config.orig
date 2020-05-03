@@ -14,9 +14,6 @@ localAPIEndpoint:
 nodeRegistration:
   criSocket: "unix:///var/run/crio/crio.sock"
   name: worker1
-  taints:
-  - effect: NoSchedule
-    key: node-role.kubernetes.io/master
 ---
 apiServer:
   timeoutForControlPlane: 4m0s
