@@ -10,8 +10,9 @@ spec:
     storage: 20Gi
   accessModes:
     - ReadWriteOnce
-  hostPath:
-    path: "/mnt/mass_storage/docker_storage/mariadb"
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/docker_storage/mariadb
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

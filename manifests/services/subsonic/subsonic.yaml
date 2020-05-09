@@ -44,18 +44,18 @@ spec:
           mountPath: /podcasts          
       volumes:
       - name: music-volume
-        hostPath:
+        nfs:
+          server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/storage/MP3s
-          type: Directory
       - name: data-volume
-        hostPath:
+        nfs:
+          server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/docker_storage/subsonick8s/data
-          type: Directory
       - name: playlist-volume
-        hostPath:
+        nfs:
+          server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/docker_storage/subsonick8s/playlists
-          type: Directory
       - name: podcast-volume
-        hostPath:
+        nfs:
+          server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/docker_storage/subsonick8s/podcasts
-          type: Directory
