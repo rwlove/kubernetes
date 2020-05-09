@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: music-data
+  labels:
+    type: local
+spec:
+  storageClassName: mp3-directory
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadOnlyMany
+  hostPath:
+    path: "/mnt/mass_storage/storage/MP3s"

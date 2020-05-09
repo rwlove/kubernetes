@@ -1,0 +1,11 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: subsonic-music-data-claim
+spec:
+  storageClassName: mp3-directory
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 300Gi
