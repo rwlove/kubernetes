@@ -10,5 +10,6 @@ spec:
     storage: 300Gi
   accessModes:
     - ReadOnlyMany
-  hostPath:
-    path: "/mnt/mass_storage/storage/MP3s"
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/storage/MP3s
