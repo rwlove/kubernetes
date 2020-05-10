@@ -5,7 +5,7 @@ NAMESPACE='-n home-services'
 
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.json
 
-${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
+#${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
 
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/volumes/music-volume.yaml
 
@@ -34,6 +34,6 @@ ${KUBE_CREATE} secret generic -n metallb-system memberlist --from-literal=secret
 
 ${KUBE_CREATE} -f configmap/lb/metallb.yaml
 
-${KUBE_CREATE} -f manifests/lb/nginx-ingress.yaml
+#${KUBE_CREATE} -f manifests/lb/nginx-ingress.yaml
 
 ${KUBE_CREATE} -f manifests/tools/dnsutils.yaml

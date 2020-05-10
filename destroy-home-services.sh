@@ -8,7 +8,7 @@ ${KUBE_DELETE} -f configmap/lb/metallb.yaml
 
 ${KUBE_DELETE} -f manifests/lb/metallb.yaml
 
-${KUBE_DELETE} -f manifests/lb/nginx-ingress.yaml
+#${KUBE_DELETE} -f manifests/lb/nginx-ingress.yaml
 
 ${KUBE_DELETE} -f manifests/lb/metallb-namespace.yaml
 
@@ -35,4 +35,4 @@ ${KUBE_DELETE} -f manifests/volumes/music-volume.yaml
 
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.json
 
-${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml
+#${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml
