@@ -15,7 +15,7 @@ spec:
     targetPort: 80
   selector:
     app: homeassistant
-  loadBalancerIP: 193.1.1.5
+  loadBalancerIP: 192.168.6.5
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress

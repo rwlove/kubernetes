@@ -15,7 +15,7 @@ spec:
     targetPort: 80
   selector:
     app: nginx-hello
-  loadBalancerIP: 193.1.1.2
+  loadBalancerIP: 192.168.6.2
 ---
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
