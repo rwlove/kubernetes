@@ -16,16 +16,3 @@ spec:
   selector:
     app: pihole
   loadBalancerIP: 192.168.6.4
----          
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: name-virtual-host-ingress-pihole
-spec:
-  rules:          
-  - host: piholek8s.thesteamedcrab.com
-    http:
-      paths:
-      - backend:
-          serviceName: pihole
-          servicePort: 80
