@@ -26,6 +26,10 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-se
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/subsonic/subsonic.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/subsonic/subsonic-service.yaml
 
+${KUBE_CREATE} -f manifests/dashboard/kubernetes-k8dash.yaml
+
+${KUBE_CREATE} -f manifests/tools/dnsutils.yaml
+
 ${KUBE_CREATE} -f manifests/lb/metallb-namespace.yaml
 
 ${KUBE_CREATE} -f manifests/lb/metallb.yaml
@@ -35,5 +39,3 @@ ${KUBE_CREATE} secret generic -n metallb-system memberlist --from-literal=secret
 ${KUBE_CREATE} -f configmap/lb/metallb.yaml
 
 #${KUBE_CREATE} -f manifests/lb/nginx-ingress.yaml
-
-${KUBE_CREATE} -f manifests/tools/dnsutils.yaml

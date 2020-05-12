@@ -14,6 +14,8 @@ ${KUBE_DELETE} -f manifests/lb/metallb-namespace.yaml
 
 ${KUBE_DELETE} -f manifests/tools/dnsutils.yaml
 
+${KUBE_DELETE} -f manifests/dashboard/kubernetes-k8dash.yaml
+
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant.yaml
 
