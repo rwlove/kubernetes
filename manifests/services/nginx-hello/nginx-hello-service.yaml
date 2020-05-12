@@ -5,7 +5,7 @@ metadata:
   labels:
     run: nginx-hello
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: nginx-hello.cluster.local
+    external-dns.alpha.kubernetes.io/hostname: nginx-hello.thesteamedcrab.com
 spec:
   type: LoadBalancer
   ports:
@@ -23,7 +23,7 @@ metadata:
   name: name-virtual-host-ingress-nginx-hello
 spec:
   rules:
-  - host: nginx-hello.cluster.local
+  - host: nginx-hello.thesteamedcrab.com
     http:
       paths:
       - backend:

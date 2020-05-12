@@ -5,7 +5,7 @@ metadata:
   labels:
     run: pihole
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: piholek8s.cluster.local
+    external-dns.alpha.kubernetes.io/hostname: piholek8s.thesteamedcrab.com
 spec:
   type: LoadBalancer
   ports:
@@ -23,7 +23,7 @@ metadata:
   name: name-virtual-host-ingress-pihole
 spec:
   rules:          
-  - host: piholek8s.cluster.local
+  - host: piholek8s.thesteamedcrab.com
     http:
       paths:
       - backend:
