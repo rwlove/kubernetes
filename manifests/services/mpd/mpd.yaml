@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: mpd
+  name: mpd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mpd
+  template:
+    metadata:
+      labels:
+        app: mpd
+    spec:
+      containers:
+      - image: vimagick/mpd
+        imagePullPolicy: IfNotPresent
+        name: mpd
+        ports:
+        - containerPort: 6600
+        - containerPort: 8800
+        volumeMounts:
+        - name: music-volume
+          mountPath: /var/lib/mpd/music
+          readOnly: true
+        - name: playlist-volume
+          mountPath: /var/lib/mpd/playlists
+        - name: sound-device-volume
+          mountPath: /dev/snd
+      volumes:
+      - name: music-volume
+        nfs:
+          server: brain.thesteamedcrab.com
+          path: /mnt/mass_storage/storage/MP3s
+      - name: playlist-volume
+        nfs:
+          server: brain.thesteamedcrab.com
+          path: /mnt/mass_storage/kubernetes/mpd/playlists
+      - name: sound-device-volume
+        hostPath:
+          path: /dev/snd
+      nodeSelector:
+        sound: bathroom-audio
