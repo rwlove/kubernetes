@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: speaker-test
+  name: speaker-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: speaker-test
+  template:
+    metadata:
+      labels:
+        app: speaker-test
+    spec:
+      containers:
+      - image: rwlove/speaker-test
+        imagePullPolicy: Allways
+        name: speaker-test
+        volumeMounts:
+        - name: music-volume
+          mountPath: /var/lib/mpd/music
+          readOnly: true
+        - name: sound-device-volume
+          mountPath: /dev/snd
+      volumes:
+      - name: music-volume
+        nfs:
+          server: brain.thesteamedcrab.com
+          path: /mnt/mass_storage/storage/MP3s
+      - name: sound-device-volume
+        hostPath:
+          path: /dev/snd
+      nodeSelector:
+        sound: bathroom-audio
