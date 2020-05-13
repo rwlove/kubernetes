@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - image: rwlove/speaker-test
-        imagePullPolicy: Allways
+        imagePullPolicy: Always
         name: speaker-test
         volumeMounts:
         - name: music-volume
