@@ -15,7 +15,7 @@ spec:
         app: mpd
     spec:
       containers:
-      - image: vimagick/mpd
+      - image: rwlove/mpd
         imagePullPolicy: IfNotPresent
         name: mpd
         ports:
@@ -27,6 +27,8 @@ spec:
           readOnly: true
         - name: playlist-volume
           mountPath: /var/lib/mpd/playlists
+        - name: database-volume
+          mountPath: /var/lib/mpd/database
         - name: sound-device-volume
           mountPath: /dev/snd
       volumes:
@@ -38,6 +40,10 @@ spec:
         nfs:
           server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/kubernetes/mpd/playlists
+      - name: database-volume
+          nfs:
+            server: brain.thesteamedcrab.com
+            path: /mnt/mass_storage/kubernetes/mpd/database
       - name: sound-device-volume
         hostPath:
           path: /dev/snd
