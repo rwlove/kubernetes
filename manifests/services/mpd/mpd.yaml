@@ -16,11 +16,11 @@ spec:
     spec:
       containers:
       - image: rwlove/mpd
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         name: mpd
         ports:
         - containerPort: 6600
-        - containerPort: 8800
+        - containerPort: 8800          
         volumeMounts:
         - name: music-volume
           mountPath: /var/lib/mpd/music
@@ -41,9 +41,9 @@ spec:
           server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/kubernetes/mpd/playlists
       - name: database-volume
-          nfs:
-            server: brain.thesteamedcrab.com
-            path: /mnt/mass_storage/kubernetes/mpd/database
+        nfs:
+          server: brain.thesteamedcrab.com
+          path: /mnt/mass_storage/kubernetes/mpd/database
       - name: sound-device-volume
         hostPath:
           path: /dev/snd
