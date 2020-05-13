@@ -18,6 +18,8 @@ spec:
       - image: rwlove/speaker-test
         imagePullPolicy: Always
         name: speaker-test
+        securityContext:
+          privileged: true
         volumeMounts:
         - name: music-volume
           mountPath: /var/lib/mpd/music
