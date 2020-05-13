@@ -40,10 +40,12 @@ spec:
         nfs:
           server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/kubernetes/mpd/playlists
+          type: Directory
       - name: database-volume
         nfs:
           server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/kubernetes/mpd/database
+          type: File
       - name: sound-device-volume
         hostPath:
           path: /dev/snd
