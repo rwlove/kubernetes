@@ -16,6 +16,7 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
 helm install ${NAMESPACE} grafana -f helm/grafana.yaml stable/grafana
 helm install ${NAMESPACE} prometheus -f helm/prometheus.yaml stable/prometheus
+helm install ${NAMESPACE} nextcloud -f helm/nextcloud.yaml stable/nextcloud
 
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
