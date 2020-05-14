@@ -35,9 +35,9 @@ metadata:
   name: mariadb
   namespace: nextcloud
 spec:
-  database: test-db
+  database: nextcloud
   username: nextcloud
   password: password
   rootpwd: password
   size: 1
-  image: 'mariadb/server:10.4'
+  image: 'mariadb/server:10.3'

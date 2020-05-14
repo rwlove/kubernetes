@@ -186,7 +186,7 @@ externalDatabase:
   type: mysql
 
   ## Database host
-  host: nextcloud-mariadb
+  host: mariadb-service
 
   ## Database user
   user: nextcloud
