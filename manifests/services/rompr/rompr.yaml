@@ -25,7 +25,7 @@ spec:
         - name: config-volume
           mountPath: /root/.config/
       - image: rawdlite/rompr
-        container_name: rompr
+        name: rompr
         restart: always
         ports:
           - containerPort: 80
