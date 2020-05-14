@@ -50,7 +50,6 @@ ${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-pvc.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-pv.yaml
 
-${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml
