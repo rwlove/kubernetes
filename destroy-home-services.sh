@@ -42,8 +42,6 @@ helm uninstall -n nextcloud nextcloud
 helm uninstall prometheus
 helm uninstall grafana
 
-${KUBE_DELETE} -f operators/mariadb.yaml
-
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/volumes/music-volume-pvc.yaml
 ${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
 

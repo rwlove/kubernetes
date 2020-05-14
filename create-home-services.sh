@@ -18,8 +18,6 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/volumes/music-volume-pvc.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
-${KUBE_CREATE} -f operators/mariadb.yaml
-
 helm install ${NAMESPACE} grafana -f helm/grafana.yaml stable/grafana
 helm install ${NAMESPACE} prometheus -f helm/prometheus.yaml stable/prometheus
 
