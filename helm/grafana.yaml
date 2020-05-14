@@ -514,4 +514,4 @@ sidecar:
 
 ## Override the deployment namespace
 ##
-namespaceOverride: ""
+namespaceOverride: "home-services"
