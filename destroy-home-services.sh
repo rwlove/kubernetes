@@ -38,7 +38,7 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 
 ${KUBE_DELETE} -n nextcloud -f manifests/services/nextcloud/nextcloud.yaml
-helm uninstall nextcloud
+helm uninstall -n nextcloud nextcloud
 
 helm uninstall prometheus
 helm uninstall grafana

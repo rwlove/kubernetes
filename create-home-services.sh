@@ -20,7 +20,7 @@ helm install ${NAMESPACE} grafana -f helm/grafana.yaml stable/grafana
 helm install ${NAMESPACE} prometheus -f helm/prometheus.yaml stable/prometheus
 
 ${KUBE_CREATE} -n nextcloud -f manifests/services/nextcloud/nextcloud.yaml
-helm install ${NAMESPACE} nextcloud -f helm/nextcloud.yaml stable/nextcloud
+helm install -n nextcloud  nextcloud -f helm/nextcloud.yaml stable/nextcloud
 
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
