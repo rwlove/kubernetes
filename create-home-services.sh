@@ -30,6 +30,9 @@ kubectl label nodes worker3 sound=bathroom-audio
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/mpd/mpd.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/mpd/mpd-service.yaml
 
+${KUBE_CREATE} ${NAMESPACE} -f manifests/services/rompr/rompr.yaml
+${KUBE_CREATE} ${NAMESPACE} -f manifests/services/rompr/rompr-service.yaml
+
 ${KUBE_CREATE} -f manifests/dashboard/kubernetes-k8dash.yaml
 
 ${KUBE_CREATE} -f manifests/tools/dnsutils.yaml
