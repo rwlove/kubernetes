@@ -37,10 +37,12 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 
+helm uninstall -f helm/grafana.yaml --name grafana stable/grafana
+
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/volumes/pvc.yaml
 
 ${KUBE_DELETE} -f manifests/volumes/music-volume.yaml
 
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.json
 
-${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml
+#${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml

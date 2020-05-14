@@ -14,6 +14,8 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/volumes/pvc.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
+helm install -f helm/grafana.yaml --name grafana stable/grafana
+
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 
