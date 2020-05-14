@@ -1,12 +1,4 @@
 ---
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: nextcloud
-  labels:
-    name: nextcloud
-
----
 apiVersion: mariadbs.mariadb.persistentsys/v1alpha1
 kind: MariaDB
 metadata:
