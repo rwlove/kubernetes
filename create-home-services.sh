@@ -10,8 +10,8 @@ ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-pvc.yaml
 
-${KUBE_CREATE} ${NAMESPACE} -f manifests/volumes/music-volume.yaml
-${KUBE_CREATE} ${NAMESPACE} -f manifests/volumes/pvc.yaml
+${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml
+${KUBE_CREATE} ${NAMESPACE} -f manifests/volumes/music-volume-pvc.yaml
 
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml

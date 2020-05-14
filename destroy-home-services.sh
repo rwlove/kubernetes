@@ -44,8 +44,8 @@ helm uninstall grafana
 
 ${KUBE_DELETE} -f operators/mariadb.yaml
 
-${KUBE_DELETE} ${NAMESPACE} -f manifests/volumes/pvc.yaml
-${KUBE_DELETE} -f manifests/volumes/music-volume.yaml
+${KUBE_DELETE} ${NAMESPACE} -f manifests/volumes/music-volume-pvc.yaml
+${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
 
 ${KUBE_DELETE} -f manifests/volumes/mariadb-pvc.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-pv.yaml
