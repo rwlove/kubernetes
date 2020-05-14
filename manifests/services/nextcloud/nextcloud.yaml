@@ -7,14 +7,15 @@ metadata:
     name: nextcloud
 
 ---
-apiVersion: mariadb.mariadb.com/v1alpha1
+apiVersion: mariadb.persistentsys/v1alpha1
 kind: MariaDB
 metadata:
   name: nextcloud-mariadb
   namespace: nextcloud
 spec:
-  masters: 1
-  replicas: 0
-  mariadb_password: password
-  mariadb_image: mariadb:10.4
-  mariadb_pvc_storage_request: 1Gi
+  database: test-db
+  username: nextcloud
+  password: password
+  rootpwd: password
+  size: 1
+  image: 'mariadb/server:10.4'
