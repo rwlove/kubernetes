@@ -26,7 +26,6 @@ spec:
           mountPath: /root/.config/
       - image: rawdlite/rompr
         name: rompr
-        restart: always
         ports:
           - containerPort: 80
       volumes:
