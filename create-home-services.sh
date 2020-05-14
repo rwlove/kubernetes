@@ -3,6 +3,8 @@
 KUBE_CREATE='kubectl create'
 NAMESPACE='-n home-services'
 
+curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/0.14.1/install.sh | bash -s 0.14.1
+
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
