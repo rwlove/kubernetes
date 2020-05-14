@@ -37,6 +37,7 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 
+helm uninstall -f helm/prometheus.yaml --name prometheus stable/prometheus
 helm uninstall -f helm/grafana.yaml --name grafana stable/grafana
 
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/volumes/pvc.yaml
