@@ -17,4 +17,4 @@ spec:
     targetPort: 6680
   selector:
     app: rompr
-  loadBalancerIP: 192.168.6.7
+  loadBalancerIP: 192.168.6.8
