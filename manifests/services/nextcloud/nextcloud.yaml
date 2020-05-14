@@ -10,7 +10,7 @@ metadata:
 apiVersion: mariadb.persistentsys/v1alpha1
 kind: MariaDB
 metadata:
-  name: nextcloud-mariadb
+  name: mariadb
   namespace: nextcloud
 spec:
   database: test-db
