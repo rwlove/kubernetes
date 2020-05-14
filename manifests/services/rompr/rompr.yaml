@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: rompr
+  name: rompr
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rompr
+  template:
+    metadata:
+      labels:
+        app: rompr
+    spec:
+      containers:
+      - image: rawdlite/mopidy:latest
+        imagePullPolicy: IfNotPresent
+        name: rompr
+        ports:
+        - containerPort: 6600
+        - containerPort: 6680
+        volumeMounts:
+        - name: config-volume
+          mountPath: /root/.config/
+      volumes:
+      - name: config-volume
+        nfs:
+          server: brain.thesteamedcrab.com
+          path: /mnt/mass_storage/kubernetes/rompr/config
