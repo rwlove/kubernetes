@@ -9,15 +9,15 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - name: sixthousandsixhundred
-    port: 6600
-    targetPort: 6600
-  - name: sixthousandsixhundredeighty
-    port: 6680
-    targetPort: 6680
   - name: http
     port: 80
-    targetPort: 80    
+    targetPort: 80
+  - name: romprsixthousandsixhundred
+    port: 6600
+    targetPort: 6600
+  - name: romprsixthousandsixhundredeighty
+    port: 6680
+    targetPort: 6680
   selector:
     app: rompr
   loadBalancerIP: 192.168.6.8
