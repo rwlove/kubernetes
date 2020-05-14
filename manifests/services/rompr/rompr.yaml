@@ -17,13 +17,18 @@ spec:
       containers:
       - image: rawdlite/mopidy:latest
         imagePullPolicy: IfNotPresent
-        name: rompr
+        name: modipy
         ports:
         - containerPort: 6600
         - containerPort: 6680
         volumeMounts:
         - name: config-volume
           mountPath: /root/.config/
+      - image: rawdlite/rompr
+        container_name: rompr
+        restart: always
+        ports:
+          - containerPort: 80
       volumes:
       - name: config-volume
         nfs:
