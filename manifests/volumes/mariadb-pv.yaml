@@ -11,5 +11,5 @@ spec:
   accessModes:
     - ReadWriteMany
       nfs:
-  server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/mariadb
+        server: brain.thesteamedcrab.com
+        path: /mnt/mass_storage/kubernetes/mariadb
