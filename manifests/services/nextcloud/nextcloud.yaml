@@ -7,7 +7,7 @@ metadata:
     name: nextcloud
 
 ---
-apiVersion: mariadb.persistentsys/v1alpha1
+apiVersion: mariadbs.mariadb.persistentsys/v1alpha1
 kind: MariaDB
 metadata:
   name: mariadb
