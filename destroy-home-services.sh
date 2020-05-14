@@ -3,7 +3,6 @@
 KUBE_DELETE='kubectl delete'
 NAMESPACE='-n home-services'
 
-
 ${KUBE_DELETE} -f configmap/lb/metallb.yaml
 
 ${KUBE_DELETE} -f manifests/lb/metallb.yaml
