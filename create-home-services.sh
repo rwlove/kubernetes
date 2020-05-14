@@ -3,7 +3,7 @@
 KUBE_CREATE='kubectl create'
 NAMESPACE='-n home-services'
 
-${KUBE_CREATE} -f manifests/services/home-services-namespace.json
+${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
 
