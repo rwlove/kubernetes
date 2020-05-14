@@ -18,6 +18,8 @@ spec:
       - image: rwlove/mpd
         imagePullPolicy: Always
         name: mpd
+        securityContext:
+          privileged: true
         ports:
         - containerPort: 6600
         - containerPort: 8800          
