@@ -11,6 +11,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: subsonic-music-data-claim
+  namespace: subsonic
 spec:
   storageClassName: mp3-directory
   accessModes:
