@@ -186,16 +186,16 @@ externalDatabase:
   type: mysql
 
   ## Database host
-  host: 'mariadb-service:80'
+  host: mariadb-service
 
   ## Database user
-  user: nextcloud
+  user: db_user
 
   ## Database password
   password: password
 
   ## Database name
-  database: nextcloud
+  database: db
 
   ## Use a existing secret
   existingSecret:
