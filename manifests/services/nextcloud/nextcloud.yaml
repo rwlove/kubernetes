@@ -30,7 +30,7 @@ metadata:
   name: nextcloud-webroot-claim
   namespace: nextcloud
 spec:
-  storageClassName: webroot-claim
+  storageClassName: nextcloud-webroot-storage-class
   accessModes:
     - ReadWriteOnce
   resources:
