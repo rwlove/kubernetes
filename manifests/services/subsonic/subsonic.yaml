@@ -20,6 +20,56 @@ spec:
       storage: 300Gi
 
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+  namespace: subsonic
+spec:
+  storageClassName: mariadb-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: operatorgroup
+  namespace: subsonic
+spec:
+  targetNamespaces:
+  - subsonic
+
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: subsonic-mariadb-operator
+  namespace: subsonic
+spec:
+  channel: alpha
+  name: mariadb-operator-app
+  source: operatorhubio-catalog
+  sourceNamespace: olm
+
+---
+apiVersion: mariadb.persistentsys/v1alpha1
+kind: MariaDB
+metadata:
+  name: mariadb
+  namespace: subsonic
+spec:
+  database: nextcloud
+  username: nextcloud
+  password: password
+  rootpwd: password
+  size: 1
+  image: 'mariadb/server:10.4'
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -38,20 +88,17 @@ spec:
         app: subsonic
     spec:
       initContainers:
-      - name: wait-for-mysql-service
-        image: busybox:1.28
-        command: ['sh', '-c', "until nslookup mysql; do echo waiting for mysql; sleep 2; done"]
       - name: database-setup
         image: mysql:5.6
         imagePullPolicy: IfNotPresent
-        command: [sh,-c,mysql -h mysql -ppassword -e "CREATE DATABASE IF NOT EXISTS subsonic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON subsonic.* TO 'root'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"]
+        command: [sh,-c,mysql -h mysql-service -ppassword -e "CREATE DATABASE IF NOT EXISTS subsonic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON subsonic.* TO 'root'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"]
       containers:
       - image: rwlove/subsonic:6.1.6
         imagePullPolicy: IfNotPresent
         name: subsonic
         env:
         - name: SUBSONIC_DB
-          value: "jdbc:mysql://mysql:3306/subsonic?user=root&password=password&characterEncoding=UTF-8"
+          value: "jdbc:mysql://mariadb-service:3306/subsonic?user=root&password=password&characterEncoding=UTF-8"
         ports:
         - containerPort: 80
         - containerPort: 443
