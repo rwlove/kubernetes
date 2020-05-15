@@ -9,7 +9,8 @@ ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
 
-${KUBE_CREATE} -f manifests/volumes/mariadb-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 

@@ -27,7 +27,7 @@ metadata:
   name: mariadb-pv-claim
   namespace: nextcloud
 spec:
-  storageClassName: mariadb-storage-class
+  storageClassName: mariadb-nextcloud-storage-class
   accessModes:
     - ReadWriteMany
   resources:

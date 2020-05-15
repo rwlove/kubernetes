@@ -44,7 +44,8 @@ helm uninstall grafana
 
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
-${KUBE_DELETE} -f manifests/volumes/mariadb-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 
