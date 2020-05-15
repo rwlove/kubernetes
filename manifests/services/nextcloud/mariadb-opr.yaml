@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: mariadb-mariadb-0
+  name: nextcloud-webroot-claim
   namespace: nextcloud
 spec:
   storageClassName: nextcloud-webroot-storage-class
@@ -16,7 +16,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mariadb-pv-claim
+  name: mariadb-mariadb-0
   namespace: nextcloud
 spec:
   storageClassName: mariadb-nextcloud-storage-class
