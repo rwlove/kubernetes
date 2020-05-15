@@ -108,14 +108,14 @@ spec:
       - name: database-setup
         image: mysql:5.6
         imagePullPolicy: IfNotPresent
-        command: [sh,-c,mysql -h mariadb-service -ppassword -e "CREATE DATABASE IF NOT EXISTS subsonic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON subsonic.* TO 'root'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"]
+        command: [sh,-c,mysql -h mariadb-service -ppassword -P 80 -e "CREATE DATABASE IF NOT EXISTS subsonic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON subsonic.* TO 'root'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"]
       containers:
       - image: rwlove/subsonic:6.1.6
         imagePullPolicy: IfNotPresent
         name: subsonic
         env:
         - name: SUBSONIC_DB
-          value: "jdbc:mysql://mariadb-service:3306/subsonic?user=root&password=password&characterEncoding=UTF-8"
+          value: "jdbc:mysql://mariadb-service:80/subsonic?user=root&password=password&characterEncoding=UTF-8"
         ports:
         - containerPort: 80
         - containerPort: 443
