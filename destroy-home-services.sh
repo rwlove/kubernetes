@@ -24,9 +24,6 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/mpd/mpd.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant.yaml
 
-${KUBE_DELETE} -f manifests/services/subsonic/subsonic-service.yaml
-${KUBE_DELETE} -f manifests/services/subsonic/subsonic.yaml
-
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello.yaml
 
@@ -35,9 +32,6 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 ${KUBE_DELETE} -f manifests/db/mysql-pv.yaml
-
-${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
-helm uninstall -n nextcloud nextcloud
 
 helm uninstall prometheus
 helm uninstall grafana

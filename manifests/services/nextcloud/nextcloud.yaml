@@ -33,39 +33,3 @@ spec:
   resources:
     requests:
       storage: 1Gi
-
----
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: operatorgroup
-  namespace: nextcloud
-spec:
-  targetNamespaces:
-  - nextcloud
-
----
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-  name: nextcloud-mariadb-operator
-  namespace: nextcloud
-spec:
-  channel: alpha
-  name: mariadb-operator-app
-  source: operatorhubio-catalog
-  sourceNamespace: olm
-
----
-apiVersion: mariadb.persistentsys/v1alpha1
-kind: MariaDB
-metadata:
-  name: mariadb
-  namespace: nextcloud
-spec:
-  database: nextcloud
-  username: nextcloud
-  password: password
-  rootpwd: password
-  size: 1
-  image: 'mariadb/server:10.4'
