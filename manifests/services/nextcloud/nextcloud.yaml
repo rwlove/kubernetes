@@ -29,7 +29,7 @@ spec:
   sourceNamespace: olm
 
 ---
-apiVersion: mariadbs.mariadb.persistentsys/v1alpha1
+apiVersion: mariadb.persistentsys/v1alpha1
 kind: MariaDB
 metadata:
   name: mariadb
@@ -40,4 +40,4 @@ spec:
   password: password
   rootpwd: password
   size: 1
-  image: 'mariadb/server:10.3'
+  image: 'mariadb/server:10.4'
