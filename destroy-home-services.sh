@@ -34,7 +34,7 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
-${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
+${KUBE_DELETE} -f manifests/db/mysql-pv.yaml
 
 ${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
 helm uninstall -n nextcloud nextcloud
