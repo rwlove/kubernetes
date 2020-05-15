@@ -71,6 +71,22 @@ spec:
   image: 'mariadb/server:10.4'
 
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mariadb-service
+  namespace: subsonic
+spec:
+  selector:
+    MariaDB_cr: mariadb
+    app: MariaDB
+    tier: mariadb
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3306
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
