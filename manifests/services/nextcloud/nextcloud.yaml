@@ -24,7 +24,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mariadb-nextcloud-pv-claim
+  name: mariadb-pv-claim
   namespace: nextcloud
 spec:
   storageClassName: mariadb-nextcloud-storage-class
