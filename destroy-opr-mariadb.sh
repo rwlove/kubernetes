@@ -8,7 +8,7 @@ ${KUBE_DELETE} -f manifests/services/subsonic/mariadb-opr.yaml
 ${KUBE_DELETE} -f manifests/services/subsonic/subsonic.yaml
 
 ${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
-helm install -n nextcloud nextcloud -f helm/nextcloud.yaml stable/nextcloud
+helm uninstall -n nextcloud nextcloud
 
 ${KUBE_DELETE} -f operators/mariadb-operator.yaml
 
