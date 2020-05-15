@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -35,9 +36,8 @@ spec:
           mountPath: /dev/snd
       volumes:
       - name: music-volume
-        nfs:
-          server: brain.thesteamedcrab.com
-          path: /mnt/mass_storage/storage/MP3s
+        persistentVolumeClaim:
+          claimName: subsonic-music-data-claim
       - name: playlist-volume
         nfs:
           server: brain.thesteamedcrab.com

@@ -7,6 +7,19 @@ metadata:
     name: subsonic
 
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: subsonic-music-data-claim
+spec:
+  storageClassName: mp3-directory
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 300Gi
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -54,9 +67,8 @@ spec:
           mountPath: /podcasts          
       volumes:
       - name: music-volume
-        nfs:
-          server: brain.thesteamedcrab.com
-          path: /mnt/mass_storage/storage/MP3s
+        persistentVolumeClaim:
+          claimName: subsonic-music-data-claim
       - name: data-volume
         nfs:
           server: brain.thesteamedcrab.com
