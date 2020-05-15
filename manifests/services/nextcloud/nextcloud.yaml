@@ -7,23 +7,6 @@ metadata:
     name: nextcloud
 
 ---
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: nextcloud-webroot-volume
-  labels:
-    type: local
-spec:
-  storageClassName: nextcloud-webroot-storage-class
-  capacity:
-    storage: 300Gi
-  accessModes:
-    - ReadWriteOnce
-  nfs:
-    server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/nextcloud
-
----
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
