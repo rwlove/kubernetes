@@ -7,6 +7,19 @@ metadata:
     name: nextcloud
 
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:
