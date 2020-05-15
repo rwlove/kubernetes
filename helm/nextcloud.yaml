@@ -282,7 +282,7 @@ service:
 ##
 persistence:
   # Nextcloud Data (/var/www/html)
-  enabled: false
+  enabled: true
   annotations: {}
   ## nextcloud data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
@@ -291,12 +291,12 @@ persistence:
   ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
   ##   GKE, AWS & OpenStack)
   ##
-  # storageClass: "-"
+  storageClass: "nextcloud-webroot-storage-class"
 
   ## A manually managed Persistent Volume and Claim
   ## Requires persistence.enabled: true
   ## If defined, PVC must be created manually before volume will be bound
-  # existingClaim:
+  existingClaim: nextcloud-webroot-claim
 
   accessMode: ReadWriteOnce
   size: 8Gi
