@@ -1,5 +1,7 @@
 #!/bin/bash
 
+KUBE_CREATE='kubectl create'
+
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/0.14.1/install.sh | bash -s 0.14.1
 
 ${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml

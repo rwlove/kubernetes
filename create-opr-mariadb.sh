@@ -1,5 +1,7 @@
 #!/bin/bash
 
+KUBE_CREATE='kubectl create'
+
 ${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml

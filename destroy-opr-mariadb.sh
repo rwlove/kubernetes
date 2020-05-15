@@ -1,5 +1,7 @@
 #!/bin/bash
 
+KUBE_DELETE='kubectl delete'
+
 ${KUBE_DELETE} -f manifests/services/subsonic/subsonic-service.yaml
 ${KUBE_DELETE} -f manifests/services/subsonic/subsonic-opr.yaml
 ${KUBE_DELETE} -f manifests/services/subsonic/mariadb-opr.yaml
