@@ -7,20 +7,6 @@ metadata:
     name: nextcloud
 
 ---
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: nextcloud-webroot-claim
-  namespace: nextcloud
-spec:
-  storageClassName: webroot-claim
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 300Gi
-
----
 apiVersion: v1
 kind: PersistentVolume
 metadata:
@@ -36,7 +22,21 @@ spec:
   nfs:
     server: brain.thesteamedcrab.com
     path: /mnt/mass_storage/kubernetes/nextcloud
-      
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nextcloud-webroot-claim
+  namespace: nextcloud
+spec:
+  storageClassName: webroot-claim
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 300Gi
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
