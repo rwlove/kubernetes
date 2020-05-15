@@ -32,8 +32,8 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello-servic
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-service.yaml
 
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/subsonic/subsonic.yaml
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/subsonic/subsonic-service.yaml
+${KUBE_CREATE} -f manifests/services/subsonic/subsonic.yaml
+${KUBE_CREATE} -f manifests/services/subsonic/subsonic-service.yaml
 
 kubectl label nodes worker3 sound=bathroom-audio
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/mpd/mpd.yaml
