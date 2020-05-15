@@ -82,7 +82,7 @@ spec:
     app: MariaDB
     tier: mariadb
   ports:
-  - name: http
+  - name: dbport
     port: 3306
     targetPort: 3306
 
