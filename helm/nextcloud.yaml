@@ -186,8 +186,10 @@ externalDatabase:
   type: mysql
 
   ## Database host
-  host: mariadb-service:80
+  host: mariadb-service
 
+  port: 80
+  
   ## Database user
   user: nextcloud
 
