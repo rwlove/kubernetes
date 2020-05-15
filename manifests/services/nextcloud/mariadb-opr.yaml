@@ -1,4 +1,32 @@
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mariadb-mariadb-0
+  namespace: nextcloud
+spec:
+  storageClassName: nextcloud-webroot-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 300Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+  namespace: nextcloud
+spec:
+  storageClassName: mariadb-nextcloud-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
 apiVersion: mariadb.mariadb.com/v1alpha1
 kind: MariaDB
 metadata:
@@ -22,3 +50,5 @@ spec:
   - protocol: TCP
     port: 3306
     targetPort: 3306
+
+mariadb-mariadb-0

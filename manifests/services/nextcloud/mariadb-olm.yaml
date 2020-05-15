@@ -1,4 +1,32 @@
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nextcloud-webroot-claim
+  namespace: nextcloud
+spec:
+  storageClassName: nextcloud-webroot-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 300Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-pv-claim
+  namespace: nextcloud
+spec:
+  storageClassName: mariadb-nextcloud-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
 apiVersion: operators.coreos.com/v1
 kind: OperatorGroup
 metadata:

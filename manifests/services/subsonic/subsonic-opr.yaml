@@ -1,4 +1,32 @@
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: subsonic-music-data-claim
+  namespace: subsonic
+spec:
+  storageClassName: mp3-directory
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 300Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mariadb-mariadb-0
+  namespace: subsonic
+spec:
+  storageClassName: mariadb-subsonic-storage-class
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
