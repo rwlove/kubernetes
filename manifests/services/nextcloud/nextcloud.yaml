@@ -18,7 +18,7 @@ spec:
   capacity:
     storage: 300Gi
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   nfs:
     server: brain.thesteamedcrab.com
     path: /mnt/mass_storage/kubernetes/nextcloud
