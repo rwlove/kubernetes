@@ -11,6 +11,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: nextcloud-webroot-claim
+  namespace: nextcloud
 spec:
   storageClassName: webroot-claim
   accessModes:
