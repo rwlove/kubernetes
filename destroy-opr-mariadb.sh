@@ -13,6 +13,5 @@ helm uninstall -n nextcloud nextcloud
 ${KUBE_DELETE} -f operators/mariadb-operator.yaml
 
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
-${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
