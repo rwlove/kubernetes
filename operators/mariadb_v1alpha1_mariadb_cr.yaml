@@ -1,0 +1,15 @@
+---
+apiVersion: mariadb.mariadb.com/v1alpha1
+kind: MariaDB
+metadata:
+  name: example-mariadb
+  namespace: example-mariadb
+spec:
+  masters: 1
+  replicas: 0
+  mariadb_password: password
+  mariadb_image: mariadb:10.4
+  mariadb_user: root
+  mariadb_root_password: password
+  mariadb_database_name: db
+  mariadb_pvc_storage_request: 1Gi

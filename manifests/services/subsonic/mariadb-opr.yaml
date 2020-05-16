@@ -7,7 +7,10 @@ metadata:
 spec:
   masters: 1
   replicas: 0
+  mariadb_database_name: subsonic
+  mariadb_user: db_user
   mariadb_password: password
+  mariadb_root_password: password
   mariadb_image: mariadb:10.4
   mariadb_pvc_storage_request: 1Gi
 
