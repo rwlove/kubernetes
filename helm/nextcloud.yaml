@@ -186,7 +186,7 @@ externalDatabase:
   type: mysql
 
   ## Database host
-  host: mariadb-service
+  host: mariadb
 
   ## Database user
   user: root
