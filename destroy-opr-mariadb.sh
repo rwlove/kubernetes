@@ -9,7 +9,6 @@ ${KUBE_DELETE} -f manifests/services/subsonic/subsonic.yaml
 
 ${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
 helm uninstall -n nextcloud nextcloud
-${KUBE_CREATE} -f helm/nextcloud-secrets.yaml
 
 #${KUBE_DELETE} -f mariadb_v1alpha1_mariadb_cr.yaml
 ${KUBE_DELETE} -f operators/mariadb-operator.yaml
