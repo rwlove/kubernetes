@@ -8,7 +8,7 @@ ${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 
 ${KUBE_CREATE} -f operators/mariadb-operator.yaml
-${KUBE_CREATE} -f operators/mariadb_v1alpha1_mariadb_cr.yaml
+#${KUBE_CREATE} -f operators/mariadb_v1alpha1_mariadb_cr.yaml
 
 ${KUBE_CREATE} -f manifests/services/nextcloud/nextcloud.yaml
 ${KUBE_CREATE} -f manifests/services/nextcloud/mariadb-opr.yaml
