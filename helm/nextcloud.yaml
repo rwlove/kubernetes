@@ -138,6 +138,8 @@ nextcloud:
   ##
   ## Extra environment variables
   extraEnv:
+    - name: NEXTCLOUD_TRUSTED_DOMAINS
+      value: thesteamedcrab.com
   #  - name: SOME_SECRET_ENV
   #    valueFrom:
   #      secretKeyRef:
