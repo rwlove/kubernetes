@@ -10,6 +10,7 @@ ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_CREATE} -f operators/mariadb-operator.yaml
 #${KUBE_CREATE} -f operators/mariadb_v1alpha1_mariadb_cr.yaml
 
+${KUBE_CREATE} -f helm/nextcloud-secrets.yaml
 ${KUBE_CREATE} -f manifests/services/nextcloud/nextcloud.yaml
 ${KUBE_CREATE} -f manifests/services/nextcloud/mariadb-opr.yaml
 helm install -n nextcloud nextcloud -f helm/nextcloud.yaml stable/nextcloud
