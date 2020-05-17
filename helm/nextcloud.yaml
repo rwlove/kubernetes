@@ -189,7 +189,7 @@ externalDatabase:
   host: mariadb-service
 
   ## Database user
-  user: db_user
+  user: root
 
   ## Database password
   password: password
