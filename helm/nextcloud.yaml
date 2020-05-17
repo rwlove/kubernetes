@@ -140,6 +140,14 @@ nextcloud:
   extraEnv:
     - name: NEXTCLOUD_TRUSTED_DOMAINS
       value: thesteamedcrab.com
+    - name: MYSQL_USER
+      value: root
+    - name: MYSQL_PASSWORD
+      value: password
+    - name: NEXTCLOUD_ADMIN_USER
+      value: admin
+    - name: NEXTCLOUD_ADMIN_PASSWORD
+      value: password
   #  - name: SOME_SECRET_ENV
   #    valueFrom:
   #      secretKeyRef:
