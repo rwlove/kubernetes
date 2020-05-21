@@ -5,20 +5,32 @@ NAMESPACE='-n home-services'
 
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/0.14.1/install.sh | bash -s 0.14.1
 
+echo "############"
+echo "Create namespaces"
+echo "######"
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 ${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
 
+echo "############"
+echo "Create Physical (Storage) Volumes"
+echo "######"
 ${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 
-${KUBE_CREATE} ${NAMESPACE} -f operators/kubemq-operator.yaml
+echo "############"
+echo "Create kubemq"
+echo "######"
+${KUBE_CREATE} -f operators/kubemq-operator.yaml
 ${KUBE_CREATE} -f manifests/services/kubemq/kubemq-cluster.yaml
 ${KUBE_CREATE} -f manifests/services/kubemq/kubemq-dashboard.yaml
 
+echo "############"
+echo "Create mysql deployment"
+echo "######"
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
@@ -103,41 +115,75 @@ echo "Create the subsonic PostgreSQL database"
 echo "######"
 kubectl create -f manifests/db/crunchy_postgresql/subsonic-db.yaml
 
+echo "############"
+echo "Install grafana with helm"
+echo "######"
 helm install ${NAMESPACE} grafana -f helm/grafana.yaml stable/grafana
+
+echo "############"
+echo "Install prometheus with helm"
+echo "######"
 helm install ${NAMESPACE} prometheus -f helm/prometheus.yaml stable/prometheus
 
+echo "############"
+echo "Create nextcloud with helm"
+echo "######"
 ${KUBE_CREATE} -f manifests/services/nextcloud/nextcloud.yaml
 helm install -n nextcloud nextcloud -f helm/nextcloud.yaml stable/nextcloud
 
+echo "############"
+echo "Create pihole"
+echo "######"
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 
+echo "############"
+echo "Create nginx-hello"
+echo "######"
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello-service.yaml
 
+echo "############"
+echo "Create Homeassistant"
+echo "######"
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-service.yaml
 
+echo "############"
+echo "Create Subsonic"
+echo "######"
 ${KUBE_CREATE} -f manifests/services/subsonic/subsonic.yaml
 ${KUBE_CREATE} -f manifests/services/subsonic/subsonic-service.yaml
 
+echo "############"
+echo "Create mpd"
+echo "######"
 kubectl label nodes worker3 sound=bathroom-audio
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/mpd/mpd.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/mpd/mpd-service.yaml
 
+echo "############"
+echo "Create rompr"
+echo "######"
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/rompr/rompr.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/rompr/rompr-service.yaml
 
+echo "############"
+echo "Create k8sdash"
+echo "######"
 ${KUBE_CREATE} -f manifests/dashboard/kubernetes-k8dash.yaml
 
+echo "############"
+echo "Create dnsutils"
+echo "######"
 ${KUBE_CREATE} -f manifests/tools/dnsutils.yaml
 
+echo "############"
+echo "Create MetalLB"
+echo "######"
 ${KUBE_CREATE} -f manifests/lb/metallb-namespace.yaml
-
 ${KUBE_CREATE} -f manifests/lb/metallb.yaml
-
 ${KUBE_CREATE} secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-
 ${KUBE_CREATE} -f configmap/lb/metallb.yaml
 
 #${KUBE_CREATE} -f manifests/lb/nginx-ingress.yaml
