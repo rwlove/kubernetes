@@ -1,0 +1,25 @@
+apiVersion: crunchydata.com/v1
+kind: Pgcluster
+metadata:
+  labels:
+    archive: 'false'
+  name: subsonic
+spec:
+  PrimaryStorage:
+    accessmode: ReadWriteOnce
+    size: 1G
+    storageclass: standard
+    storagetype: dynamic
+  ccpimage: crunchy-postgres-ha
+  ccpimagetag: centos7-12.2-4.2.2
+  clustername: subsonic
+  database: subsonic
+  exporterport: '9187'
+  name: subsonic
+  pgbadgerport: '10000'
+  port: '5432'
+  primarysecretname: subsonic-primaryuser
+  rootsecretname: subsonic-postgresuser
+  userlabels:
+    archive: 'false'
+  usersecretname: subsonic-primaryuser
