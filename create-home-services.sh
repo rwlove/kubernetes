@@ -23,6 +23,12 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
 echo "############"
+echo "Install golang expenv"
+echo "######"
+go get github.com/blang/expenv
+export PATH=$PATH:/root/go/bin/
+
+echo "############"
 echo "Start by cloning the operator repository locally."
 echo "######"
 git clone -b v4.2.2 https://github.com/CrunchyData/postgres-operator.git
