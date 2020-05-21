@@ -36,6 +36,10 @@ ${KUBE_DELETE} -f manifests/db/mysql-pv.yaml
 helm uninstall prometheus
 helm uninstall grafana
 
+${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
+${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
+${KUBE_DELETE} ${NAMESPACE} -f operators/kubemq-operator.yaml
+
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-nextcloud-pv.yaml

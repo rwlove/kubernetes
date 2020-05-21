@@ -1,0 +1,9 @@
+apiVersion: core.k8s.kubemq.io/v1alpha1
+kind: KubemqCluster
+metadata:
+  name: kubemq-cluster
+  labels:
+    kubemq.cluster.name: kubemq-cluster
+spec:
+  replicas: 3
+  license: '-------Insert Your License Here ----- '

@@ -14,6 +14,10 @@ ${KUBE_CREATE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 
+${KUBE_CREATE} ${NAMESPACE} -f operators/kubemq-operator.yaml
+${KUBE_CREATE} -f manifests/services/kubemq/kubemq-cluster.yaml
+${KUBE_CREATE} -f manifests/services/kubemq/kubemq-dashboard.yaml
+
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
