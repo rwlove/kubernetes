@@ -22,7 +22,29 @@ ${KUBE_CREATE} -f manifests/services/kubemq/kubemq-dashboard.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
-export PGOROOT=/home/rwlove/kubernetes/workspace/postgres-operator
+echo "############"
+echo "Start by cloning the operator repository locally."
+echo "######"
+git clone -b v4.2.2 https://github.com/CrunchyData/postgres-operator.git
+pushd postgres-operator
+
+echo "############"
+echo "Once the storage backend is defined, enable the new storage option as needed."
+echo "######"
+sed -i 's/PrimaryStorage: storageos/PrimaryStorage: nfsstorage/g' conf/postgres-operator/pgo.yaml
+sed -i 's/ReplicaStorage: storageos/ReplicaStorage: nfsstorage/g' conf/postgres-operator/pgo.yaml
+sed -i 's/BackrestStorage: storageos/BackrestStorage: nfsstorage/g' conf/postgres-operator/pgo.yaml
+
+echo "############"
+echo "You can generate new self-signed certificates using scripts in the operator repository."
+echo "######"
+export PGOROOT=$(pwd)
+pushd $PGOROOT/deploy
+$PGOROOT/deploy/gen-api-keys.sh
+$PGOROOT/deploy/gen-sshd-keys.sh
+popd # $PGOROOT
+
+popd #postgres-operator
 
 echo "############"
 echo "Create the pgo-backrest-repo-config Secret that is used by the operator."
