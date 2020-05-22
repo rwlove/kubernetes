@@ -882,14 +882,14 @@ server:
   service:
     annotations: {}
     labels: {}
-    clusterIP: "192.168.6.10"
+    clusterIP: ""
 
     ## List of IP addresses at which the Prometheus server service is available
     ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
     ##
     externalIPs: []
 
-    loadBalancerIP: ""
+    loadBalancerIP: "192.168.6.10"
     loadBalancerSourceRanges: []
     servicePort: 80
     sessionAffinity: None
