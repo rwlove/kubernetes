@@ -300,7 +300,7 @@ alertmanager:
     ##
     externalIPs: []
 
-    loadBalancerIP: "192.168.6.10"
+    loadBalancerIP: ""
     loadBalancerSourceRanges: []
     servicePort: 80
     # nodePort: 30000
@@ -882,7 +882,7 @@ server:
   service:
     annotations: {}
     labels: {}
-    clusterIP: ""
+    clusterIP: "192.168.6.10"
 
     ## List of IP addresses at which the Prometheus server service is available
     ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
