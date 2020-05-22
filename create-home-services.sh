@@ -19,7 +19,8 @@ echo "######"
 ${KUBE_CREATE} -f manifests/volumes/postgress-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-subsonic-pv.yaml
-${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/subsonic-music-volume-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 
 echo "############"

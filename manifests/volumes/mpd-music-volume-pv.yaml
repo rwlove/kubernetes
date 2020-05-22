@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mpd-music-data
+  labels:
+    type: local
+spec:
+  storageClassName: mpd-mp3-directory
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadOnlyMany
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/storage/MP3s

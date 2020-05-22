@@ -13,7 +13,7 @@ metadata:
   name: mpd-music-data-claim
   namespace: mpd
 spec:
-  storageClassName: mp3-directory
+  storageClassName: mpd-mp3-directory
   accessModes:
     - ReadOnlyMany
   resources:

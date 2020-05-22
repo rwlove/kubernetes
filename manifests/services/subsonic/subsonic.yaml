@@ -13,7 +13,7 @@ metadata:
   name: subsonic-music-data-claim
   namespace: subsonic
 spec:
-  storageClassName: mp3-directory
+  storageClassName: subsonic-mp3-directory
   accessModes:
     - ReadOnlyMany
   resources:
