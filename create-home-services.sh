@@ -16,6 +16,7 @@ ${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 echo "############"
 echo "Create Physical (Storage) Volumes"
 echo "######"
+${KUBE_CREATE} -f manifests/volumes/postgress-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/music-volume-pv.yaml

@@ -8,7 +8,7 @@ spec:
   PrimaryStorage:
     accessmode: ReadWriteOnce
     size: 1G
-    storageclass: standard
+    storageclass: postgres-subsonic-storage-class
     storagetype: dynamic
   ccpimage: crunchy-postgres-ha
   ccpimagetag: centos7-12.2-4.2.2

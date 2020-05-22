@@ -55,6 +55,7 @@ ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mariadb-subsonic-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/postgress-subsonic-pv.yaml
 
 ${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
