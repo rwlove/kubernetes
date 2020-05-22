@@ -30,6 +30,19 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 
+echo "############"
+echo "Delete Subsonic"
+echo "######"
+${KUBE_DELETE} -f manifests/services/subsonic/subsonic-service.yaml
+${KUBE_DELETE} -f manifests/services/subsonic/subsonic.yaml
+
+echo "############"
+echo "Delete Nextcloud"
+echo "######"
+helm uninstall -n nextcloud nextcloud
+${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
+
+
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 ${KUBE_DELETE} -f manifests/db/mysql-pv.yaml
 
