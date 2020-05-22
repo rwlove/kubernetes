@@ -68,8 +68,8 @@ ${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 ${KUBE_DELETE} -f manifests/db/mysql-pv.yaml
 
-helm uninstall prometheus
-helm uninstall grafana
+helm uninstall ${NAMESPACE} prometheus
+helm uninstall ${NAMESPACE} grafana
 
 echo "############"
 echo "Delete the subsonic PostgreSQL database"
