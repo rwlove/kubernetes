@@ -25,8 +25,8 @@ ${KUBE_DELETE} -f manifests/dashboard/kubernetes-k8dash.yaml
 echo "############"
 echo "Delete rompr"
 echo "######"
-${KUBE_DELETE} ${NAMESPACE} -f manifests/services/rompr/rompr-service.yaml
-${KUBE_DELETE} ${NAMESPACE} -f manifests/services/rompr/rompr.yaml
+${KUBE_DELETE} -f manifests/services/rompr/rompr-service.yaml
+${KUBE_DELETE} -f manifests/services/rompr/rompr.yaml
 
 echo "############"
 echo "Delete mpd"

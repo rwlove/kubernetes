@@ -167,8 +167,8 @@ ${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
 echo "############"
 echo "Create rompr"
 echo "######"
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/rompr/rompr.yaml
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/rompr/rompr-service.yaml
+${KUBE_CREATE} -f manifests/services/rompr/rompr.yaml
+${KUBE_CREATE} -f manifests/services/rompr/rompr-service.yaml
 
 echo "############"
 echo "Create k8sdash"
