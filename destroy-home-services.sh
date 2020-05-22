@@ -49,7 +49,7 @@ kubectl delete -f operators/postgresql.yaml
 
 ${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
 ${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
-${KUBE_DELETE} ${NAMESPACE} -f operators/kubemq-operator.yaml
+${KUBE_DELETE} -f operators/kubemq-operator.yaml
 
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/music-volume-pv.yaml
