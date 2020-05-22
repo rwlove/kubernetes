@@ -18,8 +18,8 @@ ${KUBE_DELETE} -f manifests/dashboard/kubernetes-k8dash.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/rompr/rompr-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/rompr/rompr.yaml
 
-${KUBE_DELETE} ${NAMESPACE} -f manifests/services/mpd/mpd-service.yaml
-${KUBE_DELETE} ${NAMESPACE} -f manifests/services/mpd/mpd.yaml
+${KUBE_DELETE} -f manifests/services/mpd/mpd-service.yaml
+${KUBE_DELETE} -f manifests/services/mpd/mpd.yaml
 
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant.yaml

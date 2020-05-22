@@ -160,8 +160,8 @@ echo "############"
 echo "Create mpd"
 echo "######"
 kubectl label nodes worker3 sound=bathroom-audio
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/mpd/mpd.yaml
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/mpd/mpd-service.yaml
+${KUBE_CREATE} -f manifests/services/mpd/mpd.yaml
+${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
 
 echo "############"
 echo "Create rompr"

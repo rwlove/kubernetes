@@ -1,10 +1,33 @@
 ---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mpd
+  labels:
+    name: mpd
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mpd-music-data-claim
+  namespace: mpd
+spec:
+  storageClassName: mp3-directory
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 300Gi
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
     app: mpd
   name: mpd
+  namespace: mpd  
 spec:
   replicas: 1
   selector:
@@ -37,7 +60,7 @@ spec:
       volumes:
       - name: music-volume
         persistentVolumeClaim:
-          claimName: subsonic-music-data-claim
+          claimName: mpd-music-data-claim
       - name: playlist-volume
         nfs:
           server: brain.thesteamedcrab.com
