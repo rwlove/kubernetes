@@ -18,7 +18,7 @@ spec:
     - ReadOnlyMany
   resources:
     requests:
-      storage: 300Gi
+      storage: 1Gi
 
 ---
 apiVersion: v1
