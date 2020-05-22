@@ -83,7 +83,7 @@ kubectl create secret generic -n pgo pgo-auth-secret \
 echo "############"
 echo "Install the bootstrap credentials:"
 echo "######"
-$PGOROOT/deploy/install-bootstrap-creds.sh
+PGO_CMD='kubectl' $PGOROOT/deploy/install-bootstrap-creds.sh
 
 echo "############"
 echo "Remove existing credentials for pgo-apiserver TLS REST API, if they exist."
