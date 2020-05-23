@@ -69,7 +69,6 @@ echo "############"
 echo "Delete MySQL"
 echo "######"
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
-${KUBE_DELETE} -f manifests/db/mysql-pv.yaml
 
 echo "############"
 echo "Uninstall prometheus"

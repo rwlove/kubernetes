@@ -49,6 +49,57 @@ spec:
       storage: 20Gi
 
 ---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: subsonic
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: mysql
+        env:
+          # Use secret in real usage
+        - name: MYSQL_ROOT_PASSWORD
+          value: password
+        - name: MYSQL_DATABASE
+          value: nextcloud          
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: subsonic-mysql-pv-claim
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: subsonic
+spec:
+  ports:
+  - name: dbport
+    port: 3306
+    targetPort: 3306
+  selector:
+    app: subsonic
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -70,7 +121,7 @@ spec:
       - name: database-setup
         image: mysql:5.6
         imagePullPolicy: IfNotPresent
-        command: [sh,-c,mysql -h mariadb-service -ppassword -e "CREATE DATABASE IF NOT EXISTS subsonic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON subsonic.* TO 'root'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"]
+        command: [sh,-c,mysql -h mysql-service -ppassword -e "CREATE DATABASE IF NOT EXISTS subsonic CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci; GRANT ALL PRIVILEGES ON subsonic.* TO 'root'@'%' IDENTIFIED BY 'password'; FLUSH PRIVILEGES;"]
       containers:
       - image: rwlove/subsonic:6.1.6
         imagePullPolicy: IfNotPresent
@@ -107,15 +158,3 @@ spec:
         nfs:
           server: brain.thesteamedcrab.com
           path: /mnt/mass_storage/docker_storage/subsonick8s/podcasts
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mariadb-service
-  namespace: subsonic
-spec:
-  ports:
-  - name: dbport
-    port: 3306
-    targetPort: 3306
