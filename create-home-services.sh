@@ -24,6 +24,13 @@ ${KUBE_CREATE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 
 echo "############"
+echo "Install kalkeye helm repo and install mosquitto"
+echo "######"
+helm repo add halkeye https://halkeye.github.io/helm-charts/
+helm install halkeye/mosquitto --version 0.1.0
+${KUBE_CREATE} -f helm/mosquitto.yaml
+
+echo "############"
 echo "Create kubemq"
 echo "######"
 ${KUBE_CREATE} -f operators/kubemq-operator.yaml
