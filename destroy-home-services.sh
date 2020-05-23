@@ -81,29 +81,29 @@ echo "Uninstall grafana"
 echo "######"
 helm uninstall ${NAMESPACE} grafana
 
-echo "############"
-echo "Delete the subsonic PostgreSQL database"
-echo "######"
-kubectl delete -f manifests/db/crunchy_postgresql/subsonic-db.yaml
+#echo "############"
+#echo "Delete the subsonic PostgreSQL database"
+#echo "######"
+#kubectl delete -f manifests/db/crunchy_postgresql/subsonic-db.yaml
 
-echo "############"
-echo "Uninstall the operator."
-echo "######"
-kubectl delete -f operators/postgresql.yaml
+#echo "############"
+#echo "Uninstall the operator."
+#echo "######"
+#kubectl delete -f operators/postgresql.yaml
 
-echo "############"
-echo "Delete kubemq"
-echo "######"
-${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
-${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
-${KUBE_DELETE} -f operators/kubemq-operator.yaml
+#echo "############"
+#echo "Delete kubemq"
+#echo "######"
+#${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
+#${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
+#${KUBE_DELETE} -f operators/kubemq-operator.yaml
 
-echo "############"
-echo "Delete kalkeye helm repo and install mosquitto"
-echo "######"
-${KUBE_DELETE} -f helm/mosquitto.yaml
-helm uninstall mosquitto
-helm repo remove halkeye
+#echo "############"
+#echo "Delete kalkeye helm repo and install mosquitto"
+#echo "######"
+#${KUBE_DELETE} -f helm/mosquitto.yaml
+#helm uninstall mosquitto
+#helm repo remove halkeye
 
 echo "############"
 echo "Delete Physical (storage) Volumes"
@@ -111,14 +111,16 @@ echo "######"
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/subsonic-music-volume-pv.yaml
-${KUBE_DELETE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
-${KUBE_DELETE} -f manifests/volumes/mariadb-subsonic-pv.yaml
-${KUBE_DELETE} -f manifests/volumes/postgress-subsonic-pv.yaml
+#${KUBE_DELETE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
+#${KUBE_DELETE} -f manifests/volumes/mariadb-subsonic-pv.yaml
+#${KUBE_DELETE} -f manifests/volumes/postgress-subsonic-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/nextcloud-mysql-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/subsonic-mysql-pv.yaml
 
-echo "############"
-echo "Delete namespaces (pgo and home-services)"
-echo "######"
-${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
-${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
+#echo "############"
+#echo "Delete namespaces (pgo and home-services)"
+#echo "######"
+#${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
+#${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml

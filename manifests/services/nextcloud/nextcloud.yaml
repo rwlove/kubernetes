@@ -5,3 +5,17 @@ metadata:
   name: nextcloud
   labels:
     name: nextcloud
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nextcloud-mysql-pv-claim
+  namespace: nextcloud
+spec:
+  storageClassName: nextcloud-mysql-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi

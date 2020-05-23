@@ -35,6 +35,20 @@ spec:
       storage: 1Gi
 
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: subsonic-mysql-pv-claim
+  namespace: subsonic  
+spec:
+  storageClassName: subsonic-mysql-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -95,52 +109,12 @@ spec:
           path: /mnt/mass_storage/docker_storage/subsonick8s/podcasts
 
 ---
-apiVersion: operators.coreos.com/v1
-kind: OperatorGroup
-metadata:
-  name: operatorgroup
-  namespace: subsonic
-spec:
-  targetNamespaces:
-  - subsonic
-
----
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-  name: subsonic-mariadb-operator
-  namespace: subsonic
-spec:
-  channel: alpha
-  name: mariadb-operator-app
-  source: operatorhubio-catalog
-  sourceNamespace: olm
-
----
-apiVersion: mariadb.persistentsys/v1alpha1
-kind: MariaDB
-metadata:
-  name: mariadb
-  namespace: subsonic
-spec:
-  database: subsonic
-  username: root
-  password: password
-  rootpwd: password
-  size: 1
-  image: 'mariadb/server:10.4'
-
----
 apiVersion: v1
 kind: Service
 metadata:
   name: mariadb-service
   namespace: subsonic
 spec:
-  selector:
-    MariaDB_cr: mariadb
-    app: MariaDB
-    tier: mariadb
   ports:
   - name: dbport
     port: 3306
