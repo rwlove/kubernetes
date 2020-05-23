@@ -43,10 +43,6 @@ echo "######"
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
-echo "############"
-echo "Install golang expenv"
-echo "######"
-go get github.com/blang/expenv
 export PATH=$PATH:/root/go/bin/
 
 echo "############"
