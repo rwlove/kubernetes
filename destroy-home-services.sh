@@ -89,6 +89,13 @@ ${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
 ${KUBE_DELETE} -f operators/kubemq-operator.yaml
 
 echo "############"
+echo "Delete kalkeye helm repo and install mosquitto"
+echo "######"
+${KUBE_DELETE} -f helm/mosquitto.yaml
+helm uninstall halkeye/mosquitto
+helm repo remove halkeye
+
+echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
