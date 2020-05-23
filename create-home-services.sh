@@ -160,7 +160,7 @@ ${KUBE_CREATE} -f manifests/services/subsonic/subsonic-service.yaml
 echo "############"
 echo "Create mpd"
 echo "######"
-kubectl label nodes worker3 sound=bathroom-audio
+kubectl label nodes worker1 sound=bathroom-audio
 ${KUBE_CREATE} -f manifests/services/mpd/mpd.yaml
 ${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
 
