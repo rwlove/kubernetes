@@ -56,6 +56,7 @@ spec:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
           claimName: nextcloud-mysql-pv-claim
+
 ---
 apiVersion: v1
 kind: Service
@@ -69,3 +70,17 @@ spec:
     targetPort: 3306
   selector:
     app: nextcloud
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: nextcloud-webroot-claim
+  namespace: nextcloud
+spec:
+  storageClassName: nextcloud-webroot-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 300Gi
