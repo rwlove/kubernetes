@@ -1,0 +1,104 @@
+Cluster:
+  PrimaryNodeLabel:
+  ReplicaNodeLabel:
+  CCPImagePrefix:  crunchydata
+  Metrics:  false
+  Badger:  false
+  CCPImageTag:  centos7-12.2-4.2.2
+  Port:  5432
+  PGBadgerPort: 10000
+  ExporterPort: 9187
+  User:  testuser
+  Database:  userdb
+  PasswordAgeDays:  60
+  PasswordLength:  24
+  Strategy:  1
+  Replicas:  0
+  ArchiveMode:  false
+  ArchiveTimeout:  60
+  ServiceType:  ClusterIP
+  Backrest:  true
+  BackrestPort:  2022
+  BackrestS3Bucket:
+  BackrestS3Endpoint:
+  BackrestS3Region:
+  DisableAutofail:  false
+  LogStatement:  none
+  LogMinDurationStatement:  60000
+  PodAntiAffinity: preferred
+  SyncReplication: false
+PrimaryStorage: nfsstorage
+BackupStorage: nfsstorage
+ReplicaStorage: nfsstorage
+BackrestStorage: nfsstorage
+Storage:
+  hostpathstorage:
+    AccessMode:  ReadWriteMany
+    Size:  1G
+    StorageType:  create
+  replicastorage:
+    AccessMode:  ReadWriteMany
+    Size:  700M
+    StorageType:  create
+  nfsstorage:
+    AccessMode:  ReadWriteMany
+    Size:  1G
+    StorageType:  create
+    SupplementalGroups:  65534
+  nfsstoragered:
+    AccessMode:  ReadWriteMany
+    Size:  1G
+    MatchLabels: crunchyzone=red
+    StorageType:  create
+    SupplementalGroups:  65534
+  storageos:
+    AccessMode:  ReadWriteOnce
+    Size:  300M
+    StorageType:  dynamic
+    StorageClass:  fast
+    Fsgroup:  26
+  primarysite:
+    AccessMode:  ReadWriteOnce
+    Size:  4G
+    StorageType:  dynamic
+    StorageClass:  primarysite
+    Fsgroup:  26
+  alternatesite:
+    AccessMode:  ReadWriteOnce
+    Size:  4G
+    StorageType:  dynamic
+    StorageClass:  alternatesite
+    Fsgroup:  26
+  gce:
+    AccessMode:  ReadWriteOnce
+    Size:  300M
+    StorageType:  dynamic
+    StorageClass:  standard
+    Fsgroup:  26
+  rook:
+    AccessMode:  ReadWriteOnce
+    Size:  1G
+    StorageType:  dynamic
+    StorageClass:  rook-ceph-block
+    Fsgroup:  26
+DefaultContainerResources:
+DefaultLoadResources:
+DefaultRmdataResources:
+DefaultBackupResources:
+DefaultPgbouncerResources:
+ContainerResources:
+  small:
+    RequestsMemory:  512Mi
+    RequestsCPU:  0.1
+    LimitsMemory:  512Mi
+    LimitsCPU:  0.1
+  large:
+    RequestsMemory:  2Gi
+    RequestsCPU:  2.0
+    LimitsMemory:  2Gi
+    LimitsCPU:  4.0
+Pgo:
+  PreferredFailoverNode:
+  Audit:  false
+  PGOImagePrefix:  crunchydata
+  PGOImageTag:  centos7-4.2.2
