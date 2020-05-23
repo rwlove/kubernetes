@@ -65,10 +65,20 @@ helm uninstall -n nextcloud nextcloud
 ${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
 
 
+echo "############"
+echo "Delete MySQL"
+echo "######"
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 ${KUBE_DELETE} -f manifests/db/mysql-pv.yaml
 
+echo "############"
+echo "Uninstall prometheus"
+echo "######"
 helm uninstall ${NAMESPACE} prometheus
+
+echo "############"
+echo "Uninstall grafana"
+echo "######"
 helm uninstall ${NAMESPACE} grafana
 
 echo "############"
@@ -92,7 +102,7 @@ echo "############"
 echo "Delete kalkeye helm repo and install mosquitto"
 echo "######"
 ${KUBE_DELETE} -f helm/mosquitto.yaml
-helm uninstall halkeye/mosquitto
+helm uninstall mosquitto
 helm repo remove halkeye
 
 echo "############"

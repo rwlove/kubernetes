@@ -27,8 +27,7 @@ echo "############"
 echo "Install kalkeye helm repo and install mosquitto"
 echo "######"
 helm repo add halkeye https://halkeye.github.io/helm-charts/
-helm install halkeye/mosquitto --version 0.1.0
-${KUBE_CREATE} -f helm/mosquitto.yaml
+helm install ${NAMESPACE} mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mosquitto.yaml
 
 echo "############"
 echo "Create kubemq"
