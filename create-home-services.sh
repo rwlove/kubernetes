@@ -124,8 +124,8 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 echo "############"
 echo "Install Home Assistant from Helm"
 echo "######"
-${KUBE_CREATE} -f manifests/services/homeassistant/homeassistant-namespace.yaml
-helm install --name homeassistant -f helm/homeassistant.yaml stable/home-assistant
+${KUBE_CREATE} -f manifests/homeassistant/homeassistant-namespace.yaml
+helm install homeassistant -f helm/homeassistant.yaml stable/home-assistant
 
 echo "############"
 echo "Install grafana with helm"
