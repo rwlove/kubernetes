@@ -187,10 +187,13 @@ done
 mpd_pod=`kubectl -n mpd get pods | grep mpd | awk '{print $1}'`
 if [ ! -z $mpd_pod ] ; then
     echo "Starting MPD (random, repeat, add, play)"
-    kubectl -n mpd exec -ti $mpd_pod -- mpc random on
-    kubectl -n mpd exec -ti $mpd_pod -- mpc repeat on
-    kubectl -n mpd exec -ti $mpd_pod -- mpc add "80's"
-    kubectl -n mpd exec -ti $mpd_pod -- mpc play
+    kubectl -n mpd wait --for=condition=Ready pod/$mpd_pod --timeout=60s
+    if [ $? == 0 ] ; then
+	kubectl -n mpd exec -ti $mpd_pod -- mpc random on
+	kubectl -n mpd exec -ti $mpd_pod -- mpc repeat on
+	kubectl -n mpd exec -ti $mpd_pod -- mpc add "80's"
+	kubectl -n mpd exec -ti $mpd_pod -- mpc play
+    fi
 fi
 
 echo "############"
