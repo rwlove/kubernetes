@@ -77,7 +77,7 @@ helm uninstall ${NAMESPACE} grafana
 echo "############"
 echo "Uninstall Home Assistant from Helm"
 echo "######"
-helm uninstall homeassistant
+helm -n homeassistant uninstall homeassistant
 ${KUBE_DELETE} -f manifests/homeassistant/homeassistant-namespace.yaml
 
 #echo "############"
