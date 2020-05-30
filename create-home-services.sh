@@ -122,6 +122,12 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 #kubectl create -f manifests/db/crunchy_postgresql/subsonic-db.yaml
 
 echo "############"
+echo "Install Node Red from Helm"
+echo "######"
+${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
+helm install node-red -f helm/node-red.yaml stable/node-red
+
+echo "############"
 echo "Install Home Assistant from Helm"
 echo "######"
 ${KUBE_CREATE} -f manifests/homeassistant/homeassistant-namespace.yaml

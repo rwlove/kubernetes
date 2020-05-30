@@ -80,6 +80,12 @@ echo "######"
 helm -n homeassistant uninstall homeassistant
 ${KUBE_DELETE} -f manifests/homeassistant/homeassistant-namespace.yaml
 
+echo "############"
+echo "Uninstall Node Red"
+echo "######"
+helm -n node-red uninstall node-red
+${KUBE_DELETE} -f manifests/node-red/node-red-namespace.yaml
+
 #echo "############"
 #echo "Delete the subsonic PostgreSQL database"
 #echo "######"
