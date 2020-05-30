@@ -78,7 +78,7 @@ echo "############"
 echo "Uninstall Home Assistant from Helm"
 echo "######"
 helm uninstall homeassistant
-${KUBE_DELETE} -f manifests/services/homeassistant/homeassistant-namespace.yaml
+${KUBE_DELETE} -f manifests/homeassistant/homeassistant-namespace.yaml
 
 #echo "############"
 #echo "Delete the subsonic PostgreSQL database"
