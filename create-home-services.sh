@@ -156,12 +156,6 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello-service.yaml
 
 echo "############"
-echo "Create Homeassistant"
-echo "######"
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant.yaml
-${KUBE_CREATE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-service.yaml
-
-echo "############"
 echo "Create Subsonic"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/subsonic/subsonic.yaml

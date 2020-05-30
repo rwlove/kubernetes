@@ -35,12 +35,6 @@ ${KUBE_DELETE} -f manifests/services/mpd/mpd-service.yaml
 ${KUBE_DELETE} -f manifests/services/mpd/mpd.yaml
 
 echo "############"
-echo "Delete homeassistant"
-echo "######"
-${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant-service.yaml
-${KUBE_DELETE} ${NAMESPACE} -f manifests/services/homeassistant/homeassistant.yaml
-
-echo "############"
 echo "Delete nginx-hello"
 echo "######"
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello-service.yaml
