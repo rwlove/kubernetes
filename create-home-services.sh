@@ -175,6 +175,25 @@ ${KUBE_CREATE} -f manifests/services/mpd/mpd.yaml
 ${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
 
 echo "############"
+echo "Start mpd"
+echo "######"
+external_ip=""
+while [ -z $external_ip ] ; do
+    echo "Waiting for end point..."
+    external_ip=$(kubectl get svc mpd -n mpd --template="{{range.status.loadBalancer.ingress}}{{.ip}}{{end}}")
+    [ -z "$external_ip" ] && sleep 10
+done
+
+mpd_pod=`kubectl -n mpd get pods | grep mpd | awk '{print $1}'`
+if [ ! -z $mpd_pod ] ; then
+    echo "Starting MPD (random, repeat, add, play)"
+    kubectl -n mpd exec -ti $mpd_pod -- mpc random on
+    kubectl -n mpd exec -ti $mpd_pod -- mpc repeat on
+    kubectl -n mpd exec -ti $mpd_pod -- mpc add "80's"
+    kubectl -n mpd exec -ti $mpd_pod -- mpc play
+fi
+
+echo "############"
 echo "Create rompr"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/rompr/rompr.yaml
