@@ -121,6 +121,6 @@ ${KUBE_DELETE} -f manifests/volumes/subsonic-mysql-pv.yaml
 #echo "Delete namespaces (pgo and home-services)"
 #echo "######"
 #${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
-#${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
+${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml
