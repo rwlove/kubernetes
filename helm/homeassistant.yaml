@@ -32,7 +32,8 @@ probes:
     periodSeconds: 10
 service:
   type: LoadBalancer
-  port: 8123
+  #port: 8123
+  port: 80
   portName: api
   additionalPorts: []
   # - name: homematicproxy
