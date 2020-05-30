@@ -128,7 +128,7 @@ spec:
         name: subsonic
         env:
         - name: SUBSONIC_DB
-          value: "jdbc:mysql://mariadb-service:3306/subsonic?user=root&password=password&characterEncoding=UTF-8"
+          value: "jdbc:mysql://mysql-service:3306/subsonic?user=root&password=password&characterEncoding=UTF-8"
         ports:
         - containerPort: 80
         - containerPort: 443
