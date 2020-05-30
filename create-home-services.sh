@@ -122,6 +122,12 @@ ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 #kubectl create -f manifests/db/crunchy_postgresql/subsonic-db.yaml
 
 echo "############"
+echo "Install Home Assistant from Helm"
+echo "######"
+${KUBE_CREATE} -f manifests/services/homeassistant/homeassistant-namespace.yaml
+helm install --name homeassistant -f helm/homeassistant.yaml stable/home-assistant
+
+echo "############"
 echo "Install grafana with helm"
 echo "######"
 helm install ${NAMESPACE} grafana -f helm/grafana.yaml stable/grafana
