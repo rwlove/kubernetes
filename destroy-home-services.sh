@@ -107,6 +107,7 @@ ${KUBE_DELETE} -f manifests/homeassistant/homeassistant-namespace.yaml
 echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
+${KUBE_DELETE} -f manifests/volumes/homeassistant-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/subsonic-music-volume-pv.yaml

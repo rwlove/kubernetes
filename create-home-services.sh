@@ -24,6 +24,7 @@ ${KUBE_CREATE} -f manifests/volumes/nextcloud-mysql-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/subsonic-music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/homeassistant-pv.yaml
 
 #echo "############"
 #echo "Install kalkeye helm repo and install mosquitto"
