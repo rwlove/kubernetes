@@ -21,7 +21,7 @@ safeMode: "false"
 enableProjects: "false"
 # nodeOptions: ""
 extraEnvs: []
-timezone: "UTC"
+timezone: "US"
 
 service:
   type: LoadBalancer
