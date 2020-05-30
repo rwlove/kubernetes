@@ -41,7 +41,6 @@ ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 echo "############"
 echo "Create mysql deployment"
 echo "######"
-${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-pv.yaml
 ${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
 #export PATH=$PATH:/root/go/bin/
@@ -125,7 +124,7 @@ echo "############"
 echo "Install Home Assistant from Helm"
 echo "######"
 ${KUBE_CREATE} -f manifests/homeassistant/homeassistant-namespace.yaml
-helm install homeassistant -f helm/homeassistant.yaml stable/home-assistant
+helm install -n homeassistant homeassistant -f helm/homeassistant.yaml stable/home-assistant
 
 echo "############"
 echo "Install grafana with helm"
