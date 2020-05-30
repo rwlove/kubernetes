@@ -25,7 +25,7 @@ timezone: "US"
 
 service:
   type: LoadBalancer
-  port: 1880
+  port: 80
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
