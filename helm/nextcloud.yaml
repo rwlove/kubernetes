@@ -138,8 +138,6 @@ nextcloud:
   ##
   ## Extra environment variables
   extraEnv:
-    - name: MYSQL_HOST
-      value: mysql-service
     - name: NEXTCLOUD_TRUSTED_DOMAINS
       value: thesteamedcrab.com
     - name: MYSQL_USER
@@ -198,7 +196,7 @@ externalDatabase:
   type: mysql
 
   ## Database host
-  host: mariadb
+  host: mysql-service
 
   ## Database user
   user: root
