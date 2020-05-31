@@ -185,7 +185,7 @@ alertmanager:
     ## alertmanager data Persistent Volume existing claim name
     ## Requires alertmanager.persistentVolume.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim: ""
+    existingClaim: "prometheus-alertmanager-storage-class"
 
     ## alertmanager data Persistent Volume mount root path
     ##
@@ -757,7 +757,7 @@ server:
     ## Prometheus server data Persistent Volume existing claim name
     ## Requires server.persistentVolume.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim: ""
+    existingClaim: "prometheus-server-storage-class"
 
     ## Prometheus server data Persistent Volume mount root path
     ##

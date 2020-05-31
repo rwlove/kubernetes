@@ -114,6 +114,8 @@ ${KUBE_DELETE} -f manifests/node-red/node-red-namespace.yaml
 echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
+${KUBE_DELETE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/homeassistant-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mpd-music-volume-pv.yaml
