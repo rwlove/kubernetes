@@ -212,7 +212,7 @@ configurator:
 # settings has to be enabled in configuration.yaml
 # https://www.home-assistant.io/components/prometheus/
 monitoring:
-  enabled: false
+  enabled: true
   serviceMonitor:
     # When set true and if Prometheus Operator is installed then use a ServiceMonitor to configure scraping
     enabled: true
