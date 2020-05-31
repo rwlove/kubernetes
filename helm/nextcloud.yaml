@@ -61,7 +61,7 @@ lifecycle: {}
   # preStopCommand: []
 
 nextcloud:
-  host: nextcloud
+  host: nextcloud.thesteamedcrab.com
   username: admin
   password: password
   update: 0
