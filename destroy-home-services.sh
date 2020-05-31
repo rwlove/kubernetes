@@ -58,11 +58,10 @@ echo "######"
 helm uninstall -n nextcloud nextcloud
 ${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
 
-
-echo "############"
-echo "Delete MySQL"
-echo "######"
-${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
+#echo "############"
+#echo "Delete MySQL"
+#echo "######"
+#${KUBE_DELETE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
 echo "############"
 echo "Uninstall prometheus"

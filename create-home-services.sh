@@ -42,10 +42,10 @@ ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 #${KUBE_CREATE} -f manifests/services/kubemq/kubemq-cluster.yaml
 #${KUBE_CREATE} -f manifests/services/kubemq/kubemq-dashboard.yaml
 
-echo "############"
-echo "Create mysql deployment"
-echo "######"
-${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
+#echo "############"
+#echo "Create mysql deployment"
+#echo "######"
+#${KUBE_CREATE} ${NAMESPACE} -f manifests/db/mysql-deployment.yaml
 
 #export PATH=$PATH:/root/go/bin/
 
