@@ -96,19 +96,20 @@ ${KUBE_DELETE} -f manifests/node-red/node-red-namespace.yaml
 #echo "######"
 #kubectl delete -f operators/postgresql.yaml
 
-echo "############"
-echo "Delete kubemq"
-echo "######"
-${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
-${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
-${KUBE_DELETE} -f operators/kubemq-operator.yaml
-
 #echo "############"
-#echo "Delete kalkeye helm repo and install mosquitto"
+#echo "Delete kubemq"
 #echo "######"
-#${KUBE_DELETE} -f helm/mosquitto.yaml
-#helm uninstall mosquitto
-#helm repo remove halkeye
+#${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
+#${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
+#${KUBE_DELETE} -f operators/kubemq-operator.yaml
+
+echo "############"
+echo "Delete kalkeye helm repo and install mosquitto"
+echo "######"
+${KUBE_DELETE} -f helm/mosquitto.yaml
+helm uninstall mosquitto
+helm repo remove halkeye
+${KUBE_DELETE} -f manifests/mosquitto/mosquitto-namespace.yaml
 
 echo "############"
 echo "Delete Physical (storage) Volumes"
