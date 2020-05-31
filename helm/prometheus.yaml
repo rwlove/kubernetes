@@ -185,7 +185,7 @@ alertmanager:
     ## alertmanager data Persistent Volume existing claim name
     ## Requires alertmanager.persistentVolume.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim: "prometheus-alertmanager-storage-class"
+    existingClaim: ""
 
     ## alertmanager data Persistent Volume mount root path
     ##
@@ -203,6 +203,7 @@ alertmanager:
     ##   GKE, AWS & OpenStack)
     ##
     # storageClass: "-"
+    storageClass: "prometheus-alertmanager-storage-class"
 
     ## alertmanager data Persistent Volume Binding Mode
     ## If defined, volumeBindingMode: <volumeBindingMode>
@@ -757,7 +758,7 @@ server:
     ## Prometheus server data Persistent Volume existing claim name
     ## Requires server.persistentVolume.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim: "prometheus-server-storage-class"
+    existingClaim: ""
 
     ## Prometheus server data Persistent Volume mount root path
     ##
@@ -775,6 +776,7 @@ server:
     ##   GKE, AWS & OpenStack)
     ##
     # storageClass: "-"
+    storageClass: "prometheus-server-storage-class"
 
     ## Prometheus server data Persistent Volume Binding Mode
     ## If defined, volumeBindingMode: <volumeBindingMode>
