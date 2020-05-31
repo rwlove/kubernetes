@@ -215,7 +215,7 @@ monitoring:
   enabled: true
   serviceMonitor:
     # When set true and if Prometheus Operator is installed then use a ServiceMonitor to configure scraping
-    enabled: true
+    enabled: false
     # Set the namespace the ServiceMonitor should be deployed
     # namespace: monitoring
     namespace: homeassistant
