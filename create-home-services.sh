@@ -35,12 +35,12 @@ ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 #helm repo add halkeye https://halkeye.github.io/helm-charts/
 #helm install ${NAMESPACE} mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mosquitto.yaml
 
-#echo "############"
-#echo "Create kubemq"
-#echo "######"
-#${KUBE_CREATE} -f operators/kubemq-operator.yaml
-#${KUBE_CREATE} -f manifests/services/kubemq/kubemq-cluster.yaml
-#${KUBE_CREATE} -f manifests/services/kubemq/kubemq-dashboard.yaml
+echo "############"
+echo "Create kubemq"
+echo "######"
+${KUBE_CREATE} -f operators/kubemq-operator.yaml
+${KUBE_CREATE} -f manifests/services/kubemq/kubemq-cluster.yaml
+${KUBE_CREATE} -f manifests/services/kubemq/kubemq-dashboard.yaml
 
 #echo "############"
 #echo "Create mysql deployment"

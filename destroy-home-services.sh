@@ -96,12 +96,12 @@ ${KUBE_DELETE} -f manifests/node-red/node-red-namespace.yaml
 #echo "######"
 #kubectl delete -f operators/postgresql.yaml
 
-#echo "############"
-#echo "Delete kubemq"
-#echo "######"
-#${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
-#${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
-#${KUBE_DELETE} -f operators/kubemq-operator.yaml
+echo "############"
+echo "Delete kubemq"
+echo "######"
+${KUBE_DELETE} -f manifests/services/kubemq/kubemq-dashboard.yaml
+${KUBE_DELETE} -f manifests/services/kubemq/kubemq-cluster.yaml
+${KUBE_DELETE} -f operators/kubemq-operator.yaml
 
 #echo "############"
 #echo "Delete kalkeye helm repo and install mosquitto"
