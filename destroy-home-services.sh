@@ -84,7 +84,7 @@ ${KUBE_DELETE} -f manifests/homeassistant/homeassistant-namespace.yaml
 echo "############"
 echo "Uninstall Node Red"
 echo "######"
-helm -n node-red uninstall node-red
+#helm -n node-red uninstall node-red
 ${KUBE_DELETE} -f manifests/node-red/node-red-namespace.yaml
 
 #echo "############"

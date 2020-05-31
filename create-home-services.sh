@@ -128,7 +128,7 @@ echo "############"
 echo "Install Node Red from Helm"
 echo "######"
 ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
-helm install -n node-red node-red -f helm/node-red.yaml stable/node-red
+#helm install -n node-red node-red -f helm/node-red.yaml stable/node-red
 
 echo "############"
 echo "Install Home Assistant from Helm"
