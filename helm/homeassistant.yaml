@@ -218,6 +218,7 @@ monitoring:
     enabled: true
     # Set the namespace the ServiceMonitor should be deployed
     # namespace: monitoring
+    namespace: homeassistant
     # Set how frequently Prometheus should scrape
     # interval: 30s
     # Set labels for the ServiceMonitor, use this to define your scrape label for Prometheus Operator
