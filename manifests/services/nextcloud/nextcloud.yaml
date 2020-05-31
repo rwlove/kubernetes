@@ -21,28 +21,6 @@ spec:
       storage: 20Gi
 
 ---
-apiVersion: v1
-kind: Secret
-metadata:
-  name: nextcloud
-  namespace: nextcloud
-type: Opaque
-data:
-  nextcloud-username: bmV4dGNsb3Vk
-  nextcloud-password: cGFzc3dvcmQ=
-
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: nextcloud-db
-  namespace: nextcloud
-type: Opaque
-data:
-  db-username: bmV4dGNsb3Vk
-  db-password: cGFzc3dvcmQ=
-
----
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
