@@ -152,16 +152,7 @@ echo "############"
 echo "Create nextcloud with helm"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/nextcloud/nextcloud.yaml
-helm install -n nextcloud nextcloud -f helm/nextcloud.yaml \
-     --set \
-     nextcloud.username=admin,\
-     nextcloud.password=password,\
-     externalDatabase.type=mysql,\
-     externalDatabase.host=mysql-service,\
-     externalDatabase.database=nextcloud,\
-     externalDatabase.user=nextcloud,\
-     externalDatabase.password=password \
-     stable/nextcloud
+helm install -n nextcloud nextcloud -f helm/nextcloud.yaml --set nextcloud.username=admin,nextcloud.password=password,externalDatabase.type=mysql,externalDatabase.host=mysql-service,externalDatabase.database=nextcloud,externalDatabase.user=nextcloud,externalDatabase.password=password stable/nextcloud
 
 echo "############"
 echo "Create pihole"
