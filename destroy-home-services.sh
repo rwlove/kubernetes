@@ -47,6 +47,11 @@ ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/pihole/pihole.yaml
 
 echo "############"
+echo "Delete MythTV Backend"
+echo "######"
+${KUBE_DELETE} -f manifests/services/mythtv/mythtv.yaml
+
+echo "############"
 echo "Delete Subsonic"
 echo "######"
 ${KUBE_DELETE} -f manifests/services/subsonic/subsonic-service.yaml
@@ -114,6 +119,7 @@ ${KUBE_DELETE} -f manifests/mosquitto/mosquitto-namespace.yaml
 echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
+${KUBE_DELETE} -f manifests/volumes/mythtv-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/homeassistant-pv.yaml

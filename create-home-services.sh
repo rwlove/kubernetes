@@ -27,7 +27,7 @@ ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/homeassistant-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
-
+${KUBE_CREATE} -f manifests/volumes/mythtv-pv.yaml
 
 echo "############"
 echo "Install kalkeye helm repo and install mosquitto"
@@ -171,6 +171,11 @@ echo "Create Subsonic"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/subsonic/subsonic.yaml
 ${KUBE_CREATE} -f manifests/services/subsonic/subsonic-service.yaml
+
+echo "############"
+echo "Create MythTV Backend"
+echo "######"
+${KUBE_CREATE} -f manifests/services/mythtv/mythtv.yaml
 
 echo "############"
 echo "Create mpd"

@@ -1,0 +1,129 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: mythtv
+  labels:
+    name: mythtv
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mythtv-media-pv-claim
+  namespace: mythtv
+spec:
+  storageClassName: mythtv-media-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mythtv-data-pv-claim
+  namespace: mythtv
+spec:
+  storageClassName: mythtv-data-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mythtv-config-pv-claim
+  namespace: mythtv
+spec:
+  storageClassName: mythtv-config-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi      
+
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: mythtv
+  namespace: mythtv
+spec:
+  selector:
+    matchLabels:
+      app: mythtv
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mythtv
+    spec:
+      hostname: mythtvbackend
+      containers:
+      - image: sammonsjl/mythtv:30-fixes
+        name: mythtv
+        env:
+        - name: CONFIG_MODE
+          value: 1
+        ports:
+        - name: mariadb
+          containerPort: 6506
+        - name: mythbackend
+          containerPort: 6543
+        - name: status
+          containerPort: 6544
+        - name: websocket
+          containerPort: 6554
+        - name: mate
+          containerPort: 6570
+        - name: mythweb
+          containerPort: 6580
+        volumeMounts:
+        - name: mythtv-config-persistent-storage
+          mountPath: /home/mythtv
+        - name: mythtv-data-persistent-storage
+          mountPath: /var/lib/mysql
+        - name: mythtv-media-persistent-storage
+          mountPath: /var/lib/mythtv
+      volumes:
+      - name: mythtv-config-persistent-storage
+        persistentVolumeClaim:
+          claimName: mythtv-config-pv-claim          
+      - name: mythtv-data-persistent-storage
+        persistentVolumeClaim:
+          claimName: mythtv-data-pv-claim
+      - name: mythtv-media-persistent-storage
+        persistentVolumeClaim:
+          claimName: mythtv-media-pv-claim
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mythtvbackend
+  namespace: mythtv
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.6.20
+  ports:
+  - name: mariadb
+    port: 6506
+  - name: mythbackend
+    port: 6543
+  - name: status
+    port: 6544
+  - name: websocket
+    port: 6554
+  - name: mate
+    port: 6570
+  - name: mythweb
+    port: 6580
+  selector:
+    app: mythtv

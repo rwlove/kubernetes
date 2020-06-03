@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mythtv-media-data
+  labels:
+    type: local
+spec:
+  storageClassName: mythtv-media-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadOnlyMany
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/mythtv/media
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mythtv-data-data
+  labels:
+    type: local
+spec:
+  storageClassName: mythtv-data-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadOnlyMany
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/mythtv/db
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: mythtv-config-data
+  labels:
+    type: local
+spec:
+  storageClassName: mythtv-config-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadOnlyMany
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/mythtv/config
