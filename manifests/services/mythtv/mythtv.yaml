@@ -73,18 +73,12 @@ spec:
         - name: CONFIG_MODE
           value: 1
         ports:
-        - name: mariadb
-          containerPort: 6506
-        - name: mythbackend
-          containerPort: 6543
-        - name: status
-          containerPort: 6544
-        - name: websocket
-          containerPort: 6554
-        - name: mate
-          containerPort: 6570
-        - name: mythweb
-          containerPort: 6580
+        - containerPort: 6506
+        - containerPort: 6543
+        - containerPort: 6544
+        - containerPort: 6554
+        - containerPort: 6570
+        - containerPort: 6580
         volumeMounts:
         - name: mythtv-config-persistent-storage
           mountPath: /home/mythtv
