@@ -69,6 +69,8 @@ spec:
         env:
         - name: CONFIG_MODE
           value: '1'
+        - name: TZ
+          value: 'America/Los_Angeles'
         name: mythtv
         ports:
         - containerPort: 6506
