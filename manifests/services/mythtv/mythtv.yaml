@@ -15,7 +15,7 @@ metadata:
 spec:
   storageClassName: mythtv-media-storage-class
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 20Gi
@@ -29,7 +29,7 @@ metadata:
 spec:
   storageClassName: mythtv-data-storage-class
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 20Gi
@@ -43,7 +43,7 @@ metadata:
 spec:
   storageClassName: mythtv-config-storage-class
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
       storage: 20Gi      
@@ -66,6 +66,9 @@ spec:
       hostname: mythtvbackend
       containers:
       - image: sammonsjl/mythtv:30-fixes
+        env:
+        - name: CONFIG_MODE
+          value: '1'
         name: mythtv
         ports:
         - containerPort: 6506
