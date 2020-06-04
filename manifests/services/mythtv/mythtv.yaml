@@ -67,9 +67,6 @@ spec:
       containers:
       - image: sammonsjl/mythtv:30-fixes
         name: mythtv
-        env:
-        - name: CONFIG_MODE
-          value: 1
         ports:
         - containerPort: 6506
         - containerPort: 6543
