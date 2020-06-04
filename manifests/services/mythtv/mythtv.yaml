@@ -58,8 +58,6 @@ spec:
   selector:
     matchLabels:
       app: mythtv
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
