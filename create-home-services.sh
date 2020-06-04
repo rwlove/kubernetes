@@ -187,7 +187,14 @@ ${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
 echo "############"
 echo "Start mpd"
 echo "######"
-mpd_pod=`kubectl -n mpd get pods | grep mpd | awk '{print $1}'`
+mpd_pod=
+while [ -z $mpd_pod ] ; do
+    mpd_pod=`kubectl -n mpd get pods | grep mpd | awk '{print $1}'`
+    if [ -z $mpd_pod ] ; then
+	sleep 1
+    fi
+done
+
 if [ ! -z $mpd_pod ] ; then
     echo "Starting MPD (random, repeat, add, play)"
     kubectl -n mpd wait --for=condition=Ready pod/$mpd_pod --timeout=60s
