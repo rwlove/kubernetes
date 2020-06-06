@@ -117,6 +117,11 @@ helm repo remove halkeye
 ${KUBE_DELETE} -f manifests/mosquitto/mosquitto-namespace.yaml
 
 echo "############"
+echo "Delete postgress-operator"
+echo "######"
+${KUBE_DELETE} -f olm/postgres-operator.yaml
+
+echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
 ${KUBE_DELETE} -f manifests/volumes/mythtv-pv.yaml
