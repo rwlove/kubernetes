@@ -9,6 +9,7 @@ echo "############"
 echo "Create namespaces"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
+${KUBE_CREATE} -f manifests/kanboard/kanboard-namespace.yaml
 #${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
@@ -34,6 +35,7 @@ echo "Install postgress-operator"
 echo "######"
 ${KUBE_CREATE} -f olm/postgres-operator.yaml
 ${KUBE_CREATE} -f manifests/postgres/postgres-operator-ui.yaml
+${KUBE_CREATE} -n kanboard -f manifests/postgres/postgres-operator-crd.yaml
 
 echo "############"
 echo "Install kalkeye helm repo and install mosquitto"
@@ -41,6 +43,11 @@ echo "######"
 ${KUBE_CREATE} -f manifests/mosquitto/mosquitto-namespace.yaml
 helm repo add halkeye https://halkeye.github.io/helm-charts/
 helm install -n mosquitto mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mosquitto.yaml
+
+echo "############"
+echo "Create Kanboard"
+echo "######"
+helm install -n kanboard kanboard t13a/helm-chart-kanboard -f helm/kanboard.yaml
 
 #echo "############"
 #echo "Create kubemq"

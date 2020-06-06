@@ -1,0 +1,18 @@
+apiVersion: acid.zalan.do/v1
+kind: postgresql
+metadata:
+  name: kanboard-cluster
+spec:
+  databases:
+    kanboard: kanboard
+  numberOfInstances: 2
+  postgresql:
+    version: '11'
+  teamId: kanboard
+  users:
+    foo_user: []
+    kanboard:
+      - superuser
+      - createdb
+  volume:
+    size: 1Gi
