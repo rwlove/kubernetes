@@ -9,7 +9,7 @@ echo "############"
 echo "Create namespaces"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
-${KUBE_CREATE} -f manifests/kanboard/kanboard-namespace.yaml
+${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
 #${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
@@ -29,6 +29,7 @@ ${KUBE_CREATE} -f manifests/volumes/homeassistant-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mythtv-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/kanboard-pv.yaml
 
 echo "############"
 echo "Install postgress-operator"
@@ -47,7 +48,7 @@ helm install -n mosquitto mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mo
 echo "############"
 echo "Create Kanboard"
 echo "######"
-helm install -n kanboard kanboard t13a/helm-chart-kanboard -f helm/kanboard.yaml
+${KUBE_CREATE} -f manifests/services/kanboard/kanboard.yaml
 
 #echo "############"
 #echo "Create kubemq"

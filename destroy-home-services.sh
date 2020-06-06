@@ -109,6 +109,11 @@ ${KUBE_DELETE} -f manifests/node-red/node-red-namespace.yaml
 #${KUBE_DELETE} -f operators/kubemq-operator.yaml
 
 echo "############"
+echo "Delete Kanboard"
+echo "######"
+${KUBE_DELETE} -f manifests/services/kanboard/kanboard.yaml
+
+echo "############"
 echo "Delete kalkeye helm repo and install mosquitto"
 echo "######"
 ${KUBE_DELETE} -f helm/mosquitto.yaml
@@ -125,6 +130,7 @@ ${KUBE_DELETE} -f olm/postgres-operator.yaml
 echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
+${KUBE_DELETE} -f manifests/volumes/kanboard-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mythtv-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/prometheus-server-pv.yaml
@@ -142,6 +148,7 @@ ${KUBE_DELETE} -f manifests/volumes/subsonic-mysql-pv.yaml
 #echo "Delete namespaces (pgo and home-services)"
 #echo "######"
 #${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
+${KUBE_DELETE} -f manifests/services/kanboard/kanboard-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml

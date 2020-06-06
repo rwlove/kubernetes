@@ -1,0 +1,33 @@
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: kanboard-volumeclaim
+  namespace: kanboard
+  annotations:
+    backup.kubernetes.io/deltas: P1D P7D  
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kanboard
+  namespace: kanboard
+  labels:
+    run: kanboard
+spec:
+  type: LoadBalancer
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: kanboard
+  loadBalancerIP: 192.168.6.21
