@@ -33,6 +33,7 @@ echo "############"
 echo "Install postgress-operator"
 echo "######"
 ${KUBE_CREATE} -f olm/postgres-operator.yaml
+${KUBE_CREATE} -f manifests/postgres/postgres-operator-ui.yaml
 
 echo "############"
 echo "Install kalkeye helm repo and install mosquitto"

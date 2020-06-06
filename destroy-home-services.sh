@@ -119,6 +119,7 @@ ${KUBE_DELETE} -f manifests/mosquitto/mosquitto-namespace.yaml
 echo "############"
 echo "Delete postgress-operator"
 echo "######"
+${KUBE_DELETE} -f manifests/postgres/postgres-operator-ui.yaml
 ${KUBE_DELETE} -f olm/postgres-operator.yaml
 
 echo "############"
