@@ -152,7 +152,7 @@ hostMounts: []
   #   hostPath: /dev/serial/by-id/usb-Silicon_Labs_HubZ_Smart_Home_Controller_6120245D-if01-port0
 
 configurator:
-  enabled: false
+  enabled: true
 
   ## hass-configurator container image
   ##
