@@ -47,7 +47,6 @@ helm -n rabbitmq install rabbitmq \
      service.loadBalancerIP='192.168.6.22',\
      rabbitmq.extraPlugins='rabbitmq_mqtt',\
      service.extraPorts='1883',\
-     service.extraContainerPorts='1883' \
      bitnami/rabbitmq
 
 echo "############"
