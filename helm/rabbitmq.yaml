@@ -249,7 +249,7 @@ service:
   - name: mqtt
     port: 1883
     targetPort: 1883
-    
+
 # Additional pod labels to apply
 podLabels: {}
 
