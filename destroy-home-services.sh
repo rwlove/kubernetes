@@ -117,7 +117,7 @@ echo "############"
 echo "Delete kalkeye helm repo and install mosquitto"
 echo "######"
 ${KUBE_DELETE} -f helm/mosquitto.yaml
-helm uninstall mosquitto
+helm -n mosquitto uninstall mosquitto
 helm repo remove halkeye
 ${KUBE_DELETE} -f manifests/mosquitto/mosquitto-namespace.yaml
 
@@ -130,7 +130,7 @@ ${KUBE_DELETE} -f olm/postgres-operator.yaml
 echo "############"
 echo "Delete RabbitMQ"
 echo "######"
-helm uninstall rabbitmq
+helm -n rabbitmq uninstall rabbitmq
 helm repo remove bitnami
 
 echo "############"
