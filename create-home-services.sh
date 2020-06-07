@@ -37,8 +37,7 @@ echo "############"
 echo "Install RabbitMQ"
 echo "######"
 helm repo add bitnami https://charts.bitnami.com/bitnami
-helm -n rabbitmq install rabbitmq \
-     --set rabbitmq.username='rabbitmq',rabbitmq.password='password',nameOverride='rabbitmq',persistence.storageClass='rabbitmq-storage-class',service.type='LoadBalancer',service.loadBalancerIP='192.168.6.22',rabbitmq.extraPlugins='rabbitmq_mqtt',service.extraPorts='1883' bitnami/rabbitmq
+helm -n rabbitmq install rabbitmq -f helm/rabbitmq.yaml bitnami/rabbitmq
 
 echo "############"
 echo "Install postgress-operator"
