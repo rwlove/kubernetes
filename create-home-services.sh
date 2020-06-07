@@ -45,7 +45,6 @@ helm -n rabbitmq install rabbitmq \
      persistence.storageClass='rabbitmq-storage-class',\
      service.type='LoadBalancer',\
      service.loadBalancerIP='192.168.6.22',\
-     service.extraPorts='1883',\
      rabbitmq.extraPlugins='rabbitmq_mqtt' \
      bitnami/rabbitmq
 
