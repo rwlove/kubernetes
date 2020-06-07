@@ -273,6 +273,7 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   # storageClass: "-"
+  storageClass: "-"
   accessMode: ReadWriteOnce
   storageClassName: rabbitmq-storage-class
 
