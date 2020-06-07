@@ -239,8 +239,7 @@ service:
   ## Extra ports to expose
   # extraPorts:
   extraPorts:
-   - name: extraPort
-     port: 1883
+   - port: 1883
      targetPort: 1883
 
   ## Extra ports to be included in container spec, primarily informational
