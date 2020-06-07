@@ -5,14 +5,6 @@ NAMESPACE='-n home-services'
 
 curl -sL https://github.com/operator-framework/operator-lifecycle-manager/releases/download/0.14.1/install.sh | bash -s 0.14.1
 
-echo "############"
-echo "Create namespaces"
-echo "######"
-${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
-${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
-${KUBE_CREATE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
-#${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
-
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
 
 echo "############"
@@ -32,6 +24,14 @@ ${KUBE_CREATE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mythtv-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/kanboard-pv.yaml
+
+echo "############"
+echo "Create namespaces"
+echo "######"
+${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
+${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
+${KUBE_CREATE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
+#${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 
 echo "############"
 echo "Install RabbitMQ"

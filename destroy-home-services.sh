@@ -133,6 +133,14 @@ echo "######"
 helm -n rabbitmq uninstall rabbitmq
 helm repo remove bitnami
 
+#echo "############"
+#echo "Delete namespaces (pgo and home-services)"
+#echo "######"
+#${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
+${KUBE_DELETE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
+${KUBE_DELETE} -f manifests/services/kanboard/kanboard-namespace.yaml
+${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
+
 echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
@@ -150,13 +158,5 @@ ${KUBE_DELETE} -f manifests/volumes/subsonic-music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-mysql-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/subsonic-mysql-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/rabbitmq-pv.yaml
-
-#echo "############"
-#echo "Delete namespaces (pgo and home-services)"
-#echo "######"
-#${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
-${KUBE_DELETE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
-${KUBE_DELETE} -f manifests/services/kanboard/kanboard-namespace.yaml
-${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 
 #${KUBE_DELETE} -f manifests/dns/external-dns/external-dns.yaml
