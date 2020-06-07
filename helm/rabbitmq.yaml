@@ -273,9 +273,8 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   # storageClass: "-"
-  storageClass: "-"
+  storageClass: "rabbitmq-storage-class"
   accessMode: ReadWriteOnce
-  storageClassName: rabbitmq-storage-class
 
   ## Existing PersistentVolumeClaims
   ## The value is evaluated as a template
