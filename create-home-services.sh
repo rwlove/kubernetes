@@ -38,7 +38,7 @@ echo "Install RabbitMQ"
 echo "######"
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm -n rabbitmq install rabbitmq \
-     --set rabbitmq.username='rabbitmq',rabbitmq.password='password',nameOverride='rabbitmq',rabbitmq.clustering.k8s_domain='thesteamedcrab.com',persistence.storageClass='rabbitmq-storage-class',rabbitmq.,service.type='LoadBalancer',service.loadBalancerIP='192.168.22' \
+     --set rabbitmq.username='rabbitmq',rabbitmq.password='password',nameOverride='rabbitmq',rabbitmq.clustering.k8s_domain='thesteamedcrab.com',persistence.storageClass='rabbitmq-storage-class',service.type='LoadBalancer',service.loadBalancerIP='192.168.22' \
      bitnami/rabbitmq
 
 echo "############"
