@@ -128,6 +128,12 @@ ${KUBE_DELETE} -f manifests/postgres/postgres-operator-ui.yaml
 ${KUBE_DELETE} -f olm/postgres-operator.yaml
 
 echo "############"
+echo "Delete RabbitMQ"
+echo "######"
+helm uninstall rabbitmq
+helm repo remove bitnami
+
+echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
 ${KUBE_DELETE} -f manifests/volumes/kanboard-pv.yaml
@@ -148,6 +154,7 @@ ${KUBE_DELETE} -f manifests/volumes/subsonic-mysql-pv.yaml
 #echo "Delete namespaces (pgo and home-services)"
 #echo "######"
 #${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
+${KUBE_DELETE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/kanboard/kanboard-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 

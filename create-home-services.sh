@@ -10,6 +10,7 @@ echo "Create namespaces"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 ${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
+${KUBE_CREATE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
 #${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 
 #${KUBE_CREATE} -f manifests/dns/external-dns/external-dns.yaml
@@ -30,6 +31,14 @@ ${KUBE_CREATE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mythtv-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/kanboard-pv.yaml
+
+echo "############"
+echo "Install RabbitMQ"
+echo "######"
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm -n rabbitmq install rabbitmq \
+     --set rabbitmq.clustering.k8s_domain=thesteamedcrab.com,service.type=LoadBalancer,service.loadBalancerIP=192.168.22 \
+     bitnami/rabbitmq
 
 echo "############"
 echo "Install postgress-operator"
