@@ -149,6 +149,7 @@ ${KUBE_DELETE} -f manifests/volumes/subsonic-music-volume-pv.yaml
 #${KUBE_DELETE} -f manifests/volumes/postgress-subsonic-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-mysql-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/subsonic-mysql-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/rabbitmq-pv.yaml
 
 #echo "############"
 #echo "Delete namespaces (pgo and home-services)"

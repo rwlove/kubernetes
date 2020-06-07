@@ -19,6 +19,7 @@ echo "############"
 echo "Create Physical (Storage) Volumes"
 echo "######"
 #${KUBE_CREATE} -f manifests/volumes/postgress-subsonic-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/rabbitmq-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/subsonic-mysql-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-mysql-pv.yaml
 #${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
@@ -37,7 +38,7 @@ echo "Install RabbitMQ"
 echo "######"
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm -n rabbitmq install rabbitmq \
-     --set rabbitmq.clustering.k8s_domain=thesteamedcrab.com,service.type=LoadBalancer,service.loadBalancerIP=192.168.22 \
+     --set persistence.storageClass=rabbitmq-storage-class,rabbitmq.clustering.k8s_domain=thesteamedcrab.com,service.type=LoadBalancer,service.loadBalancerIP=192.168.22 \
      bitnami/rabbitmq
 
 echo "############"
