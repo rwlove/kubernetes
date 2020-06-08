@@ -287,7 +287,7 @@ appdaemon:
   ##
   image:
     repository: acockburn/appdaemon
-    tag: 4.0.3
+    tag: 3.0.5
     pullPolicy: IfNotPresent
 
   ## Home Assistant API token
