@@ -530,7 +530,7 @@ nodeExporter:
     externalIPs: []
 
     hostPort: 9100
-    loadBalancerIP: "192.168.6.15"
+    #loadBalancerIP: "192.168.6.15"
     loadBalancerSourceRanges: []
     servicePort: 9100
     type: ClusterIP
