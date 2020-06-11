@@ -32,7 +32,7 @@ ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 ${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
 ${KUBE_CREATE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
 #${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
-${KUBE_CREATE} create namespace prometheus
+${KUBE_CREATE} namespace prometheus
 
 echo "############"
 echo "Install RabbitMQ"

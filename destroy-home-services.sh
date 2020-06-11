@@ -137,7 +137,7 @@ helm repo remove bitnami
 #echo "Delete namespaces (pgo and home-services)"
 #echo "######"
 #${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
-${KUBE_DELETE} create namespace prometheus
+${KUBE_DELETE} namespace prometheus
 ${KUBE_DELETE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/kanboard/kanboard-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
