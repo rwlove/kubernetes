@@ -71,7 +71,7 @@ ${KUBE_DELETE} -f manifests/services/nextcloud/nextcloud.yaml
 echo "############"
 echo "Uninstall prometheus"
 echo "######"
-helm uninstall ${NAMESPACE} prometheus
+helm uninstall -n prometheus prometheus
 
 echo "############"
 echo "Uninstall grafana"
@@ -137,6 +137,7 @@ helm repo remove bitnami
 #echo "Delete namespaces (pgo and home-services)"
 #echo "######"
 #${KUBE_DELETE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
+${KUBE_DELETE} create namespace prometheus
 ${KUBE_DELETE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/kanboard/kanboard-namespace.yaml
 ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml

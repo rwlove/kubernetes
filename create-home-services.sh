@@ -32,6 +32,7 @@ ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 ${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
 ${KUBE_CREATE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
 #${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
+${KUBE_CREATE} create namespace prometheus
 
 echo "############"
 echo "Install RabbitMQ"
@@ -168,7 +169,7 @@ helm install ${NAMESPACE} grafana -f helm/grafana.yaml stable/grafana
 echo "############"
 echo "Install prometheus with helm"
 echo "######"
-helm install ${NAMESPACE} prometheus -f helm/prometheus.yaml stable/prometheus
+helm install -n prometheus prometheus -f helm/prometheus.yaml stable/prometheus
 
 echo "############"
 echo "Create nextcloud with helm"
