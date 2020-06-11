@@ -281,7 +281,7 @@ vscode:
     # nodePort: 30000
 
 appdaemon:
-  enabled: true
+  enabled: false
 
   ## code-server container image
   ##
