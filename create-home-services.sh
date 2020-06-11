@@ -55,6 +55,13 @@ helm repo add halkeye https://halkeye.github.io/helm-charts/
 helm install -n mosquitto mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mosquitto.yaml
 
 echo "############"
+echo "Create mpd"
+echo "######"
+kubectl label nodes worker1 sound=bathroom-audio
+${KUBE_CREATE} -f manifests/services/mpd/mpd.yaml
+${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
+
+echo "############"
 echo "Create Kanboard"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/kanboard/kanboard.yaml
@@ -199,13 +206,6 @@ echo "############"
 echo "Create MythTV Backend"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/mythtv/mythtv.yaml
-
-echo "############"
-echo "Create mpd"
-echo "######"
-kubectl label nodes worker1 sound=bathroom-audio
-${KUBE_CREATE} -f manifests/services/mpd/mpd.yaml
-${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
 
 echo "############"
 echo "Start mpd"
