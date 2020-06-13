@@ -1,3 +1,40 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: pihole
+  labels:
+    name: pihole
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pihole-storage-data-claim
+  namespace: pihole
+spec:
+  storageClassName: pihole-storage-data-class
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pihole-storage-dnsmasq-claim
+  namespace: pihole
+spec:
+  storageClassName: pihole-storage-dnsmasq-class
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -20,16 +57,29 @@ spec:
         name: pihole
         ports:
         - containerPort: 80
+        - containerPort: 53
+        - containerPort: 67
+        - containerPort: 443
         env:
-          - name: WEBPASSWORD
-            value: "admin"
-          - name: INTERFACE
-            value: "pihole-int"
-          - name: IPv6
-            value: "false"
-          - name: DNS1
-            value: "192.168.1.1"
-          - name: DNS2
-            value: "no"
-          - name: TZ
-            value: "America/Los_Angeles"  
+        - name: WEBPASSWORD
+          value: "admin"
+        - name: IPv6
+          value: "false"
+        - name: DNS1
+          value: "192.168.1.1"
+        - name: DNS2
+          value: "no"
+        - name: TZ
+          value: "America/Los_Angeles"
+        volumeMounts:
+        - name: pihole-data-volume
+          mountPath: '/etc/pihole/'
+        - name: pihole-dnsmasq-volume
+          mountPath: '/etc/dnsmasq.d/'
+      volumes:
+      - name: pihole-data-volume
+        persistentVolumeClaim:
+          claimName: pihole-storage-data-claim
+      - name: pihole-dnsmasq-volume
+        persistentVolumeClaim:
+          claimName: pihole-storage-dnsmasq-claim
