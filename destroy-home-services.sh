@@ -109,6 +109,11 @@ ${KUBE_DELETE} -f manifests/node-red/node-red-namespace.yaml
 #${KUBE_DELETE} -f operators/kubemq-operator.yaml
 
 echo "############"
+echo "Delete BiglyBT"
+echo "######"
+${KUBE_DELETE} -f manifests/services/biglybt/biglybt.yaml
+
+echo "############"
 echo "Delete Kanboard"
 echo "######"
 ${KUBE_DELETE} -f manifests/services/kanboard/kanboard.yaml
@@ -145,6 +150,7 @@ ${KUBE_DELETE} -f manifests/services/home-services-namespace.yaml
 echo "############"
 echo "Delete Physical (storage) Volumes"
 echo "######"
+${KUBE_DELETE} -f manifests/volumes/biglybt-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/kanboard-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mythtv-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/prometheus-alertmanager-pv.yaml

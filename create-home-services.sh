@@ -24,6 +24,7 @@ ${KUBE_CREATE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mythtv-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/kanboard-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/biglybt-pv.yaml
 
 echo "############"
 echo "Create namespaces"
@@ -47,6 +48,7 @@ ${KUBE_CREATE} -f olm/postgres-operator.yaml
 ${KUBE_CREATE} -f manifests/postgres/postgres-operator-ui.yaml
 ${KUBE_CREATE} -n kanboard -f manifests/postgres/postgres-operator-crd.yaml
 
+
 echo "############"
 echo "Install kalkeye helm repo and install mosquitto"
 echo "######"
@@ -65,6 +67,11 @@ echo "############"
 echo "Create Kanboard"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/kanboard/kanboard.yaml
+
+echo "############"
+echo "Create BiglyBT"
+echo "######"
+${KUBE_CREATE} -f manifests/services/biglybt/biglybt.yaml
 
 #echo "############"
 #echo "Create kubemq"

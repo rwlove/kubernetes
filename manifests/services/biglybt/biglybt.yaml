@@ -1,0 +1,121 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: biglybt
+  labels:
+    name: biglybt
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: biglybt-storage-data-claim
+  namespace: biglybt
+spec:
+  storageClassName: biglybt-storage-data-class
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: biglybt-storage-in-claim
+  namespace: biglybt
+spec:
+  storageClassName: biglybt-storage-in-class
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: biglybt-storage-out-claim
+  namespace: biglybt
+spec:
+  storageClassName: biglybt-storage-out-class
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: biglybt-storage-config-claim
+  namespace: biglybt
+spec:
+  storageClassName: biglybt-storage-config-class
+  accessModes:
+    - ReadOnlyMany
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: biglybt
+  name: biglybt
+  namespace: biglybt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: biglybt
+  template:
+    metadata:
+      labels:
+        app: biglybt
+    spec:
+      containers:
+      - image: fullaxx/biglybt
+        imagePullPolicy: IfNotPresent
+        name: biglybt
+        env:
+        - name: TZ
+          value: 'America/Los_Angeles'
+        - name: VNCRES
+          value: '1920x1080'
+        - name: OVPNCFG
+          value: 'myconnection.ovpn'
+        - name: OVPNSLEEPTIME
+          value: '9'
+        ports:
+        - containerPort: 80
+        - containerPort: 443
+        - containerPort: 5901
+        volumeMounts:
+        - name: biglybt-data-volume
+          mountPath: /root/.biglybt
+        - name: biglybt-in-volume
+          mountPath: /in
+        - name: biglybt-out-volume
+          mountPath: /out          
+        - name: biglybt-config-volume
+          mountPath: /config
+      volumes:
+      - name: biglybt-data-volume
+        persistentVolumeClaim:
+          claimName: biglybt-storage-data-claim
+      - name: biglybt-in-volume
+        persistentVolumeClaim:
+          claimName: biglybt-storage-in-claim
+      - name: biglybt-out-volume
+        persistentVolumeClaim:
+          claimName: biglybt-storage-out-claim
+      - name: biglybt-config-volume
+        persistentVolumeClaim:
+          claimName: biglybt-storage-config-claim
