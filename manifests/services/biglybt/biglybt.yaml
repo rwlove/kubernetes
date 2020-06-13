@@ -127,7 +127,7 @@ metadata:
   name: biglybt
   namespace: biglybt
   labels:
-    run: biglybt
+    app: biglybt
 spec:
   type: LoadBalancer
   ports:
