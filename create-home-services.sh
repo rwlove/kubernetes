@@ -19,7 +19,6 @@ ${KUBE_CREATE} -f manifests/volumes/nextcloud-mysql-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/subsonic-music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
-${KUBE_CREATE} -f manifests/volumes/homeassistant-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/mythtv-pv.yaml
@@ -168,13 +167,7 @@ echo "######"
 ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
 #helm install -n node-red node-red -f helm/node-red.yaml stable/node-red
 
-echo "############"
-echo "Install Home Assistant from Helm"
-echo "######"
-${KUBE_CREATE} -f manifests/homeassistant/homeassistant-namespace.yaml
-kubectl -n homeassistant create secret generic git-creds --from-file=ssh-privatekey=/root/.ssh/id_rsa --from-file=ssh-publickey=/root/.ssh/id_rsa.pub
-helm repo add billimek https://billimek.com/billimek-charts/
-helm install -n homeassistant homeassistant -f helm/homeassistant.yaml billimek/home-assistant
+./create-hass.sh
 
 echo "############"
 echo "Install grafana with helm"

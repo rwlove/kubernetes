@@ -78,13 +78,7 @@ echo "Uninstall grafana"
 echo "######"
 helm uninstall ${NAMESPACE} grafana
 
-echo "############"
-echo "Uninstall Home Assistant from Helm"
-echo "######"
-helm -n homeassistant uninstall homeassistant
-kubectl -n homeassistant delete secret git-creds
-${KUBE_DELETE} -f manifests/homeassistant/homeassistant-namespace.yaml
-helm repo remove billimek
+./destroy-hass.sh
 
 echo "############"
 echo "Uninstall Node Red"
@@ -156,7 +150,6 @@ ${KUBE_DELETE} -f manifests/volumes/kanboard-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mythtv-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/prometheus-server-pv.yaml
-${KUBE_DELETE} -f manifests/volumes/homeassistant-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_DELETE} -f manifests/volumes/subsonic-music-volume-pv.yaml
