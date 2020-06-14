@@ -296,8 +296,9 @@ appdaemon:
   ## Additional hass-vscode container environment variable
   ## For instance to add a http_proxy
   ##
-  extraEnv:
-  - HA_URL: 'http://hass.thesteamedcrab.com:8123/'
+  extraEnv: |-
+    - name: HA_URL
+      value: 'http://hass.thesteamedcrab.com:8123/'
 
   ingress:
     enabled: false
