@@ -16,8 +16,13 @@ spec:
     port: 443
     protocol: TCP
     targetPort: 443
-  - name: fiftythree
+  - name: fiftythreetcp
     port: 53
+    protocol: TCP
+    targetPort: 53
+  - name: fiftythreeudp
+    port: 53
+    protocol: UDP    
     targetPort: 53
   - name: sixtyseven
     port: 67
