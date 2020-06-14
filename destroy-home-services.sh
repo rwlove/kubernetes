@@ -119,13 +119,13 @@ echo "Delete Kanboard"
 echo "######"
 ${KUBE_DELETE} -f manifests/services/kanboard/kanboard.yaml
 
-echo "############"
-echo "Delete kalkeye helm repo and install mosquitto"
-echo "######"
-${KUBE_DELETE} -f helm/mosquitto.yaml
-helm -n mosquitto uninstall mosquitto
-helm repo remove halkeye
-${KUBE_DELETE} -f manifests/mosquitto/mosquitto-namespace.yaml
+#echo "############"
+#echo "Delete kalkeye helm repo and install mosquitto"
+#echo "######"
+#${KUBE_DELETE} -f helm/mosquitto.yaml
+#helm -n mosquitto uninstall mosquitto
+#helm repo remove halkeye
+#${KUBE_DELETE} -f manifests/mosquitto/mosquitto-namespace.yaml
 
 echo "############"
 echo "Delete postgress-operator"

@@ -49,12 +49,12 @@ ${KUBE_CREATE} -f manifests/postgres/postgres-operator-ui.yaml
 ${KUBE_CREATE} -n kanboard -f manifests/postgres/postgres-operator-crd.yaml
 
 
-echo "############"
-echo "Install kalkeye helm repo and install mosquitto"
-echo "######"
-${KUBE_CREATE} -f manifests/mosquitto/mosquitto-namespace.yaml
-helm repo add halkeye https://halkeye.github.io/helm-charts/
-helm install -n mosquitto mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mosquitto.yaml
+#echo "############"
+#echo "Install kalkeye helm repo and install mosquitto"
+#echo "######"
+#${KUBE_CREATE} -f manifests/mosquitto/mosquitto-namespace.yaml
+#helm repo add halkeye https://halkeye.github.io/helm-charts/
+#helm install -n mosquitto mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mosquitto.yaml
 
 echo "############"
 echo "Create mpd"
