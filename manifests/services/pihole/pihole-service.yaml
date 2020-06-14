@@ -14,14 +14,14 @@ spec:
     targetPort: 80
   - name: https
     port: 443
-    protocol: tcp
+    protocol: TCP
     targetPort: 443
   - name: fiftythree
     port: 53
     targetPort: 53
   - name: sixtyseven
     port: 67
-    protocol: udp
+    protocol: UDP
     targetPort: 67
   selector:
     app: pihole
