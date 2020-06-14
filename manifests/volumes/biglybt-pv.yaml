@@ -53,23 +53,6 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: biglybt-storage-data-data
-  labels:
-    type: local
-spec:
-  storageClassName: biglybt-storage-data-class
-  capacity:
-    storage: 300Gi
-  accessModes:
-    - ReadOnlyMany
-  nfs:
-    server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/biglybt/data
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
   name: biglybt-storage-config-data
   labels:
     type: local
