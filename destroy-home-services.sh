@@ -113,6 +113,14 @@ echo "Delete Kanboard"
 echo "######"
 ${KUBE_DELETE} -f manifests/services/kanboard/kanboard.yaml
 
+echo "############"
+echo "Delete github-actions-runner"
+echo "######"
+${KUBE_DELETE} -f operators/github-actions-runner.yaml
+helm uninstall -n github-actions-runner github-actions-runner-operator
+${KUBE_DELETE} namespace github-actions-runner
+helm repo remove evryfs-oss
+
 #echo "############"
 #echo "Delete kalkeye helm repo and install mosquitto"
 #echo "######"

@@ -56,6 +56,14 @@ ${KUBE_CREATE} -n kanboard -f manifests/postgres/postgres-operator-crd.yaml
 #helm install -n mosquitto mosquitto halkeye/mosquitto --version 0.1.0 -f helm/mosquitto.yaml
 
 echo "############"
+echo "Create github-actions-runner"
+echo "######"
+helm repo add evryfs-oss https://evryfs.github.io/helm-charts/
+${KUBE_CREATE} namespace github-actions-runner
+helm install -n github-actions-runner github-actions-runner-operator evryfs-oss/github-actions-runner-operator
+${KUBE_CREATE} -f operators/github-actions-runner.yaml
+
+echo "############"
 echo "Create mpd"
 echo "######"
 kubectl label nodes worker1 sound=bathroom-audio
