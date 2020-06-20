@@ -11,7 +11,8 @@ ${KUBE_CREATE} -f manifests/homeassistant/homeassistant-namespace.yaml
 ssh-keyscan github.com > /tmp/known_hosts
 kubectl -n homeassistant create secret generic git-creds \
 	--from-file=ssh=$HOME/.ssh/id_rsa \
-	--from-file=known_hosts=/tmp/known_hosts
+	--from-file=known_hosts=/tmp/known_hosts \
+	--from-file=ssh-publickey=/root/.ssh/id_rsa.pub
 helm repo add billimek https://billimek.com/billimek-charts/
 helm install -n homeassistant homeassistant -f helm/homeassistant.yaml billimek/home-assistant
 
