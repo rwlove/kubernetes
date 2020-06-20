@@ -291,13 +291,13 @@ appdaemon:
     pullPolicy: IfNotPresent
 
   ## Home Assistant API token
-  haToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwNDFkMzk2YzhlNmY0ZDE1YTQ5ODNhOGU1N2JkNjlmYSIsImlhdCI6MTU5MjE2NTIyMCwiZXhwIjoxOTA3NTI1MjIwfQ.KH1vRNV_him20eOWJ21L34UpEpSF2Y-HgSLIHXVm7M0
+  #haToken: 
 
   ## Additional hass-vscode container environment variable
   ## For instance to add a http_proxy
   ##
   extraEnv:
-    HA_URL: 'http://hass.thesteamedcrab.com:8123/'
+    TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwNDFkMzk2YzhlNmY0ZDE1YTQ5ODNhOGU1N2JkNjlmYSIsImlhdCI6MTU5MjE2NTIyMCwiZXhwIjoxOTA3NTI1MjIwfQ.KH1vRNV_him20eOWJ21L34UpEpSF2Y-HgSLIHXVm7M0
 
   ingress:
     enabled: true
