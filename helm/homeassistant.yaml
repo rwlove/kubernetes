@@ -129,7 +129,7 @@ git:
 
   ## Specify the command that runs in the git-sync container to pull in configuration.
   # command: []
-  command: ['sh', '-c', 'if [ "$(-f {{ .Values.git.syncPath }}/.git/config)" ] ; then ; git pull {{ .Values.git.repo }} {{ .Values.git.syncPath }} ; else ; rm -f {{ .Values.git.syncPath }}/*.yaml ; git clone {{ .Values.git.repo }} {{ .Values.git.syncPath }} ; fi']
+  command: ['sh', '-c', 'if [ -f /config/.git/config ] ; then ; git pull git@github.com:rwlove/homeassistant-configuration.git /config ; else ; rm -f /config/*.yaml ; git clone git@github.com:rwlove/homeassistant-configuration.git /config ; fi']
 
   # Committer settings
   user:
