@@ -129,7 +129,7 @@ git:
 
   ## Specify the command that runs in the git-sync container to pull in configuration.
   # command: []
-  command: ['sh', '-c', 'echo sshtest ; ssh -vT git@github.com; echo kh ; cat /root/.ssh/known_hosts ; echo priv ; cat /root/.ssh/id_rsa ; echo pub ; cat /root/.ssh/id_rsa.pub ; echo if-then ; if [ -f /config/config/.git/config ] ; then pushd /config/config ; git pull ; popd ; else git clone -v git@github.com:rwlove/homeassistant-configuration.git /config/config ; fi']
+  command: ['sh', '-c', 'echo sshtest ; ssh -vT git@github.com; echo kh ; cat /root/.ssh/known_hosts ; echo priv ; cat /root/.ssh/id_rsa ; echo pub ; cat /root/.ssh/id_rsa.pub ; echo if-then ; if [ -f /config/config/.git/config ] ; then git pull -C /config/config ; else git clone -v git@github.com:rwlove/homeassistant-configuration.git /config/config ; fi']
 
   # Committer settings
   user:
