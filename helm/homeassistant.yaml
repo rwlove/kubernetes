@@ -128,8 +128,8 @@ git:
     pullPolicy: IfNotPresent
 
   ## Specify the command that runs in the git-sync container to pull in configuration.
-  # command: []
-  command: ['sh', '-c', 'if [ -f /config/.git/config ] ; then echo pulling ; git -C /config pull origin master ; else echo removing ; rm -f *.yaml ; echo initing ; git -C /config init ; echo remote-add ; git -C /config remote add origin git@github.com:rwlove/homeassistant-configuration.git ; echo pull ; git -C /config pull origin master ; fi']
+   command: []
+  #command: ['sh', '-c', 'if [ -f /config/.git/config ] ; then echo pulling ; git -C /config pull origin master ; else echo removing ; rm -f *.yaml ; echo initing ; git -C /config init ; echo remote-add ; git -C /config remote add origin git@github.com:rwlove/homeassistant-configuration.git ; echo pull ; git -C /config pull origin master ; fi']
 
   # Committer settings
   user:
