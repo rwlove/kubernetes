@@ -117,7 +117,7 @@ usePodSecurityContext: true
 # fsGroup: <will be omitted in deployment if runAsUser is 0>
 
 git:
-  enabled: false
+  enabled: true
 
   ## we just use the hass-configurator container image
   ## you can use any image which has git and openssh installed
