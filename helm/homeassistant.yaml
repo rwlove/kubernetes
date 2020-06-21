@@ -347,13 +347,17 @@ affinity: {}
 podAnnotations: {}
 
 # Any extra volumes to define for the pod
-extraVolumes: []
+extraVolumes:
+  - name: config-secrets
+    secret:
+      secretName: config-secrets
   # - name: example-name
   #   hostPath:
   #     path: /path/on/host
   #     type: DirectoryOrCreate
 
 # Any extra volume mounts to define for the containers
-extraVolumeMounts: []
-#   - name: example-name
-#     mountPath: /path/in/container
+extraVolumeMounts:
+  - name: config-secrets
+    mountPath: "/config"
+    readOnly: true
