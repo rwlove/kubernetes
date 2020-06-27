@@ -6,9 +6,11 @@ echo "############"
 echo "Clone or pull modified home-assistant helm charts"
 echo "######"
 if [ ! -d /tmp/home-assistant ] ; then
+    echo "-- clone"
     git clone rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts /tmp/billimek-charts
 else
-    git -C /tmp/billimek-charts pull rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts
+    echo "-- pull"
+    git -C /tmp/billimek-charts pull
 fi
 
 echo "############"
