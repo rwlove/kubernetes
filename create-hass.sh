@@ -8,7 +8,7 @@ echo "######"
 if [ ! -d /tmp/home-assistant ] ; then
     git clone rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts /tmp/billimek-charts
 else
-    git pull -C /tmp/billimek-charts rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts
+    git -C /tmp/billimek-charts pull rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts
 fi
 
 echo "############"
