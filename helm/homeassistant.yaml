@@ -141,6 +141,24 @@ git:
   syncPath: /config
   keyPath: /root/.ssh
 
+git:
+  enabled: true
+
+  ## we just use the hass-configurator container image
+  ## you can use any image which has git and openssh installed
+  ##
+  image:
+    repository: causticlab/hass-configurator-docker
+    tag: 0.3.5-x86_64
+    pullPolicy: IfNotPresent
+
+  ## Specify the command that runs in the git-sync container to pull in configuration.
+  # command: []
+  #command: ['sh', '-c', 'if [ -f /config/.git/config ] ; then echo pulling ; git -C /config pull origin master ; else echo removing ; rm -f *.yaml ; echo initing ; git -C /config init ; echo remote-add ; git -C /config remote add origin git@github.com:rwlove/homeassistant-configuration.git ; echo pull ; git -C /config pull origin master ; fi']
+
+  repo: https://github.com/peterbuga/HASS-sonoff-ewelink
+  syncPath: /custom_components
+
 zwave:
   enabled: false
 #  device: ttyACM0

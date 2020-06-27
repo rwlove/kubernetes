@@ -3,6 +3,15 @@
 KUBE_CREATE='kubectl create'
 
 echo "############"
+echo "Clone or pull modified home-assistant helm charts"
+echo "######"
+if [ ! -d /tmp/home-assistant ] ; then
+    git clone rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts/charts/home-assistant /tmp/home-assistant
+else
+    git pull -C /tmp/home-assistant rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts/charts/home-assistant
+fi
+
+echo "############"
 echo "Install Home Assistant from Helm"
 echo "######"
 ${KUBE_CREATE} -f manifests/volumes/homeassistant-pv.yaml
@@ -13,6 +22,5 @@ kubectl -n homeassistant create secret generic git-creds \
 	--from-file=id_rsa=/root/.ssh/id_rsa \
 	--from-file=known_hosts=/root/.ssh/known_hosts \
 	--from-file=id_rsa.pub=/root/.ssh/id_rsa.pub
-helm repo add billimek https://billimek.com/billimek-charts/
-helm install -n homeassistant homeassistant -f helm/homeassistant.yaml billimek/home-assistant
-
+#helm repo add billimek https://billimek.com/billimek-charts/
+helm install -n homeassistant homeassistant -f helm/homeassistant.yaml /tmp/home-assistant
