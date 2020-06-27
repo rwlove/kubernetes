@@ -6,9 +6,9 @@ echo "############"
 echo "Clone or pull modified home-assistant helm charts"
 echo "######"
 if [ ! -d /tmp/home-assistant ] ; then
-    git clone rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts/charts/home-assistant /tmp/home-assistant
+    git clone rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts /tmp/billimek-charts
 else
-    git pull -C /tmp/home-assistant rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts/charts/home-assistant
+    git pull -C /tmp/billimek-charts rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts
 fi
 
 echo "############"
@@ -23,4 +23,4 @@ kubectl -n homeassistant create secret generic git-creds \
 	--from-file=known_hosts=/root/.ssh/known_hosts \
 	--from-file=id_rsa.pub=/root/.ssh/id_rsa.pub
 #helm repo add billimek https://billimek.com/billimek-charts/
-helm install -n homeassistant homeassistant -f helm/homeassistant.yaml /tmp/home-assistant
+helm install -n homeassistant homeassistant -f helm/homeassistant.yaml /tmp/billimek-charts/charts/home-assistant
