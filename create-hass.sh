@@ -5,7 +5,7 @@ KUBE_CREATE='kubectl create'
 echo "############"
 echo "Clone or pull modified home-assistant helm charts"
 echo "######"
-if [ ! -d /tmp/home-assistant ] ; then
+if [ ! -d /tmp/billimek-charts ] ; then
     echo "-- clone"
     git clone rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts /tmp/billimek-charts
 else
