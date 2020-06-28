@@ -156,10 +156,12 @@ customcomponents:
   # command: []
   #command: ['sh', '-c', 'if [ -f /config/.git/config ] ; then echo pulling ; git -C /config pull origin master ; else echo removing ; rm -f *.yaml ; echo initing ; git -C /config init ; echo remote-add ; git -C /config remote add origin git@github.com:rwlove/homeassistant-configuration.git ; echo pull ; git -C /config pull origin master ; fi']
 
-  name: ewelink
-  repo: https://github.com/peterbuga/HASS-sonoff-ewelink
   syncPath: /custom_components
-  componentPath: HASS-sonoff-ewelink/sonoff
+
+  components:
+    name: ewelink
+    repo: https://github.com/peterbuga/HASS-sonoff-ewelink
+    componentPath: HASS-sonoff-ewelink/sonoff
 
 zwave:
   enabled: false
