@@ -141,7 +141,7 @@ git:
   syncPath: /config
   keyPath: /root/.ssh
 
-custom-components:
+customcomponents:
   enabled: true
 
   ## we just use the hass-configurator container image
