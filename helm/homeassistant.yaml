@@ -160,7 +160,7 @@ customcomponents:
 
   components:
   - name: ewelink
-    repo: https://github.com/peterbuga/HASS-sonoff-ewelink
+    repo: "https://github.com/peterbuga/HASS-sonoff-ewelink"
     componentPath: HASS-sonoff-ewelink/sonoff
 
 zwave:
