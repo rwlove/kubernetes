@@ -159,7 +159,7 @@ customcomponents:
   syncPath: /custom_components
 
   components:
-    name: ewelink
+  - name: ewelink
     repo: https://github.com/peterbuga/HASS-sonoff-ewelink
     componentPath: HASS-sonoff-ewelink/sonoff
 
