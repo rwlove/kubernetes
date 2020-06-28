@@ -158,6 +158,7 @@ customcomponents:
 
   repo: https://github.com/peterbuga/HASS-sonoff-ewelink
   syncPath: /custom_components
+  componentPath: HASS-sonoff-ewelink/sonoff
 
 zwave:
   enabled: false
