@@ -156,7 +156,7 @@ secret:
   syncPath: /config
   keyPath: /root/.ssh
 
-  repo:	"git@github.com:rwlove/homeassistant-configuration.git"
+  repo:	"git@github.com:rwlove/homeassistant-secrets.git"
   syncPath: /secrets
 
 customcomponents:
