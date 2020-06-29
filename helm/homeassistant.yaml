@@ -162,6 +162,9 @@ customcomponents:
   - name: ewelink
     repo: "https://github.com/peterbuga/HASS-sonoff-ewelink"
     componentPath: HASS-sonoff-ewelink/sonoff
+  - name: wyzesense
+    repo: "https://github.com/kevinvincent/ha-wyzesense"
+    componentPath: ha-wyzesense/custom_components/wyzesense
 
 zwave:
   enabled: false
