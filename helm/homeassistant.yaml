@@ -141,6 +141,24 @@ git:
   syncPath: /config
   keyPath: /root/.ssh
 
+secret:
+  enabled: true
+
+  ## we just use the hass-configurator container image
+  ## you can use any image which has git and openssh installed
+  ##
+  image:
+    repository: causticlab/hass-configurator-docker
+    tag: 0.3.5-x86_64
+    pullPolicy: IfNotPresent
+
+  secret: git-creds
+  syncPath: /config
+  keyPath: /root/.ssh
+
+  repo:	"https://github.com/rwlove/homeassistant-secrets.git"
+  syncPath: /secrets
+
 customcomponents:
   enabled: true
 
