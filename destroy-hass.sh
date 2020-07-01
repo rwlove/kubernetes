@@ -11,3 +11,5 @@ ${KUBE_DELETE} -f manifests/homeassistant/homeassistant-namespace.yaml
 helm repo remove billimek
 
 ${KUBE_DELETE} -f manifests/volumes/homeassistant-pv.yaml
+
+kubectl label node master1 device-
