@@ -2,6 +2,8 @@
 
 KUBE_CREATE='kubectl create'
 
+kubectl label nodes worker1 device=wyze
+
 echo "############"
 echo "Clone or pull modified home-assistant helm charts"
 echo "######"

@@ -188,6 +188,10 @@ zwave:
   enabled: true
   device: zwave
 
+wyze:
+  enabled: true
+  device: wyze
+
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
 hostMounts: []
   # Example
