@@ -185,8 +185,7 @@ customcomponents:
     componentPath: ha-wyzesense/custom_components/wyzesense
 
 zwave:
-  enabled: false
-#  device: ttyACM0
+  enabled: true
   device: zwave
 
 # Mount devices or folders from the host machine. Can be used for USB device mounting.
