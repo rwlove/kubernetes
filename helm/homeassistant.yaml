@@ -184,7 +184,7 @@ customcomponents:
     repo: "https://github.com/kevinvincent/ha-wyzesense"
     componentPath: ha-wyzesense/custom_components/wyzesense
   - name: hacs
-    command: ['sh', '-c', 'cd / ; curl -sfSL https://hacs.xyz/install | bash -']
+    command: ['sh', '-c', 'echo "cd /" ; cd / ; echo "curling and installing" ; curl -sfSL https://hacs.xyz/install | bash -x - ; echo "done"']
 
 zwave:
   enabled: false
