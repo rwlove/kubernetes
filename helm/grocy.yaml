@@ -26,7 +26,7 @@ probes:
 nameOverride: ""
 fullnameOverride: ""
 
-timezone: UTC
+timezone: America/Los_Angeles
 puid: 1000
 pgid: 1000
 
