@@ -7,7 +7,7 @@ echo "Uninstall Grocy from Helm"
 echo "######"
 helm -n grocy uninstall grocy
 
-${KUBE_DELETE} -n grocy -f manifests/volumes/grocy-pv.yaml
+${KUBE_DELETE} -f manifests/volumes/grocy-pv.yaml
 
 ${KUBE_DELETE} ns grocy
 
