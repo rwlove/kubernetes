@@ -45,6 +45,7 @@ echo "Delete pihole"
 echo "######"
 ${KUBE_DELETE} -n pihole -f manifests/services/pihole/pihole-service.yaml
 ${KUBE_DELETE} -n pihole -f manifests/services/pihole/pihole.yaml
+${KUBE_DELETE} -n pihole -f manifests/volumes/pihole-pv.yaml
 
 echo "############"
 echo "Delete MythTV Backend"

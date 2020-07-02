@@ -197,6 +197,7 @@ helm install -n nextcloud nextcloud -f helm/nextcloud.yaml --set nextcloud.usern
 echo "############"
 echo "Create pihole"
 echo "######"
+${KUBE_CREATE} -n pihole -f manifests/volumes/pihole-pv.yaml
 ${KUBE_CREATE} -n pihole -f manifests/services/pihole/pihole.yaml
 ${KUBE_CREATE} -n pihole -f manifests/services/pihole/pihole-service.yaml
 
