@@ -31,7 +31,7 @@ puid: 1000
 pgid: 1000
 
 service:
-  type: loadBalancer
+  type: LoadBalancer
   port: 80
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
