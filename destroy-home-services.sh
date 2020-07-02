@@ -78,6 +78,8 @@ echo "Uninstall grafana"
 echo "######"
 helm uninstall ${NAMESPACE} grafana
 
+./destroy-grocy.sh
+
 ./destroy-hass.sh
 
 echo "############"

@@ -86,7 +86,6 @@ ${KUBE_CREATE} -f manifests/services/biglybt/biglybt.yaml
 #${KUBE_CREATE} -f operators/kubemq-operator.yaml
 #${KUBE_CREATE} -f manifests/services/kubemq/kubemq-cluster.yaml
 #${KUBE_CREATE} -f manifests/services/kubemq/kubemq-dashboard.yaml
-
 #echo "############"
 #echo "Create mysql deployment"
 #echo "######"
@@ -176,6 +175,8 @@ ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
 #helm install -n node-red node-red -f helm/node-red.yaml stable/node-red
 
 ./create-hass.sh
+
+./create-grocy.sh
 
 echo "############"
 echo "Install grafana with helm"
