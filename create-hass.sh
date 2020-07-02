@@ -2,7 +2,7 @@
 
 KUBE_CREATE='kubectl create'
 
-kubectl label nodes master1 device=wyze
+kubectl label nodes worker2 device=wyze
 ssh-keyscan brain > /root/.ssh/known_hosts
 
 echo "############"
