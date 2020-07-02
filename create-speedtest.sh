@@ -13,4 +13,5 @@ helm install \
      -n speedtest-prometheus \
      speedtest-prometheus \
      --set serviceMonitor.enabled=true \
+     --set serviceMonitor.namespace=prometheus \
      billimek/speedtest-prometheus
