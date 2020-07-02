@@ -4,7 +4,7 @@
 
 image:
   repository: linuxserver/grocy
-  tag: v2.6.1-ls51
+  tag: v2.7.1-ls65
   pullPolicy: IfNotPresent
 
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
