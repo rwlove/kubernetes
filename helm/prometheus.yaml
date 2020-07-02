@@ -1175,6 +1175,20 @@ serverFiles:
         static_configs:
           - targets:
             - localhost:9090
+      - job_name: 'speedtest'
+        metrics_path: /probe
+        params:
+          script: [speedtest]
+        static_configs:
+        - targets:
+          - 127.0.0.1:9469
+        scrape_interval: 60m
+        scrape_timeout: 90s
+      - job_name: 'script_exporter'
+        metrics_path: /metrics
+        static_configs:
+        - targets:
+          - 127.0.0.1:9469
 
       # A scrape configuration for running Prometheus on a Kubernetes cluster.
       # This uses separate scrape configs for cluster components (i.e. API server, node)
