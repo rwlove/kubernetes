@@ -11,5 +11,4 @@ ${KUBE_DELETE} -n grocy -f manifests/volumes/grocy-pv.yaml
 
 ${KUBE_DELETE} ns grocy
 
-#helm repo remove billimek
-rm -rf /tmp/billimek-charts
+helm repo remove billimek

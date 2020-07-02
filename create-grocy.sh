@@ -9,15 +9,6 @@ ${KUBE_CREATE} ns grocy
 
 ${KUBE_CREATE} -n grocy -f manifests/volumes/grocy-pv.yaml
 
-echo "############"
-echo "Clone or pull modified home-assistant helm charts"
-echo "######"
-if [ ! -d /tmp/billimek-charts ] ; then
-    echo "-- clone"
-    git clone rwlove@brain:/home/rwlove/kubernetes/workspace/billimek-charts /tmp/billimek-charts
-else
-    echo "-- pull"
-    git -C /tmp/billimek-charts pull
-fi
+helm repo add billimek https://billimek.com/billimek-charts/
 
-helm install -n grocy grocy -f helm/grocy.yaml /tmp/billimek-charts/charts/grocy
+helm install -n grocy grocy -f helm/grocy.yaml billimek/grocy
