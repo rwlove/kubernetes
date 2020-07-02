@@ -7,7 +7,7 @@ echo "Install Grocy from Helm"
 echo "######"
 ${KUBE_CREATE} ns grocy
 
-${KUBE_CREATE} -n grocy manifests/volumes/grocy-pv.yaml
+${KUBE_CREATE} -n grocy -f manifests/volumes/grocy-pv.yaml
 
 helm repo add billimek https://billimek.com/billimek-charts/
 
