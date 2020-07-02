@@ -340,7 +340,7 @@ appdaemon:
     pullPolicy: IfNotPresent
 
   ## Home Assistant API token
-  haToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJiYjdlZGVhZTc0MjA0MmEzYWJkMzFiOWQ5MGY0NmI1NSIsImlhdCI6MTU5MzY1NjU2OSwiZXhwIjoxOTA5MDE2NTY5fQ.0wsYlHa9GkuBgCkHlibVkSjL_TPdmWDJNygTR_p9U-k
+  haToken: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI5YWNmOTJjOGExYmU0MjBhODg3ZWU0MmMxYTRlMTczMiIsImlhdCI6MTU5MzcxNDQ1NCwiZXhwIjoxOTA5MDc0NDU0fQ.siRm6C8a6o9_D8Wv0lLYUnj4mIgMdwvUW8JQMHPs48A
 
   ## Additional hass-vscode container environment variable
   ## For instance to add a http_proxy
