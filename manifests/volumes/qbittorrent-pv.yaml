@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: qbittorrent-config-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: qbittorrent-config-pv-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/qbittorrent/config
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: qbittorrent-downloads-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: qbittorrent-downloads-pv-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/qbittorrent/downloads

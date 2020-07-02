@@ -79,6 +79,8 @@ echo "Uninstall grafana"
 echo "######"
 helm uninstall ${NAMESPACE} grafana
 
+./destroy-qbittorrent.sh
+
 ./destroy-grocy.sh
 
 ./destroy-hass.sh

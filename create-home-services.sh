@@ -178,6 +178,8 @@ ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
 
 ./create-grocy.sh
 
+./create-qbittorrent.sh
+
 echo "############"
 echo "Install grafana with helm"
 echo "######"
