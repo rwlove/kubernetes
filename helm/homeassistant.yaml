@@ -185,7 +185,7 @@ customcomponents:
     componentPath: ha-wyzesense/custom_components/wyzesense
 
 zwave:
-  enabled: true
+  enabled: false
   device: zwave
 
 wyze:
