@@ -180,6 +180,8 @@ ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
 
 ./create-qbittorrent.sh
 
+./create-speedtest.sh
+
 echo "############"
 echo "Install grafana with helm"
 echo "######"
