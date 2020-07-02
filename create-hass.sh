@@ -3,6 +3,7 @@
 KUBE_CREATE='kubectl create'
 
 kubectl label nodes master1 device=wyze
+ssh-keyscan brain > /root/.ssh/known_hosts
 
 echo "############"
 echo "Clone or pull modified home-assistant helm charts"
