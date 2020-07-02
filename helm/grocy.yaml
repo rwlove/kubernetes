@@ -75,7 +75,7 @@ persistence:
     ##   GKE, AWS & OpenStack)
     ##
     # storageClass: "-"
-    storageClassName: grocy-storage-class
+    storageClass: grocy-storage-class
     ##
     ## If you want to reuse an existing claim, you can pass the name of the PVC using
     ## the existingClaim variable
