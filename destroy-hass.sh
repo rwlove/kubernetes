@@ -13,4 +13,4 @@ rm -rf /tmp/billimek-charts
 
 ${KUBE_DELETE} -f manifests/volumes/homeassistant-pv.yaml
 
-kubectl label node master1 device-
+kubectl label node worker2 device-
