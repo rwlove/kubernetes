@@ -85,7 +85,7 @@ persistentVolumeClaim:
   ##   GKE, AWS & OpenStack)
   ##
   # storageClass: "-"
-  storageClass: "pihole-storage-volume"
+  storageClass: "pihole-storage-class"
 
 nodeSelector: {}
 
