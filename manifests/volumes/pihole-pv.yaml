@@ -10,7 +10,7 @@ spec:
   capacity:
     storage: 1024Gi
   accessModes:
-    - ReadOnlyMany
+    - ReadWriteOnce
   nfs:
     server: brain.thesteamedcrab.com
     path: /mnt/mass_storage/kubernetes/pihole
