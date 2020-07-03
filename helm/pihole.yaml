@@ -113,7 +113,7 @@ extraEnvVarsSecret: {}
 
 # default upstream DNS servers to use
 DNS1: "192.168.1.1"
-DNS2: "no"
+#DNS2: ""
 
 doh:
   # set to true to enabled DNS over HTTPs via cloudflared
