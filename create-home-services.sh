@@ -176,6 +176,8 @@ ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
 
 ./create-speedtest.sh
 
+./create-mailu.sh
+
 echo "############"
 echo "Install grafana with helm"
 echo "######"

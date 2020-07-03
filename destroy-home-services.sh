@@ -74,6 +74,8 @@ echo "Uninstall grafana"
 echo "######"
 helm uninstall ${NAMESPACE} grafana
 
+./destroy-mailu.sh
+
 ./destroy-speedtest.sh
 
 ./destroy-qbittorrent.sh
