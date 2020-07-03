@@ -10,22 +10,20 @@ image:
   pullPolicy: IfNotPresent
 
 serviceTCP:
-  type: NodePort
+  type: LoadBalancer
   externalTrafficPolicy: Local
-  loadBalancerIP: ""
-    # a fixed LoadBalancer IP
-  annotations: {}
+  loadBalancerIP: "192.168.6.4"
+  annotations:
     # metallb.universe.tf/address-pool: network-services
-    # metallb.universe.tf/allow-shared-ip: pihole-svc
+    metallb.universe.tf/allow-shared-ip: pihole-svc
 
 serviceUDP:
-  type: NodePort
+  type: LoadBalancer
   externalTrafficPolicy: Local
-  loadBalancerIP: ""
-    # a fixed LoadBalancer IP
-  annotations: {}
+  loadBalancerIP: "192.168.6.4"
+ annotations:
     # metallb.universe.tf/address-pool: network-services
-    # metallb.universe.tf/allow-shared-ip: pihole-svc
+    metallb.universe.tf/allow-shared-ip: pihole-svc
 
 virtualHost: pi.hole
 
@@ -114,8 +112,8 @@ extraEnvVarsSecret: {}
   #   key: secret-key
 
 # default upstream DNS servers to use
-DNS1: "8.8.8.8"
-DNS2: "8.8.4.4"
+DNS1: "192.168.1.1"
+DNS2: "no"
 
 doh:
   # set to true to enabled DNS over HTTPs via cloudflared
