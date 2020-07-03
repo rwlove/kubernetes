@@ -32,6 +32,8 @@ ${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
 #${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 ${KUBE_CREATE} namespace prometheus
 
+./create-cert-manager.sh
+
 ./create-rabbitmq.sh
 
 echo "############"

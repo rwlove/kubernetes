@@ -141,6 +141,8 @@ ${KUBE_DELETE} -f olm/postgres-operator.yaml
 
 ./destroy-rabbitmq.sh
 
+./destroy-cert-manager.sh
+
 #echo "############"
 #echo "Delete namespaces (pgo and home-services)"
 #echo "######"
