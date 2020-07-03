@@ -92,7 +92,7 @@ certmanager:
 
 # Set ingress and loadbalancer config
 ingress:
-  externalIngress: true
+  externalIngress: false
   tlsFlavor: cert
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: "0"
