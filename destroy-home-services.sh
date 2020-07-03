@@ -40,12 +40,7 @@ echo "######"
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello-service.yaml
 ${KUBE_DELETE} ${NAMESPACE} -f manifests/services/nginx-hello/nginx-hello.yaml
 
-echo "############"
-echo "Delete pihole"
-echo "######"
-${KUBE_DELETE} -n pihole -f manifests/services/pihole/pihole-service.yaml
-${KUBE_DELETE} -n pihole -f manifests/services/pihole/pihole.yaml
-${KUBE_DELETE} -n pihole -f manifests/volumes/pihole-pv.yaml
+./destroy-pihole.sh
 
 echo "############"
 echo "Delete MythTV Backend"

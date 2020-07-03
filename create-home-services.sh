@@ -198,12 +198,7 @@ echo "######"
 ${KUBE_CREATE} -f manifests/services/nextcloud/nextcloud.yaml
 helm install -n nextcloud nextcloud -f helm/nextcloud.yaml --set nextcloud.username=admin,nextcloud.password=password,externalDatabase.type=mysql,externalDatabase.host=mysql-service,externalDatabase.database=nextcloud,externalDatabase.user=nextcloud,externalDatabase.password=password stable/nextcloud
 
-echo "############"
-echo "Create pihole"
-echo "######"
-${KUBE_CREATE} -n pihole -f manifests/volumes/pihole-pv.yaml
-${KUBE_CREATE} -n pihole -f manifests/services/pihole/pihole.yaml
-${KUBE_CREATE} -n pihole -f manifests/services/pihole/pihole-service.yaml
+./create-pihole.sh
 
 echo "############"
 echo "Create nginx-hello"
