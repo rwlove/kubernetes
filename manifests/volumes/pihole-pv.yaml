@@ -2,32 +2,15 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pihole-storage-data-data
+  name: pihole-storage-volume
   labels:
     type: local
 spec:
-  storageClassName: pihole-storage-data-class
+  storageClassName: pihole-storage-class
   capacity:
-    storage: 300Gi
+    storage: 1024Gi
   accessModes:
     - ReadOnlyMany
   nfs:
     server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/pihole/data
-
----
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: pihole-storage-dnsmasq-data
-  labels:
-    type: local
-spec:
-  storageClassName: pihole-storage-dnsmasq-class
-  capacity:
-    storage: 300Gi
-  accessModes:
-    - ReadOnlyMany
-  nfs:
-    server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/pihole/dnsmasq
+    path: /mnt/mass_storage/kubernetes/pihole

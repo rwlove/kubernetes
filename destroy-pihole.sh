@@ -5,6 +5,8 @@ KUBE_DELETE='kubectl delete'
 echo "############"
 echo "Delete pihole"
 echo "######"
-${KUBE_DELETE} -n pihole -f manifests/services/pihole/pihole-service.yaml
-${KUBE_DELETE} -n pihole -f manifests/services/pihole/pihole.yaml
+helm -n pihole uninstall pihole
 ${KUBE_DELETE} -f manifests/volumes/pihole-pv.yaml
+${KUBE_DELETE} namespace pihole
+helm repo remove mojo2600
+
