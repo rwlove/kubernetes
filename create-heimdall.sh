@@ -15,6 +15,7 @@ helm install \
      -n heimdall \
      heimdall \
      --set timezone="America/Los_Angeles" \
+     --set Service.type=LoadBalancer \
      --set Service.loadBalancerIP="192.168.6.27" \
      --set persistence.config.storageClass="heimdall-storage-class" \
      billimek/heimdall
