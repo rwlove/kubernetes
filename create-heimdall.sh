@@ -16,4 +16,4 @@ helm install \
      heimdall \
      --set timezone="America/Los_Angeles" \
      --set Service.loadBalancerIP="192.168.6.27" \
-     -f helm/heimdall.yaml billimek/heimdall
+     billimek/heimdall
