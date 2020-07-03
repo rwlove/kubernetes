@@ -13,4 +13,4 @@ ${KUBE_CREATE} ns cert-manager
 helm repo add jetstack https://charts.jetstack.io
 
 ## Install the cert-manager helm chart
-helm -n cert-manager install cert-manager jetstack/cert-manager
+helm -n cert-manager install cert-manager --set installCRDs=true jetstack/cert-manager
