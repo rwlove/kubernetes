@@ -180,6 +180,8 @@ ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
 
 ./create-mailu.sh
 
+./create-heimdall.sh
+
 echo "############"
 echo "Install grafana with helm"
 echo "######"
