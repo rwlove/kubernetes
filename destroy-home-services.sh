@@ -137,11 +137,7 @@ echo "######"
 ${KUBE_DELETE} -f manifests/postgres/postgres-operator-ui.yaml
 ${KUBE_DELETE} -f olm/postgres-operator.yaml
 
-echo "############"
-echo "Delete RabbitMQ"
-echo "######"
-helm -n rabbitmq uninstall rabbitmq
-helm repo remove bitnami
+./destroy-rabbitmq.sh
 
 #echo "############"
 #echo "Delete namespaces (pgo and home-services)"

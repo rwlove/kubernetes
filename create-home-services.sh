@@ -11,7 +11,6 @@ echo "############"
 echo "Create Physical (Storage) Volumes"
 echo "######"
 #${KUBE_CREATE} -f manifests/volumes/postgress-subsonic-pv.yaml
-${KUBE_CREATE} -f manifests/volumes/rabbitmq-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/subsonic-mysql-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-mysql-pv.yaml
 #${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
@@ -30,15 +29,10 @@ echo "Create namespaces"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/home-services-namespace.yaml
 ${KUBE_CREATE} -f manifests/services/kanboard/kanboard-namespace.yaml
-${KUBE_CREATE} -f manifests/services/rabbitmq/rabbitmq-namespace.yaml
 #${KUBE_CREATE} -f manifests/db/crunchy_postgresql/pgo-namespace.yaml
 ${KUBE_CREATE} namespace prometheus
 
-echo "############"
-echo "Install RabbitMQ"
-echo "######"
-helm repo add bitnami https://charts.bitnami.com/bitnami
-helm -n rabbitmq install rabbitmq -f helm/rabbitmq.yaml bitnami/rabbitmq
+./create-rabbitmq.sh
 
 echo "############"
 echo "Install postgress-operator"
