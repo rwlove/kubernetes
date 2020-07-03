@@ -3,7 +3,7 @@
 KUBE_CREATE='kubectl create'
 
 echo "############"
-echo "Install Grocy from Helm"
+echo "Install mailu from Helm"
 echo "######"
 ${KUBE_CREATE} ns mailu
 
