@@ -16,7 +16,6 @@ ${KUBE_CREATE} -f manifests/volumes/nextcloud-mysql-pv.yaml
 #${KUBE_CREATE} -f manifests/volumes/mariadb-nextcloud-pv.yaml
 #${KUBE_CREATE} -f manifests/volumes/mariadb-subsonic-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/subsonic-music-volume-pv.yaml
-${KUBE_CREATE} -f manifests/volumes/mpd-music-volume-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/nextcloud-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-server-pv.yaml
 ${KUBE_CREATE} -f manifests/volumes/prometheus-alertmanager-pv.yaml
@@ -60,13 +59,6 @@ helm install -n github-actions-runner github-actions-runner-operator evryfs-oss/
 ${KUBE_CREATE} -f operators/github-actions-runner.yaml
 
 echo "############"
-echo "Create mpd"
-echo "######"
-kubectl label nodes worker1 sound=bathroom-audio
-${KUBE_CREATE} -f manifests/services/mpd/mpd.yaml
-${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
-
-echo "############"
 echo "Create Kanboard"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/kanboard/kanboard.yaml
@@ -75,6 +67,8 @@ echo "############"
 echo "Create BiglyBT"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/biglybt/biglybt.yaml
+
+./create-mpd.sh
 
 #echo "############"
 #echo "Create kubemq"
@@ -216,34 +210,6 @@ echo "############"
 echo "Create MythTV Backend"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/mythtv/mythtv.yaml
-
-echo "############"
-echo "Start mpd"
-echo "######"
-mpd_pod=
-while [ -z $mpd_pod ] ; do
-    mpd_pod=`kubectl -n mpd get pods | grep mpd | awk '{print $1}'`
-    if [ -z $mpd_pod ] ; then
-	sleep 1
-    fi
-done
-
-if [ ! -z $mpd_pod ] ; then
-    echo "Starting MPD (random, repeat, add, play)"
-    kubectl -n mpd wait --for=condition=Ready pod/$mpd_pod --timeout=60s
-    if [ $? == 0 ] ; then
-	kubectl -n mpd exec -ti $mpd_pod -- mpc random on
-	kubectl -n mpd exec -ti $mpd_pod -- mpc repeat on
-	kubectl -n mpd exec -ti $mpd_pod -- mpc add "80's"
-	kubectl -n mpd exec -ti $mpd_pod -- mpc play
-    fi
-fi
-
-echo "############"
-echo "Create rompr"
-echo "######"
-${KUBE_CREATE} -f manifests/services/rompr/rompr.yaml
-${KUBE_CREATE} -f manifests/services/rompr/rompr-service.yaml
 
 echo "############"
 echo "Create k8sdash"

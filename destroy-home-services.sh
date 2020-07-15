@@ -22,17 +22,7 @@ echo "Delete k8dash"
 echo "######"
 ${KUBE_DELETE} -f manifests/dashboard/kubernetes-k8dash.yaml
 
-echo "############"
-echo "Delete rompr"
-echo "######"
-${KUBE_DELETE} -f manifests/services/rompr/rompr-service.yaml
-${KUBE_DELETE} -f manifests/services/rompr/rompr.yaml
-
-echo "############"
-echo "Delete mpd"
-echo "######"
-${KUBE_DELETE} -f manifests/services/mpd/mpd-service.yaml
-${KUBE_DELETE} -f manifests/services/mpd/mpd.yaml
+./destroy-mpd.sh
 
 echo "############"
 echo "Delete nginx-hello"
