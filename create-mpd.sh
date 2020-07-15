@@ -7,7 +7,7 @@ ${KUBE_CREATE} -f manifests/volumes/mpd-music-volume-pv.yaml
 echo "############"
 echo "Create mpd"
 echo "######"
-kubectl label nodes worker1 sound=bathroom-audio
+kubectl label --overwrite nodes worker1 sound=bathroom-audio
 ${KUBE_CREATE} -f manifests/services/mpd/mpd.yaml
 ${KUBE_CREATE} -f manifests/services/mpd/mpd-service.yaml
 
