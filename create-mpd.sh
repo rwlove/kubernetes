@@ -26,9 +26,21 @@ if [ ! -z $mpd_pod ] ; then
     echo "Starting MPD (random, repeat, add, play)"
     kubectl -n mpd wait --for=condition=Ready pod/$mpd_pod --timeout=60s
     if [ $? == 0 ] ; then
+	echo "mpd Pod Ready"
+	ready=0
+	while [ ! ${ready} ] ; do
+	    kubectl -n mpd exec -ti $mpd_pod -- mpc version
+	    ready=$?
+	    echo "mpd not ready, waiting 1 second"
+	    sleep 1
+	done
+	echo "- Random ON"
 	kubectl -n mpd exec -ti $mpd_pod -- mpc random on
+	echo "- Repeat ON"
 	kubectl -n mpd exec -ti $mpd_pod -- mpc repeat on
+	echo "- Add 80's to the queue"
 	kubectl -n mpd exec -ti $mpd_pod -- mpc add "80's"
+	echo "- Play the queue"
 	kubectl -n mpd exec -ti $mpd_pod -- mpc play
     fi
 fi
