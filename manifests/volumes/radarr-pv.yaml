@@ -2,15 +2,32 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: radarr-volume
+  name: radarr-media
   labels:
     type: local
 spec:
-  storageClassName: radarr-storage-class
+  storageClassName: radarr-media-storage-class
   capacity:
     storage: 300Gi
   accessModes:
     - ReadWriteOnce
   nfs:
     server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/radarr
+    path: /mnt/mass_storage/kubernetes/radarr/media
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: radarr-config
+  labels:
+    type: local
+spec:
+  storageClassName: radarr-config-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/radarr/config
