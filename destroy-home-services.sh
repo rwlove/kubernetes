@@ -26,6 +26,8 @@ ${KUBE_DELETE} -f manifests/dashboard/kubernetes-k8dash.yaml
 
 ./destroy-mpd.sh
 
+./destroy-radarr.sh
+
 echo "############"
 echo "Delete nginx-hello"
 echo "######"

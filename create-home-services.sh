@@ -68,6 +68,8 @@ echo "Create BiglyBT"
 echo "######"
 ${KUBE_CREATE} -f manifests/services/biglybt/biglybt.yaml
 
+./create-radarr.sh
+
 ./create-mpd.sh
 
 ./create-mythtv-backend.sh
