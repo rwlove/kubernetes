@@ -70,6 +70,8 @@ ${KUBE_CREATE} -f manifests/services/biglybt/biglybt.yaml
 
 ./create-mpd.sh
 
+./create-mythtv-backend.sh
+
 #echo "############"
 #echo "Create kubemq"
 #echo "######"

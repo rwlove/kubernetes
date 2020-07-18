@@ -22,6 +22,8 @@ echo "Delete k8dash"
 echo "######"
 ${KUBE_DELETE} -f manifests/dashboard/kubernetes-k8dash.yaml
 
+./destroy-mythtv-backend.sh
+
 ./destroy-mpd.sh
 
 echo "############"
