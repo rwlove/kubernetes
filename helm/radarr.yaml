@@ -40,7 +40,7 @@ exportarr:
     additionalLabels: {}
 
 nameOverride: "radarr"
-fullnameOverride: "radarr.thesteamedcrab.com"
+fullnameOverride: ""
 
 timezone: 'America/Los_Angeles'
 puid: 1001
