@@ -28,19 +28,19 @@ exportarr:
     repository: onedr0p/exportarr
     tag: v0.3.0
     pullPolicy: IfNotPresent
-  url: "http://radarr.default.svc.cluster.local:7878"
+  url: "http://radarr.thesteamedcrab.com:7878"
   apikey:
   port: 9708
   serviceMonitor:
-    enabled: false
-    namespace: default
+    enabled: true
+    namespace: radarr
     path: /metrics
     interval: 4m
     scrapeTimeout: 90s
     additionalLabels: {}
 
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "radarr"
+fullnameOverride: "radarr.thesteamedcrab.com"
 
 timezone: 'America/Los_Angeles'
 puid: 1001
