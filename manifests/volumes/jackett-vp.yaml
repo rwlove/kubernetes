@@ -1,0 +1,33 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jackett-blackhole
+  labels:
+    type: local
+spec:
+  storageClassName: jackett-blackhole-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/jackett/blackhole
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jackett-config
+  labels:
+    type: local
+spec:
+  storageClassName: jackett-config-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/jackett/config
