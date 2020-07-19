@@ -32,7 +32,7 @@ exportarr:
   apikey:
   port: 9708
   serviceMonitor:
-    enabled: true
+    enabled: false
     namespace: radarr
     path: /metrics
     interval: 4m
