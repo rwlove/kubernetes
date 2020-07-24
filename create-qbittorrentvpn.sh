@@ -10,4 +10,4 @@ ${KUBE_CREATE} ns qbittorrentvpn
 
 ${KUBE_CREATE} -f manifests/volumes/qbittorrentvpn-pv.yaml
 
-${KUBE_CREATE} -n qbittorrentvpn -f manifests/qbittorrentvpn/qbittorrenvpn.yaml
+${KUBE_CREATE} -n qbittorrentvpn -f manifests/qbittorrentvpn/qbittorrentvpn.yaml
