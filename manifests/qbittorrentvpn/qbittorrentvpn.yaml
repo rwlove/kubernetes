@@ -42,7 +42,7 @@ spec:
         app: qbittorrentvpn
     spec:
       containers:
-      - image: arch-qbittorrentvpn
+      - image: binhex/arch-qbittorrentvpn:latest
         name: qbittorrentvpn
         env:
         - name: VPN_ENABLED
