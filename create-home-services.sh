@@ -178,6 +178,8 @@ ${KUBE_CREATE} -f manifests/node-red/node-red-namespace.yaml
 
 ./create-qbittorrent.sh
 
+./create-qbittorrentvpn.sh
+
 ./create-speedtest.sh
 
 ./create-mailu.sh

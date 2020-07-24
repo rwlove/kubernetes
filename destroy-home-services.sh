@@ -78,6 +78,8 @@ helm uninstall ${NAMESPACE} grafana
 
 ./destroy-speedtest.sh
 
+./destroy-qbittorrentvpn.sh
+
 ./destroy-qbittorrent.sh
 
 ./destroy-grocy.sh
