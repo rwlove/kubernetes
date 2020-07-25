@@ -47,10 +47,6 @@ spec:
         env:
         - name: VPN_ENABLED
           value: "yes"
-        - name: VPN_USER
-          value: "foo"
-        - name: VPN_PASS
-          value: "bar"
         - name: VPN_PROV
           value: "custom"
         - name: STRICT_PORT_FORWARD
