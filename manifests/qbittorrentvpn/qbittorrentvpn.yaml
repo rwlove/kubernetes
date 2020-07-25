@@ -119,7 +119,7 @@ spec:
   - name: eightonetcp
     port: 6881
     targetPort: 6881
-    protocol: TC
+    protocol: TCP
   selector:
     app: qbittorrentvpn
 
