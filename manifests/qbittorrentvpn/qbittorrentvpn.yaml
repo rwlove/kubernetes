@@ -98,6 +98,7 @@ metadata:
   name: qbittorrentvpn
   namespace: qbittorrentvpn
 spec:
+  type: LoadBalancer
   ports:
   - name: webui
     port: 8080
