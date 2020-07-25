@@ -111,7 +111,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: btServiceTCP
+  name: btservicetcp
   namespace: qbittorrentvpn
 spec:
   type: ClusterIP
@@ -127,7 +127,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: btServiceUDP
+  name: btserviceudp
   namespace: qbittorrentvpn
 spec:
   type: ClusterIP
