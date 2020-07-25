@@ -58,14 +58,14 @@ spec:
           value: "yes"
         - name: LAN_NETWORK
           value: "10.10.0.0/16"
-        - name: NAME_SERVERS
-          value: "8.8.8.8"
         - name: DEBUG
           value: "true"
         - name: WEBUI_PORT
           value: "8080"
         - name: UMASK
           value: "000"
+        - name: PUID
+          value: "1000"
         - name: PGID
           value: "1000"
         ports:
