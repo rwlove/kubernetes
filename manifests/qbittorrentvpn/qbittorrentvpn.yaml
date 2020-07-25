@@ -43,6 +43,9 @@ spec:
     spec:
       containers:
       - image: binhex/arch-qbittorrentvpn:latest
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "SYS_TIME"]
         name: qbittorrentvpn
         env:
         - name: VPN_ENABLED
