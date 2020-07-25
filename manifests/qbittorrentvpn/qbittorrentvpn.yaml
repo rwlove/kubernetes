@@ -100,16 +100,41 @@ spec:
   - name: webui
     port: 8080
     targetPort: 8080
-  - name: eightone
-    port: 6881
-    targetPort: 6881
   - name: oneeight
     port: 8118
     targetPort: 8118
+  selector:
+    app: qbittorrentvpn
+  loadBalancerIP: 192.168.6.32
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: btServiceTCP
+  namespace: qbittorrentvpn
+spec:
+  type: ClusterIP
+  ports:
+  - name: eightonetcp
+    port: 6881
+    targetPort: 6881
+    protocol: TC
+  selector:
+    app: qbittorrentvpn
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: btServiceUDP
+  namespace: qbittorrentvpn
+spec:
+  type: ClusterIP
+  ports:
   - name: eightoneudp
     port: 6881
     targetPort: 6881
     protocol: UDP
   selector:
     app: qbittorrentvpn
-  loadBalancerIP: 192.168.6.32
