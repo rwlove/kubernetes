@@ -3,7 +3,7 @@
 KUBE_DELETE='kubectl delete'
 NAMESPACE='-n home-services'
 
-#${KUBE_DELETE} -f manifests/lb/nginx-ingress.yaml
+./destroy-nginx-ingress.sh
 
 echo "############"
 echo "Delete MetalLB"
