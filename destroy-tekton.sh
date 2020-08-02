@@ -6,9 +6,9 @@ echo "############"
 echo "Delete Tekton Pipelines"
 echo "######"
 
-${KUBE_DELETE} manifests/tekton/webhook-run.yaml
+${KUBE_DELETE} -f manifests/tekton/webhook-run.yaml
 
-${KUBE_DELETE} manifests/tekton/ingress-run.yaml
+${KUBE_DELETE} -f manifests/tekton/ingress-run.yaml
 
 ${KUBE_DELETE} -n getting-started -f manifests/tekton/create-webhook.yaml
 

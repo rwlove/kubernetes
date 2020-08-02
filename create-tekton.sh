@@ -30,6 +30,6 @@ ${KUBE_CREATE} -n getting-started -f manifests/tekton/create-ingress.yaml
 
 ${KUBE_CREATE} -n getting-started -f manifests/tekton/create-webhook.yaml
 
-${KUBE_CREATE} manifests/tekton/ingress-run.yaml
+${KUBE_CREATE} -f manifests/tekton/ingress-run.yaml
 
-${KUBE_CREATE} manifests/tekton/webhook-run.yaml
+${KUBE_CREATE} -f manifests/tekton/webhook-run.yaml
