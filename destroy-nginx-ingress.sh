@@ -6,6 +6,8 @@ echo "############"
 echo "Delete Nginx Ingress"
 echo "######"
 
-helm uninstall nginx-ingress
+helm uninstall -n nginx-ingress nginx-ingress
 
 helm repo remove nginx-ingress
+
+${KUBE_DELETE} namespace nginx-ingress

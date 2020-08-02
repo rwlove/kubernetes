@@ -12,4 +12,4 @@ echo "######"
 
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 
-helm install -n nginx-ingress ingress-nginx/ingress-nginx
+helm install -n nginx-ingress nginx-ingress ingress-nginx/ingress-nginx
