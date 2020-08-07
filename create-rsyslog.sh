@@ -10,6 +10,6 @@ echo "############"
 echo "Create rsyslog"
 echo "######"
 
-${KUBE_CREATE} -n rsyslog -f manifests/services/deployment.yaml
+${KUBE_CREATE} -n rsyslog -f manifests/rsyslog/deployment.yaml
 
-${KUBE_CREATE} -n rsyslog -f manifests/services/service.yaml
+${KUBE_CREATE} -n rsyslog -f manifests/rsyslog/service.yaml
