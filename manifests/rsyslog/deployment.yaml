@@ -5,6 +5,7 @@ metadata:
   name: rsyslog-pvc
   namespace: "rsyslog"
 spec:
+  storageClassName: rsyslog-data-storage-class
   accessModes:
     - ReadWriteMany
   resources:
