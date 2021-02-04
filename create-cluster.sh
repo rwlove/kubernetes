@@ -34,5 +34,6 @@ sudo sysctl -w net.ipv4.conf.all.rp_filter=0
 join_cmd=`kubeadm token create --print-join-command`
 
 for worker in worker1.thesteamedcrab.com worker2.thesteamedcrab.com worker3.thesteamedcrab.com ; do
+    echo "########## Joining $worker to the Cluster #"
     ssh $worker $join_cmd
 done
