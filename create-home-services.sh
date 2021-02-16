@@ -231,12 +231,6 @@ echo "Create dnsutils"
 echo "######"
 ${KUBE_CREATE} -f manifests/tools/dnsutils.yaml
 
-echo "############"
-echo "Create MetalLB"
-echo "######"
-${KUBE_CREATE} -f manifests/lb/metallb-namespace.yaml
-${KUBE_CREATE} -f manifests/lb/metallb.yaml
-${KUBE_CREATE} secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
-${KUBE_CREATE} -f configmap/lb/metallb.yaml
+./create-metallb.sh
 
 ./create-nginx-ingress.sh

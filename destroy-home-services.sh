@@ -5,12 +5,7 @@ NAMESPACE='-n home-services'
 
 ./destroy-nginx-ingress.sh
 
-echo "############"
-echo "Delete MetalLB"
-echo "######"
-${KUBE_DELETE} -f configmap/lb/metallb.yaml
-${KUBE_DELETE} -f manifests/lb/metallb.yaml
-${KUBE_DELETE} -f manifests/lb/metallb-namespace.yaml
+./destroy-metallb.sh
 
 echo "############"
 echo "Delete dnsutils"
