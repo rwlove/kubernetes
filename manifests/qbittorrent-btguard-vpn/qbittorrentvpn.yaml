@@ -81,6 +81,8 @@ spec:
           mountPath: /downloads
         - name: qbittorrentvpn-config-storage
           mountPath: /config
+        - name: dev-tun
+          mountPath: /dev/net/tun
       volumes:
       - name: qbittorrentvpn-data-storage
         persistentVolumeClaim:
@@ -88,6 +90,11 @@ spec:
       - name: qbittorrentvpn-config-storage
         persistentVolumeClaim:
           claimName: qbittorrentvpn-config-pv-claim
+      - name: dev-tun
+        hostPath:
+          path: /dev/net/tun
+          type: CharDevice
+          
 
 ---
 apiVersion: v1
