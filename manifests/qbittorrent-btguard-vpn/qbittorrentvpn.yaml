@@ -1,0 +1,141 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qbittorrentvpn-data-pv-claim
+  namespace: qbittorrentvpn
+spec:
+  storageClassName: qbittorrentvpn-data-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qbittorrentvpn-config-pv-claim
+  namespace: qbittorrentvpn
+spec:
+  storageClassName: qbittorrentvpn-config-storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: qbittorrentvpn
+  namespace: qbittorrentvpn
+spec:
+  selector:
+    matchLabels:
+      app: qbittorrentvpn
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: qbittorrentvpn
+    spec:
+      containers:
+      - image: rwlove/qbittorrent-btguard-vpn:latest
+        imagePullPolicy: Always
+        securityContext:
+          capabilities:
+            add: ["NET_ADMIN", "SYS_TIME"]
+        name: qbittorrentvpn
+        env:
+        - name: VPN_ENABLED
+          value: "yes"
+        - name: VPN_PROV
+          value: "custom"
+        - name: STRICT_PORT_FORWARD
+          value: "yes"
+        - name: ENABLE_PRIVOXY
+          value: "yes"
+        - name: LAN_NETWORK
+          value: "32.32.0.0/16"
+        - name: DEBUG
+          value: "true"
+        - name: WEBUI_PORT
+          value: "8080"
+        - name: UMASK
+          value: "000"
+        - name: PUID
+          value: "1000"
+        - name: PGID
+          value: "1000"
+        ports:
+        - containerPort: 6881
+          name: eightyone
+        - containerPort: 8080
+          name: eightyeighty
+        - containerPort: 8118
+          name: oneeight
+        volumeMounts:
+        - name: qbittorrentvpn-data-storage
+          mountPath: /downloads
+        - name: qbittorrentvpn-config-storage
+          mountPath: /config
+      volumes:
+      - name: qbittorrentvpn-data-storage
+        persistentVolumeClaim:
+          claimName: qbittorrentvpn-data-pv-claim
+      - name: qbittorrentvpn-config-storage
+        persistentVolumeClaim:
+          claimName: qbittorrentvpn-config-pv-claim
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrentvpn
+  namespace: qbittorrentvpn
+spec:
+  type: LoadBalancer
+  ports:
+  - name: webui
+    port: 8080
+    targetPort: 8080
+  - name: oneeight
+    port: 8118
+    targetPort: 8118
+  selector:
+    app: qbittorrentvpn
+  loadBalancerIP: 192.168.6.32
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: btservicetcp
+  namespace: qbittorrentvpn
+spec:
+  type: ClusterIP
+  ports:
+  - name: eightonetcp
+    port: 6881
+    targetPort: 6881
+    protocol: TCP
+  selector:
+    app: qbittorrentvpn
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: btserviceudp
+  namespace: qbittorrentvpn
+spec:
+  type: ClusterIP
+  ports:
+  - name: eightoneudp
+    port: 6881
+    targetPort: 6881
+    protocol: UDP
+  selector:
+    app: qbittorrentvpn
