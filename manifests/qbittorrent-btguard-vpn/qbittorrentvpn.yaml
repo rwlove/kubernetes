@@ -58,7 +58,7 @@ spec:
         - name: ENABLE_PRIVOXY
           value: "no"
         - name: LAN_NETWORK
-          value: "192.168.0.0/16"
+          value: "32.32.0.0/16"
         - name: DEBUG
           value: "true"
         - name: WEBUI_PORT
