@@ -1,10 +1,21 @@
 #!/bin/bash
 
-echo "#### Drain brain.thesteamedcrab.com ####"
-#kubectl drain brain.thesteamedcrab.com --delete-local-data --force --ignore-daemonsets
 
-echo "#### Delete node brian.thesteamedcrab.com ####"
-#kubectl delete node brain.thesteamedcrab.com
+reset_cmd=`kubeadm reset -f`
+
+for worker in worker1.thesteamedcrab.com \
+	      worker2.thesteamedcrab.com \
+	      worker3.thesteamedcrab.com \
+	      ; do
+    echo "#### Drain $worker ####"
+    kubectl drain $worker --delete-local-data --force --ignore-daemonsets
+    echo "#### Reset $worker ####"
+    ssh $worker $reset_cmd
+done
+
+kubectl drain master.thesteamedcrab.com \
+	--delete-local-data --force --ignore-daemonsets
+
 
 echo "#### Reset (destroy) the K8S Cluster ####"
 sudo kubeadm reset -f init.config
