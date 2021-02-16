@@ -12,7 +12,7 @@ fi
 #sed "s/MASTER_IP/${ip_addr}/g" < ${HOME}/kubernetes/init.config.orig > ${HOME}/kubernetes/init.config
 
 echo "#### Initialize the K8S Cluster ####"
-kubeadm init
+kubeadm init --pod-network-cidr=32.32.0.0/16
 
 echo "#### Copy K8S config ####"
 mkdir ${HOME}/.kube
