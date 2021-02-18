@@ -73,7 +73,7 @@ spec:
         - containerPort: 6881
           name: eightyone
         - containerPort: 8080
-          name: eightyeighty
+          name: webui
         - containerPort: 8118
           name: oneeight
         volumeMounts:
