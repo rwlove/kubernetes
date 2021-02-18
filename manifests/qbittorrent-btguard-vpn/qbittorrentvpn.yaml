@@ -108,9 +108,11 @@ spec:
   - name: webui
     port: 8080
     targetPort: 8080
+    protocol: TCP
   - name: oneeight
     port: 8118
     targetPort: 8118
+    protocol: TCP
   selector:
     app: qbittorrentvpn
   loadBalancerIP: 192.168.6.32
