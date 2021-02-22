@@ -31,11 +31,14 @@ for worker in worker1.thesteamedcrab.com \
 	      worker3.thesteamedcrab.com \
 	      ; do
     echo "#### Reset $worker ####"
-    ssh $worker '$reset_cmd'
-    ssh $worker 'rm -rf /etc/cni /etc/kubernetes'
-    ssh $worker 'iptables -F && iptables -X && \
+    ssh $worker "$reset_cmd"
+    echo "#### Clear /etc $worker ####"
+    ssh $worker "rm -rf /etc/cni /etc/kubernetes"
+    echo "#### Clear iptables $worker ####"
+    ssh $worker "iptables -F && iptables -X && \
     		 iptables -t nat -F && iptables -t nat -X && \
                  iptables -t raw -F && iptables -t raw -X && \
-    		 iptables -t mangle -F && iptables -t mangle -X'
-    ssh $worker 'systemctl restart docker'
+    		 iptables -t mangle -F && iptables -t mangle -X"
+    echo "#### Restart docker $worker ####"
+    ssh $worker "systemctl restart docker"
 done
