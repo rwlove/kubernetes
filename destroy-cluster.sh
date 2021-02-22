@@ -12,7 +12,7 @@ for worker in worker1.thesteamedcrab.com \
     kubectl delete $worker
 done
 
-kubectl drain master.thesteamedcrab.com \
+kubectl drain master1.thesteamedcrab.com \
 	--delete-local-data --force --ignore-daemonsets
 
 echo "#### Reset (destroy) the K8S Cluster ####"
