@@ -32,7 +32,7 @@ for worker in worker1.thesteamedcrab.com \
 	      ; do
     echo "#### Reset $worker ####"
     ssh $worker '$reset_cmd'
-    ssh $worker 'rm -rf /etc/cni /etc/kubernetes /root/.kube/*'
+    ssh $worker 'rm -rf /etc/cni /etc/kubernetes'
     ssh $worker 'iptables -F && iptables -X && \
     		 iptables -t nat -F && iptables -t nat -X && \
                  iptables -t raw -F && iptables -t raw -X && \
