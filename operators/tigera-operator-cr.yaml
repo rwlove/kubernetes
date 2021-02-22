@@ -15,3 +15,11 @@ spec:
       natOutgoing: Enabled
       nodeSelector: all()
 
+---
+apiVersion: projectcalico.org/v3
+kind: FelixConfiguration
+metadata:
+  name: default
+spec:
+  ipv6Support: false
+  iptablesBackend: NFT
