@@ -32,10 +32,10 @@ for worker in worker1.thesteamedcrab.com \
 	      ; do
     echo "#### Reset $worker ####"
     ssh $worker '$reset_cmd'
-    ssh $worker 'rm -rf /etc/cni /etc/kubernetes /var/lib/dockershim /var/lib/etcd /var/lib/kubelet /var/run/kubernetes ~/.kube/*'
-    ssh $worker 'iptables -F && iptables -X'
-    ssh $worker 'iptables -t nat -F && iptables -t nat -X'
-    ssh $worker 'iptables -t raw -F && iptables -t raw -X'
-    ssh $worker 'iptables -t mangle -F && iptables -t mangle -X'
+    ssh $worker 'rm -rf /etc/cni /etc/kubernetes /root/.kube/*'
+    ssh $worker 'iptables -F && iptables -X && \
+    		 iptables -t nat -F && iptables -t nat -X && \
+                 iptables -t raw -F && iptables -t raw -X && \
+    		 iptables -t mangle -F && iptables -t mangle -X'
     ssh $worker 'systemctl restart docker'
 done
