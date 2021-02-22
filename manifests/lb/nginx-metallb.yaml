@@ -17,6 +17,9 @@ spec:
         ports:
         - name: http
           containerPort: 80
+      nodeSelector:
+        kubernetes.io/hostname: worker1.thesteamedcrab.com
+
 
 ---
 apiVersion: v1
