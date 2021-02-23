@@ -10,7 +10,7 @@ spec:
   capacity:
     storage: 300Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   nfs:
     server: vmheart.thesteamedcrab.com
     path: /mnt/sda/delme_qbt/data

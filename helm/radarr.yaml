@@ -117,7 +117,10 @@ persistence:
     size: 10Gi
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
-  extraExistingClaimMounts: []
+  extraExistingClaimMounts:
+    - name: qbt-downloads
+      mountPath: /downloads
+      existingClaim: qbittorrentvpn-data-pv-claim
     # - name: external-mount
     #   mountPath: /srv/external-mount
     ## A manually managed Persistent Volume and Claim
