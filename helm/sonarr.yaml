@@ -4,7 +4,7 @@
 
 image:
   repository: linuxserver/sonarr
-  tag: 2.0.0.5344-ls60
+  tag:  version-3.0.4.993
   pullPolicy: IfNotPresent
 
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
@@ -13,13 +13,24 @@ strategyType: Recreate
 # Probes configuration
 probes:
   liveness:
-    initialDelaySeconds: 60
-    failureThreshold: 5
-    timeoutSeconds: 10
-  readiness:
-    initialDelaySeconds: 60
-    failureThreshold: 5
-    timeoutSeconds: 10
+    enabled: true
+    ## Set this to true if you wish to specify your own livenessProbe
+    custom: true
+    ## The spec field contains the values for the default livenessProbe.
+    ## If you selected custom: true, this field holds the definition of the livenessProbe.
+    spec:
+      exec:
+        command:
+        - /usr/bin/env
+        - bash
+        - -c
+        - curl --fail localhost:8989/api/v3/system/status?apiKey=`IFS=\> && while
+          read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`
+      failureThreshold: 5
+      initialDelaySeconds: 60
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
 
 # Prometheus Metrics
 exportarr:
@@ -44,7 +55,7 @@ exportarr:
 nameOverride: "sonarr"
 fullnameOverride: ""
 
-timezone: 'America/Los_Angeles'
+timezone: 'America/New_York'
 puid: 1001
 pgid: 1001
 
