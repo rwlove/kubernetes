@@ -27,7 +27,7 @@ spec:
   capacity:
     storage: 300Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   nfs:
     server: brain.thesteamedcrab.com
     path: /mnt/mass_storage/kubernetes/qbittorrent/downloads
