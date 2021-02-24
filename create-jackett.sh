@@ -10,6 +10,6 @@ echo "############"
 echo "Create jackett"
 echo "######"
 
-helm repo add billimek https://billimek.com/billimek-charts/
+helm repo add k8s-at-home https://k8s-at-home.com/charts/
 
-helm install -n jackett jackett -f helm/jackett.yaml billimek/jackett
+helm install -n jackett jackett -f helm/jackett.yaml k8s-at-home/jackett

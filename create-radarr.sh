@@ -10,6 +10,6 @@ echo "############"
 echo "Create radarr"
 echo "######"
 
-helm repo add billimek https://billimek.com/billimek-charts/
+helm repo add k8s-at-home https://k8s-at-home.com/charts/
 
-helm install -n radarr radarr -f helm/radarr.yaml billimek/radarr
+helm install -n radarr radarr -f helm/radarr.yaml k8s-at-home/radarr

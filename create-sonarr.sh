@@ -10,6 +10,6 @@ echo "############"
 echo "Create sonarr"
 echo "######"
 
-helm repo add billimek https://billimek.com/billimek-charts/
+helm repo add k8s-at-home https://k8s-at-home.com/charts/
 
-helm install -n sonarr sonarr -f helm/sonarr.yaml billimek/sonarr
+helm install -n sonarr sonarr -f helm/sonarr.yaml k8s-at-home/sonarr

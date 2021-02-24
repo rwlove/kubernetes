@@ -9,13 +9,13 @@ ${KUBE_CREATE} ns heimdall
 
 ${KUBE_CREATE} -f manifests/volumes/heimdall-pv.yaml
 
-helm repo add billimek https://billimek.com/billimek-charts/
+helm repo add k8s-at-home https://k8s-at-home.com/charts/
 
 helm install \
      -n heimdall \
      heimdall \
-     --set timezone="America/Los_Angeles" \
+     --set timezone="America/New_York" \
      --set service.type=LoadBalancer \
      --set service.loadBalancerIP="192.168.6.27" \
      --set persistence.config.storageClass="heimdall-storage-class" \
-     billimek/heimdall
+     k8s-at-home/heimdall
