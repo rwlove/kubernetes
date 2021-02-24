@@ -116,7 +116,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteMany
+    accessMode: ReadWriteOnce
     size: 10Gi
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
