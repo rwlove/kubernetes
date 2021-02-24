@@ -120,10 +120,10 @@ persistence:
     size: 10Gi
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
-  #extraExistingClaimMounts:
-  #- name: qbt-downloads
-  #  mountPath: /downloads
-  #  existingClaim: sonarr-data-pv-claim
+  extraExistingClaimMounts:
+  - name: qbt-downloads
+    mountPath: /downloads
+    existingClaim: sonarr-data-pv-claim
     ## A manually managed Persistent Volume and Claim
     ## If defined, PVC must be created manually before volume will be bound
     #   existingClaim:
