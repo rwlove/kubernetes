@@ -45,8 +45,7 @@ addons:
     securityContext:
       runAsGroup: 0
       runAsUser: 0
-      capabilities:
-        add: ["NET_ADMIN"]
+      capabilities: NET_ADMIN
 
     env:
       # Set this environment variable to 'on' to make sure all traffic gets routed through the VPN container.
