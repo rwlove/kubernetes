@@ -118,12 +118,15 @@ persistence:
     size: 10Gi
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
-  downloads:
-    emptyDir: false
-    enabled: false
-    mountPath: /downloads
-    existingClaim: radarr-data-pv-claim
-    subPath: completed
+
+additionalVolumeMounts:
+- name: radarr-data
+  mountPath: "/downloads"
+
+additionalVolumes:
+- name: radarr-data
+  persistentVolumeClaim:
+    claimName: radarr-data-pv-claim
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
