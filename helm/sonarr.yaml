@@ -61,7 +61,8 @@ pgid: 1001
 
 service:
   type: LoadBalancer
-  port: 8989
+  port:
+    port: 8989
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
@@ -115,7 +116,7 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 10Gi
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false

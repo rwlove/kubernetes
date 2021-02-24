@@ -59,7 +59,8 @@ pgid: 1001
 
 service:
   type: LoadBalancer
-  port: 7878
+  port:
+    port: 7878
   ## Specify the nodePort value for the LoadBalancer and NodePort service types.
   ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
   ##
@@ -113,14 +114,14 @@ persistence:
     ## the existingClaim variable
     # existingClaim: your-claim
     # subPath: some-subpath
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 10Gi
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
-  extraExistingClaimMounts:
-  - name: qbt-downloads
-    mountPath: /downloads
-    existingClaim: radarr-data-pv-claim
+  #extraExistingClaimMounts: {}
+  #- name: qbt-downloads
+  #  mountPath: /downloads
+  #  existingClaim: radarr-data-pv-claim
     # - name: external-mount
     #   mountPath: /srv/external-mount
     ## A manually managed Persistent Volume and Claim
