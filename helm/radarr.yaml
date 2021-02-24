@@ -118,9 +118,9 @@ persistence:
     ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
   extraExistingClaimMounts:
-    - name: qbt-downloads
-      mountPath: /downloads
-      existingClaim: radarr-data-pv-claim
+  - name: qbt-downloads
+    mountPath: /downloads
+    existingClaim: radarr-data-pv-claim
     # - name: external-mount
     #   mountPath: /srv/external-mount
     ## A manually managed Persistent Volume and Claim
