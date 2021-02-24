@@ -54,7 +54,7 @@ nameOverride: "radarr"
 fullnameOverride: ""
 
 timezone: 'America/New_York'
-puid: 1001
+puid: 1000
 pgid: 1001
 
 service:
