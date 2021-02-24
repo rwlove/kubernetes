@@ -120,7 +120,7 @@ persistence:
   extraExistingClaimMounts:
     - name: qbt-downloads
       mountPath: /downloads
-      existingClaim: qbittorrentvpn-data-pv-claim
+      existingClaim: radarr-data-pv-claim
     # - name: external-mount
     #   mountPath: /srv/external-mount
     ## A manually managed Persistent Volume and Claim
