@@ -40,11 +40,6 @@ addons:
     type: openvpn
 
     openvpn:
-      # This gets read by the Helm chart. The default OpenVPN image reads this and uses it to connect to the VPN provider.
-      auth: |
-        myuser
-        mypassword
-
     # If the podSecurityContext is set to run as a different user, make sure to run the OpenVPN container as root. 
     # This is required for it to be able to read certain configuration files. 
     securityContext:
