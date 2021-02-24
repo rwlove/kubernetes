@@ -9,6 +9,6 @@ ${KUBE_CREATE} ns qbittorrent
 
 ${KUBE_CREATE} -f manifests/volumes/qbittorrent-pv.yaml
 
-helm repo add billimek https://billimek.com/billimek-charts/
+helm repo add billimek https://k8s-at-home/charts/
 
-helm install -n qbittorrent qbittorrent -f helm/qbittorrent.yaml billimek/qbittorrent
+helm install -n qbittorrent qbittorrent -f helm/qbittorrent.yaml k8s-at-home/qbittorrent

@@ -10,5 +10,3 @@ helm -n qbittorrent uninstall qbittorrent
 ${KUBE_DELETE} -f manifests/volumes/qbittorrent-pv.yaml
 
 ${KUBE_DELETE} ns qbittorrent
-
-helm repo remove billimek
