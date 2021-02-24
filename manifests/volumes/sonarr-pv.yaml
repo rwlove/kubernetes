@@ -10,10 +10,10 @@ spec:
   capacity:
     storage: 300Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   nfs:
-    server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/sonarr/media
+    server: vmheart.thesteamedcrab.com
+    path: /mnt/sda/delme_qbt/data
 
 ---
 apiVersion: v1
