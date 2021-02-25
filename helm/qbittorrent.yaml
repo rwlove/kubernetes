@@ -46,8 +46,6 @@ addons:
       runAsGroup: 568
       capabilities:
         add: ["NET_ADMIN", "SYS_MODULE"]
-      sysctls:
-        net.ipv4.conf.all.src_valid_mark: "1"
 
     env:
       # Enable a killswitch that kills all trafic when the VPN is not connected
