@@ -46,6 +46,7 @@ addons:
       runAsGroup: 568
       capabilities:
         add: ["NET_ADMIN", "SYS_MODULE"]
+      privileged: true
 
     env:
       # Enable a killswitch that kills all trafic when the VPN is not connected
