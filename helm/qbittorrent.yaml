@@ -105,3 +105,13 @@ service:
   # loadBalancerSourceRanges: []
   ## Set the externalTrafficPolicy in the Service to either Cluster or Local
   # externalTrafficPolicy: Cluster
+
+  additionalServices:
+  - enabled: true
+    nameSuffix: bittorrent
+    type: ClusterIP
+    port:
+      port: 24589
+      name: bittorrent
+      protocol: TCP
+      targetPort: 24589
