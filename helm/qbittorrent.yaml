@@ -51,7 +51,7 @@ addons:
     env:
       # Enable a killswitch that kills all trafic when the VPN is not connected
       KILLSWITCH: "true"
-      KILLSWITCH_EXCLUDEDNETWORKS_IPV4: {{ (datasource "cluster-vars").networks.k8s_cluster }};{{ (datasource "cluster-vars").networks.k8s_services }};{{ (datasource "cluster-vars").networks.management_lan }}
+      KILLSWITCH_EXCLUDEDNETWORKS_IPV4: "32.32.0.0/16;192.168.0.0/16"
 
     # The wireguard configuration file provided by your VPN provider goes here.
     #
