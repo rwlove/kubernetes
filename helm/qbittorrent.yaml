@@ -63,7 +63,7 @@ addons:
       [Interface]
       PrivateKey = Qw6OfWI2krhkrF2ApmfvMVrey86t+Cz0Yo5lfAA0Ros=
       Address = 10.68.226.83/32
-      DNS = 193.138.218.74
+      DNS = 8.8.8.8
       PostUp = /config/up.sh %i
       PreDown = /config/down.sh %i
 
