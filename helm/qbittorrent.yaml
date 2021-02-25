@@ -51,6 +51,7 @@ addons:
     env:
       # Enable a killswitch that kills all trafic when the VPN is not connected
       KILLSWITCH: "true"
+      LAN_NETWORK: "32.32.0.0/16,192.168.0.0/16"
 
     # The wireguard configuration file provided by your VPN provider goes here.
     #
