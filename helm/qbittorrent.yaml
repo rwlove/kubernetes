@@ -64,8 +64,8 @@ addons:
       PrivateKey = Qw6OfWI2krhkrF2ApmfvMVrey86t+Cz0Yo5lfAA0Ros=
       Address = 10.68.226.83/32
       DNS = 193.138.218.74
-      PostUp = /config/up.sh %i
-      PreDown = /config/down.sh %i
+      PostUp = iptables -I OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && /config/up.sh %i
+      PreDown = iptables -D OUTPUT ! -o %i -m mark ! --mark $(wg show %i fwmark) -m addrtype ! --dst-type LOCAL -j REJECT && /config/down.sh %i
 
       [Peer]
       PublicKey = XE+hufytSkX14TjskwmYL4HL4mbPf+Vd5Jfgwf/5JHc=
