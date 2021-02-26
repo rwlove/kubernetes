@@ -1,6 +1,6 @@
 image:
   repository: k8sathome/qbittorrent
-  tag: v4.3.3
+  tag: v4.2.5
   pullPolicy: IfNotPresent
 
 env:
