@@ -10,7 +10,6 @@ image:
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
 strategyType: Recreate
 
-# Probes configuration
 probes:
   liveness:
     enabled: true
@@ -24,7 +23,7 @@ probes:
         - /usr/bin/env
         - bash
         - -c
-        - curl --fail localhost:7878/api/v3/system/status?apiKey=`IFS=\> && while
+        - curl --fail localhost:8686/api/v1/system/status?apiKey=`IFS=\> && while
           read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`
       failureThreshold: 5
       initialDelaySeconds: 60
@@ -53,9 +52,10 @@ exportarr:
 nameOverride: "lidarr"
 fullnameOverride: ""
 
-timezone: 'America/New_York'
-puid: 1000
-pgid: 1001
+env:
+  TZ: 'America/New_York'
+  PUID: 1000
+  PGID: 1001
 
 service:
   type: LoadBalancer
