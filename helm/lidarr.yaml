@@ -1,0 +1,151 @@
+# Default values for lidarr.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: linuxserver/lidarr
+  tag: version-0.7.2.1878
+  pullPolicy: IfNotPresent
+
+# upgrade strategy type (e.g. Recreate or RollingUpdate)
+strategyType: Recreate
+
+# Probes configuration
+probes:
+  liveness:
+    enabled: true
+    ## Set this to true if you wish to specify your own livenessProbe
+    custom: true
+    ## The spec field contains the values for the default livenessProbe.
+    ## If you selected custom: true, this field holds the definition of the livenessProbe.
+    spec:
+      exec:
+        command:
+        - /usr/bin/env
+        - bash
+        - -c
+        - curl --fail localhost:7878/api/v3/system/status?apiKey=`IFS=\> && while
+          read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`
+      failureThreshold: 5
+      initialDelaySeconds: 60
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
+
+# Prometheus Metrics
+exportarr:
+  enabled: false
+  image:
+    repository: onedr0p/exportarr
+    tag: v0.3.0
+    pullPolicy: IfNotPresent
+  url: "http://lidarr.thesteamedcrab.com:7878"
+  apikey:
+  port: 9708
+  serviceMonitor:
+    enabled: false
+    namespace: lidarr
+    path: /metrics
+    interval: 4m
+    scrapeTimeout: 90s
+    additionalLabels: {}
+
+nameOverride: "lidarr"
+fullnameOverride: ""
+
+timezone: 'America/New_York'
+puid: 1000
+pgid: 1001
+
+service:
+  type: LoadBalancer
+  port:
+    port: 7878
+  ## Specify the nodePort value for the LoadBalancer and NodePort service types.
+  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
+  ##
+  # nodePort:
+  ## Provide any additional annotations which may be required. This can be used to
+  ## set the LoadBalancer service type to internal only.
+  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
+  ##
+  annotations: {}
+  labels: {}
+  ## Use loadBalancerIP to request a specific static IP,
+  ## otherwise leave blank
+  ##
+  loadBalancerIP: 192.168.6.28
+  # loadBalancerSourceRanges: []
+  ## Set the externalTrafficPolicy in the Service to either Cluster or Local
+  # externalTrafficPolicy: Cluster
+
+persistence:
+  config:
+    enabled: true
+    ## lidarr configuration data Persistent Volume Storage Class
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    storageClass: "lidarr-config-storage-class"
+    ##
+    ## If you want to reuse an existing claim, you can pass the name of the PVC using
+    ## the existingClaim variable
+    # existingClaim: your-claim
+    # subPath: some-subpath
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    ## Do not delete the pvc upon helm uninstall
+    skipuninstall: false
+  media:
+    enabled: true
+    ## lidarr media volume configuration
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+    ##   GKE, AWS & OpenStack)
+    ##
+    storageClass: "lidarr-media-storage-class"
+    ##
+    ## If you want to reuse an existing claim, you can pass the name of the PVC using
+    ## the existingClaim variable
+    # existingClaim: your-claim
+    # subPath: some-subpath
+    accessMode: ReadWriteOnce
+    size: 10Gi
+    ## Do not delete the pvc upon helm uninstall
+    skipuninstall: false
+
+additionalVolumeMounts:
+- name: lidarr-data
+  mountPath: "/downloads"
+
+additionalVolumes:
+- name: lidarr-data
+  persistentVolumeClaim:
+    claimName: lidarr-data-pv-claim
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #  cpu: 100m
+  #  memory: 128Mi
+  # requests:
+  #  cpu: 100m
+  #  memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+podAnnotations: {}
+
+deploymentAnnotations: {}
