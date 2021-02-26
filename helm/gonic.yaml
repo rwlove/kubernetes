@@ -29,8 +29,12 @@ service:
 
 persistence:
   data:
-    enabled: false
+    enabled: true
     emptyDir: false
+    mountPath: /data
+    storageClass: "gonic-data-storage-class"
+    accessMode: ReadWriteOnce
+    size: 10Gi
 
   podcasts:
     enabled: true

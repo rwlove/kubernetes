@@ -30,3 +30,20 @@ spec:
   nfs:
     server: brain.thesteamedcrab.com
     path: /mnt/mass_storage/kubernetes/gonic/podcasts
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gonic-data-data
+  labels:
+    type: local
+spec:
+  storageClassName: gonic-data-storage-class
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/gonic/data
