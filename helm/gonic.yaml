@@ -18,7 +18,7 @@ strategy:
 env:
   TZ: 'America/New_York'
   GONIC_MUSIC_PATH: /music
-  GONIC_PODCAST_PATH: /podcast
+  GONIC_PODCAST_PATH: /podcasts
   GONIC_CACHE_PATH: /cache
 
 service:
