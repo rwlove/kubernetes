@@ -37,7 +37,8 @@ persistence:
     emptyDir: false
     storageClass: "gonic-podcasts-storage-class"
     accessMode: ReadWriteOnce
-    
+    size: 300Gi
+
   cache:
     enabled: true
     emptyDir: true
@@ -49,4 +50,5 @@ persistence:
     storageClass: "gonic-music-storage-class"
     skipuninstall: false
     accessMode: ReadOnlyMany
+    size: 300Gi
     # existingClaim: ""
