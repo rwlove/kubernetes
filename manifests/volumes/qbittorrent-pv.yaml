@@ -29,5 +29,5 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/qbittorrent/downloads
+    server: vmheart.thesteamedcrab.com
+    path: /mnt/sda/delme_qbt/data
