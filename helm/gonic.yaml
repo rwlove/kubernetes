@@ -35,6 +35,7 @@ persistence:
   podcasts:
     enabled: true
     emptyDir: false
+    mountPath: /podcasts
     storageClass: "gonic-podcasts-storage-class"
     accessMode: ReadWriteOnce
     size: 300Gi
