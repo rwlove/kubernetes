@@ -1,0 +1,52 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: sentriz/gonic
+  pullPolicy: IfNotPresent
+  tag: v0.12.0
+
+strategy:
+  type: Recreate
+
+# # See more environment variables in the gonic documentation
+# https://github.com/sentriz/gonic#configuration-options
+env:
+  TZ: 'America/New_York'
+  GONIC_MUSIC_PATH: /music
+  GONIC_PODCAST_PATH: /podcast
+  GONIC_CACHE_PATH: /cache
+
+service:
+  port:
+    port: 80
+  type: LoadBalancer
+  loadBalancerIP: 192.168.6.36
+
+persistence:
+  data:
+    enabled: false
+    emptyDir: false
+
+  podcasts:
+    enabled: true
+    emptyDir: false
+    storageClass: "gonic-podcasts-storage-class"
+    accessMode: ReadWriteOnce
+    
+  cache:
+    enabled: true
+    emptyDir: true
+
+  music:
+    enabled: true
+    emptyDir: false
+    mountPath: /music
+    storageClass: "gonic-music-storage-class"
+    skipuninstall: false
+    accessMode: ReadOnlyMany
+    # existingClaim: ""
