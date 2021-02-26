@@ -9,8 +9,8 @@ echo "######"
 echo "## Uninstall Radarr Helm Chart"
 helm -n radarr uninstall radarr
 
-echo "## Delete Sonarr PV"
+echo "## Delete Radarr PV"
 ${KUBE_DELETE} -f manifests/volumes/radarr-pv.yaml
 
-echo "## Delete 'ronarr' Namespace"
+echo "## Delete 'radarr' Namespace"
 ${KUBE_DELETE} ns radarr

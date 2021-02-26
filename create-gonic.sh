@@ -4,7 +4,7 @@ KUBE_CREATE='kubectl create'
 
 ${KUBE_CREATE} ns gonic
 
-${KUBE_CREATE} -f manifests/volumes/gonic-pv.yaml
+${KUBE_CREATE} -f manifests/volumes/gonic-music-volume-pv.yaml
 
 #${KUBE_CREATE} -f manifests/gonic/gonic-downloads-pvc.yaml
 
