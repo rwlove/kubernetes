@@ -41,6 +41,7 @@ persistence:
     size: 300Gi
 
   cache:
+    mountPath: /cache
     enabled: true
     emptyDir: true
 
