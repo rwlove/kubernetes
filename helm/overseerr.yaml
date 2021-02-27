@@ -1,0 +1,33 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: sctx/overseerr
+  pullPolicy: IfNotPresent
+  tag: 1.19.1
+
+strategy:
+  type: Recreate
+
+env:
+  TZ: "America/New_York"
+  # LOG_LEVEL: info
+
+service:
+  port:
+    port: 5055
+  type: LoadBalancer
+  loadBalancerIP: 192.168.6.39
+
+persistence:
+  config:
+    enabled: true
+    emptyDir: false
+    mountPath: /app/config
+    storageClass: overseerr-config-storage-class
+    accessMode: ReadWriteOnce
+    size: 1Gi
