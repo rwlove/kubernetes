@@ -1,0 +1,34 @@
+#
+# IMPORTANT NOTE
+#
+# This chart inherits from our common library chart. You can check the default values/options here:
+# https://github.com/k8s-at-home/charts/tree/master/charts/common/values.yaml
+#
+
+image:
+  repository: jesec/flood
+  pullPolicy: IfNotPresent
+  tag: 4.1.1
+
+strategy:
+  type: Recreate
+
+# Other environment variables that can be configure can be seen at
+# https://github.com/jesec/flood/blob/master/config.cli.js
+env:
+  FLOOD_OPTION_RUNDIR: /data
+
+service:
+  port:
+    port: 3000
+  type: LoadBalancer
+  loadBalancerIP: 192.168.6.38
+
+persistence:
+  data:
+    enabled: true
+    emptyDir: false
+    mountPath: /data
+    storageClass: "flood-data-storage-class"
+    accessMode: ReadWriteOnce
+    size: 10Gi
