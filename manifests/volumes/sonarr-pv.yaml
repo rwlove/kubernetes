@@ -27,10 +27,10 @@ spec:
   capacity:
     storage: 300Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   nfs:
     server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/sonarr/media
+    path: /mnt/mass_storage/storage/video/Television/
 
 ---
 apiVersion: v1
