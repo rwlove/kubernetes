@@ -17,7 +17,7 @@ env:
   TZ: "America/New_York"
   PUID: 1000
   PGID: 1001
-  # LOG_LEVEL: UTC
+  LOG_LEVEL: "info"
 
 service:
   type: LoadBalancer
