@@ -12,8 +12,6 @@ strategyType: Recreate
 
 env:
   TZ: "America/New_York"
-  PUID: 1000
-  PGID: 1001
 
 # Probes configuration
 probes:
@@ -61,8 +59,6 @@ nameOverride: "sonarr"
 fullnameOverride: ""
 
 timezone: 'America/New_York'
-puid: 1000
-pgid: 1001
 
 service:
   type: LoadBalancer

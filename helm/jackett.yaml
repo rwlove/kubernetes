@@ -12,8 +12,6 @@ strategyType: Recreate
 
 env:
   TZ: "America/New_York"
-  PUID: 1000
-  PGID: 1001
 
 nameOverride: "jackett"
 fullnameOverride: ""
