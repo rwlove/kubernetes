@@ -8,7 +8,7 @@
 image:
   repository: flaresolverr/flaresolverr
   pullPolicy: IfNotPresent
-  tag: 2.1.0
+  tag: v1.2.3
 
 strategy:
   type: Recreate
