@@ -30,7 +30,7 @@ spec:
     - ReadWriteOnce
   nfs:
     server: brain.thesteamedcrab.com
-    path: /mnt/mass_storage/kubernetes/lidarr/media
+    path: /mnt/mass_storage/storage/MP3s/
 
 ---
 apiVersion: v1
