@@ -6,6 +6,8 @@ ${KUBE_CREATE} ns lidarr
 
 ${KUBE_CREATE} -f manifests/volumes/lidarr-pv.yaml
 
+${KUBE_CREATE} -f manifests/lidarr/lidarr-downloads-pvc.yaml
+
 echo "############"
 echo "Create lidarr"
 echo "######"
