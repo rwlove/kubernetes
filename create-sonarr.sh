@@ -6,8 +6,6 @@ ${KUBE_CREATE} ns sonarr
 
 ${KUBE_CREATE} -f manifests/volumes/sonarr-pv.yaml
 
-${KUBE_CREATE} -f manifests/sonarr/sonarr-downloads-pvc.yaml
-
 echo "############"
 echo "Create sonarr"
 echo "######"

@@ -6,8 +6,6 @@ ${KUBE_CREATE} ns radarr
 
 ${KUBE_CREATE} -f manifests/volumes/radarr-pv.yaml
 
-${KUBE_CREATE} -f manifests/radarr/radarr-downloads-pvc.yaml
-
 echo "############"
 echo "Create radarr"
 echo "######"
