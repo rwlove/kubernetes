@@ -5,7 +5,7 @@ metadata:
   name: lidarr-data-pv-claim
   namespace: lidarr
 spec:
-  storageClassName: qbittorrentvpn-downloads-storage-class
+  storageClassName: qbittorrentvpn-lidarr-data-storage-class
   accessModes:
     - ReadWriteMany
   resources:
