@@ -5,7 +5,7 @@ metadata:
   name: sonarr-data-pv-claim
   namespace: sonarr
 spec:
-  storageClassName: qbittorrentvpn-sonarr-data-storage-class
+  storageClassName: qbittorrent-downloads-storage-class
   accessModes:
     - ReadWriteMany
   resources:

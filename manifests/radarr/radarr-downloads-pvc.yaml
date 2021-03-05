@@ -5,7 +5,7 @@ metadata:
   name: radarr-data-pv-claim
   namespace: radarr
 spec:
-  storageClassName: qbittorrentvpn-radarr-data-storage-class
+  storageClassName: qbittorrentvpn-downloads-storage-class
   accessModes:
     - ReadWriteMany
   resources:
