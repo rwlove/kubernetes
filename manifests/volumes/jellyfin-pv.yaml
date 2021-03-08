@@ -6,7 +6,7 @@ metadata:
   labels:
     type: local
 spec:
-  storageClassName: qbittorrentvpn-jellyfin-data-storage-class
+  storageClassName: jellyfin-data-storage-class
   capacity:
     storage: 300Gi
   accessModes:
