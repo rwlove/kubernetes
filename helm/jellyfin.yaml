@@ -30,9 +30,11 @@ persistence:
     mountPath: /config
     storageClass: "jellyfin-config-storage-class"
     accessMode: ReadWriteOnce
+    size: 1Gi
 
   media:
     enabled: true
     mountPath: /media
     storageClass: "jellyfin-media-storage-class"
     accessMode: ReadWriteOnce
+    size: 1Gi
