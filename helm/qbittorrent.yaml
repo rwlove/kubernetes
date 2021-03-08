@@ -47,7 +47,6 @@ addons:
     securityContext:
       runAsUser: 1000
       runAsGroup: 1001
-      fsGroup: 1001
       capabilities:
         add: ["NET_ADMIN", "SYS_MODULE"]
 
