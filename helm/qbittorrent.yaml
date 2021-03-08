@@ -36,11 +36,6 @@ persistence:
     emptyDir: true  
     mountPath: /shared
 
-podSecurityContext:
-  runAsUser: 1000
-  runAsGroup: 1001
-  fsGroup: 1001  
-
 addons:
   vpn:
     enabled: true
