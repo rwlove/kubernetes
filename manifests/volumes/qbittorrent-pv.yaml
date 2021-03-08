@@ -30,4 +30,4 @@ spec:
     - ReadWriteMany
   nfs:
     server: vmheart.thesteamedcrab.com
-    path: /mnt/sda/delme_qbt/data
+    path: /mnt/sda/k8s_qbittorrent_downloads
