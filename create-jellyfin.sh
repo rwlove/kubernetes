@@ -6,8 +6,6 @@ ${KUBE_CREATE} ns jellyfin
 
 ${KUBE_CREATE} -f manifests/volumes/jellyfin-pv.yaml
 
-${KUBE_CREATE} -f manifests/jellyfin/jellyfin-downloads-pvc.yaml
-
 echo "############"
 echo "Create jellyfin"
 echo "######"
