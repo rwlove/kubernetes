@@ -36,5 +36,5 @@ persistence:
     enabled: true
     mountPath: /media
     storageClass: "jellyfin-media-storage-class"
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 1Gi
