@@ -1,0 +1,34 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: photoprism-originals
+  labels:
+    type: local
+spec:
+  storageClassName: photoprism-originals-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/storage/pictures/
+
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: photoprism-config
+  labels:
+    type: local
+spec:
+  storageClassName: photoprism-config-storage-class
+  capacity:
+    storage: 300Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: brain.thesteamedcrab.com
+    path: /mnt/mass_storage/kubernetes/photoprism/config
