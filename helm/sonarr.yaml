@@ -39,6 +39,9 @@ probes:
   readiness:
     enabled: true
     delay: 600
+  startup:
+    enabled: true
+    delay: 600
 
 # Prometheus Metrics
 exportarr:
