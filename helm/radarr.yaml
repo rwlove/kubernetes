@@ -10,6 +10,45 @@ image:
 # upgrade strategy type (e.g. Recreate or RollingUpdate)
 strategyType: Recreate
 
+probes:
+  liveness:
+    enabled: true
+    ## Set this to true if you wish to specify your own livenessProbe
+    custom: true
+    ## The spec field contains the values for the default livenessProbe.
+    ## If you selected custom: true, this field holds the definition of the livenessProbe.
+    spec:
+      exec:
+        command:
+        - /usr/bin/env
+        - bash
+        - -c
+        - curl --fail localhost:7878/api/v1/system/status?apiKey=`IFS=\> && while
+          read -d \< E C; do if [[ $E = "ApiKey" ]]; then echo $C; fi; done < /config/config.xml`
+      failureThreshold: 5
+      initialDelaySeconds: 60
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 10
+
+  readiness:
+    enabled: true
+    custom: false
+    spec:
+      initialDelaySeconds: 600
+      periodSeconds: 10
+      timeoutSeconds: 1
+      failureThreshold: 3
+
+  startup:
+    enabled: true
+    custom: false
+    spec:
+      initialDelaySeconds: 600
+      timeoutSeconds: 1
+      periodSeconds: 5
+      failureThreshold: 30
+
 env:
   TZ: "America/New_York"
   PUID: 1000
