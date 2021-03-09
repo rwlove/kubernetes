@@ -54,67 +54,27 @@ fullnameOverride: ""
 
 env:
   TZ: 'America/New_York'
+  PUID: 1000
+  PGID: 1001
 
 service:
   type: LoadBalancer
   port:
     port: 8686
-  ## Specify the nodePort value for the LoadBalancer and NodePort service types.
-  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport
-  ##
-  # nodePort:
-  ## Provide any additional annotations which may be required. This can be used to
-  ## set the LoadBalancer service type to internal only.
-  ## ref: https://kubernetes.io/docs/concepts/services-networking/service/#internal-load-balancer
-  ##
-  annotations: {}
-  labels: {}
-  ## Use loadBalancerIP to request a specific static IP,
-  ## otherwise leave blank
-  ##
   loadBalancerIP: 192.168.6.35
-  # loadBalancerSourceRanges: []
-  ## Set the externalTrafficPolicy in the Service to either Cluster or Local
-  # externalTrafficPolicy: Cluster
 
 persistence:
   config:
     enabled: true
-    ## lidarr configuration data Persistent Volume Storage Class
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    ##
     storageClass: "lidarr-config-storage-class"
-    ##
-    ## If you want to reuse an existing claim, you can pass the name of the PVC using
-    ## the existingClaim variable
-    # existingClaim: your-claim
-    # subPath: some-subpath
     accessMode: ReadWriteOnce
     size: 1Gi
-    ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
+
   media:
     enabled: true
-    ## lidarr media volume configuration
-    ## If defined, storageClassName: <storageClass>
-    ## If set to "-", storageClassName: "", which disables dynamic provisioning
-    ## If undefined (the default) or set to null, no storageClassName spec is
-    ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
-    ##   GKE, AWS & OpenStack)
-    ##
-    storageClass: "lidarr-media-storage-class"
-    ##
-    ## If you want to reuse an existing claim, you can pass the name of the PVC using
-    ## the existingClaim variable
-    # existingClaim: your-claim
-    # subPath: some-subpath
     accessMode: ReadWriteOnce
     size: 10Gi
-    ## Do not delete the pvc upon helm uninstall
     skipuninstall: false
 
 additionalVolumeMounts:
