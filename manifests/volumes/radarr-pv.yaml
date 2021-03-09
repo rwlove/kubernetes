@@ -4,7 +4,7 @@ kind: PersistentVolume
 metadata:
   name: qbittorrentvpn-radarr-data
   labels:
-    type: local
+    type: nfs
 spec:
   storageClassName: qbittorrentvpn-radarr-data-storage-class
   capacity:
@@ -21,7 +21,7 @@ kind: PersistentVolume
 metadata:
   name: radarr-media
   labels:
-    type: local
+    type: nfs
 spec:
   storageClassName: radarr-media-storage-class
   capacity:
@@ -38,7 +38,7 @@ kind: PersistentVolume
 metadata:
   name: radarr-config
   labels:
-    type: local
+    type: nfs
 spec:
   storageClassName: radarr-config-storage-class
   capacity:
