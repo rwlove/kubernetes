@@ -12,5 +12,8 @@ helm -n sonarr uninstall sonarr
 echo "## Delete Sonarr PV"
 ${KUBE_DELETE} -f manifests/volumes/sonarr-pv.yaml
 
+echo "## Delete Sonarr 'qbittorrent downloads' PVC"
+${KUBE_DELETE} -f manifests/sonarr/sonarr-downloads-pvc.yaml
+
 echo "## Delete 'sonarr' Namespace"
 ${KUBE_DELETE} ns sonarr
