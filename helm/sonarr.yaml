@@ -38,11 +38,7 @@ probes:
       timeoutSeconds: 10
   readiness:
     enabled: true
-    failureThreshold: 5
-    initialDelaySeconds: 600
-    periodSeconds: 10
-    successThreshold: 1
-    timeoutSeconds: 10
+    delay: 600
 
 # Prometheus Metrics
 exportarr:
