@@ -3,14 +3,14 @@
 KUBE_DELETE='kubectl delete'
 
 echo "############"
-echo "Delete Radarr"
+echo "Delete Airsonic"
 echo "######"
 
-echo "## Uninstall Radarr Helm Chart"
-helm -n radarr uninstall radarr
+echo "## Uninstall Airsonic Helm Chart"
+helm -n airsonic uninstall airsonic
 
-echo "## Delete Radarr PV"
-${KUBE_DELETE} -f manifests/volumes/radarr-pv.yaml
+echo "## Delete Airsonic PV"
+${KUBE_DELETE} -f manifests/volumes/airsonic-pv.yaml
 
-echo "## Delete 'radarr' Namespace"
-${KUBE_DELETE} ns radarr
+echo "## Delete 'airsonic' Namespace"
+${KUBE_DELETE} ns airsonic
