@@ -30,6 +30,7 @@ service:
 persistence:
   config:
     enabled: false
+    emptyDir: false
     mountPath: /config
     storageClass: "airsonic-config-storage-class"
     accessMode: ReadWriteOnce
@@ -38,6 +39,7 @@ persistence:
 
   music:
     enabled: false
+    emptyDir: false
     mountPath: /music
     storageClass: "airsonic-music-storage-class"
     accessMode: ReadWriteOnce
@@ -46,6 +48,7 @@ persistence:
 
   playlists:
     enabled: false
+    emptyDir: false
     mountPath: /playlists
     storageClass: "airsonic-playlists-storage-class"
     accessMode: ReadWriteOnce
@@ -53,9 +56,14 @@ persistence:
     skipuninstall: false
 
   podcasts:
-    enabled: false
+    enabled: true
+    emptyDir: false
     mountPath: /podcasts
-    
+    storageClass: "airsonic-podcasts-storage-class"
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    skipuninstall: false
+
   media:
     enabled: false
     emptyDir: false
