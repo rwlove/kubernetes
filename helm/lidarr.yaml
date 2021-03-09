@@ -73,6 +73,7 @@ persistence:
 
   media:
     enabled: true
+    storageClass: "lidarr-media-storage-class"
     accessMode: ReadWriteOnce
     size: 10Gi
     skipuninstall: false
